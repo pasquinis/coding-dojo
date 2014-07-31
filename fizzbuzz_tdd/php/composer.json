@@ -1,0 +1,19 @@
+{
+    "name": "fizz-buzz-php",
+    "description": "Your project description",
+    "license": "MIT",
+    "require": {
+        "php": ">=5.3.3"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "3.7.*"
+    },
+    "config": {
+        "bin-dir": "bin"
+    },
+    "autoload": {
+        "psr-0": {
+            "Kata": "src/"
+        }
+    }
+}
