@@ -11,8 +11,17 @@ class FizzBuzz {
     }
 
     private function calculate($number) {
-        if($number % 3 == 0 && $number % 5 == 0) {
+
+        if ($number % 3 == 0 && $number % 5 == 0) {
             return 'FizzBuzz';
+        }
+
+        if (preg_match("/[3]/", "${number}")) {
+            return 'Fizz';
+        }
+
+        if (preg_match("/[5]/", "${number}")) {
+            return 'Buzz';
         }
 
         if ($number % 3 == 0) {

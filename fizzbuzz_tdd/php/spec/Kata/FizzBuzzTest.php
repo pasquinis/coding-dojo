@@ -27,8 +27,17 @@ class FizzBuzzTest extends \PHPUnit_Framework_TestCase
     {
         $obj = new FizzBuzz(15);
         $this->assertEquals(
-            '1 2 Fizz 4 Buzz Fizz 7 8 Fizz Buzz 11 Fizz 13 14 FizzBuzz'
+            '1 2 Fizz 4 Buzz Fizz 7 8 Fizz Buzz 11 Fizz Fizz 14 FizzBuzz'
             , $obj->tell());
     }
+
+    public function testWhenANumberISDivisibleAndContainsFiveIsBuzz()
+    {
+        $obj = new FizzBuzz(52);
+        $this->assertEquals(
+            '1 2 Fizz 4 Buzz Fizz 7 8 Fizz Buzz 11 Fizz Fizz 14 FizzBuzz 16 17 Fizz 19 Buzz Fizz 22 Fizz Fizz Buzz 26 Fizz 28 29 Fizz Fizz Fizz Fizz Fizz Fizz Fizz Fizz Fizz Fizz Buzz 41 Fizz Fizz 44 FizzBuzz 46 47 Fizz 49 Buzz Fizz Buzz'
+            , $obj->tell());
+    }
+
 
 }
