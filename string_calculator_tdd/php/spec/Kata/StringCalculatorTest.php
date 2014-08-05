@@ -10,4 +10,11 @@ class StringCalculatorTest extends \PHPUnit_Framework_TestCase {
         $response = $obj->add("0");
         $this->assertEquals("", $response);
     }
+
+    public function testAddingOneResponseIsCorrect()
+    {
+        $obj = new StringCalculator();
+        $response = $obj->add("1");
+        $this->assertEquals(1, $response);
+    }
 }

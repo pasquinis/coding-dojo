@@ -5,7 +5,12 @@ namespace Kata;
 class StringCalculator {
 
     public function add($number) {
-        return "";
+        $integer = (int) $number;
+        if ($integer <= 0) {
+            return "";
+        }
+
+        return $number;
     }
 
 }
