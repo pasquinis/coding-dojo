@@ -31,4 +31,18 @@ class StringCalculatorTest extends \PHPUnit_Framework_TestCase {
         $response = $obj->add("1,2,3,4,5,6,7,8,9,10");
         $this->assertEquals(55, $response);
     }
+
+    public function testAddingThreeNumberAlsoWithComaBetweenNumbers()
+    {
+        $obj = new StringCalculator();
+        $response = $obj->add("1,2,3");
+        $this->assertEquals(6, $response);
+    }
+
+    public function testAddingThreeNumberAlsoWithNewlineBetweenNumbers()
+    {
+        $obj = new StringCalculator();
+        $response = $obj->add("1\n2,3");
+        $this->assertEquals(6, $response);
+    }
 }

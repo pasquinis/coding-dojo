@@ -5,8 +5,8 @@ namespace Kata;
 class StringCalculator {
 
     public function add($numbers) {
-        $values = explode(",", $numbers);
-
+        $managedNumbers = str_replace("\n", ",", $numbers);
+        $values = explode(",", $managedNumbers);
         if (empty($values[0])) {
             return "";
         }
