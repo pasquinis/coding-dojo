@@ -24,4 +24,11 @@ class StringCalculatorTest extends \PHPUnit_Framework_TestCase {
         $response = $obj->add("1,2");
         $this->assertEquals(3, $response);
     }
+
+    public function testAddingAnUnknownAmountOfNumbers()
+    {
+        $obj = new StringCalculator();
+        $response = $obj->add("1,2,3,4,5,6,7,8,9,10");
+        $this->assertEquals(55, $response);
+    }
 }
