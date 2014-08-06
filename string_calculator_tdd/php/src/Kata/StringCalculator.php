@@ -4,13 +4,19 @@ namespace Kata;
 
 class StringCalculator {
 
-    public function add($number) {
-        $integer = (int) $number;
-        if ($integer <= 0) {
+    public function add($numbers) {
+        $values = explode(",", $numbers);
+
+        if (empty($values[0])) {
             return "";
         }
 
-        return $number;
+        $total = 0;
+        foreach($values as $value) {
+            $total += $value;
+        }
+
+        return $total;
     }
 
 }
