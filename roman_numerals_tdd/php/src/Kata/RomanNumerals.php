@@ -8,7 +8,8 @@ class RomanNumerals {
 
         switch($integerValue) {
             case 1:
-                return "I";
+                $obj = new RomanValuesOne();
+                return $obj->toRoman();
                 break;
             case 2:
                 return "II";
