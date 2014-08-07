@@ -2,7 +2,7 @@
 
 namespace Kata;
 
-interface IRomanValues
+interface RomanConverter
 {
     public function toRoman();
 }

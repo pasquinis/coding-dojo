@@ -2,7 +2,7 @@
 
 namespace Kata;
 
-class RomanValuesOne implements IRomanValues {
+class RomanValuesOne implements RomanConverter {
 
     public function toRoman() {
         return "I";
