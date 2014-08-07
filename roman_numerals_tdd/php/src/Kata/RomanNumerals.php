@@ -8,14 +8,13 @@ class RomanNumerals {
 
         switch($integerValue) {
             case 1:
-                $obj = new RomanValuesOne();
-                return $obj->toRoman();
+                return $obj = (new RomanValuesOne())->toRoman();
                 break;
             case 2:
-                return "II";
+                return $obj = (new RomanValuesTwo())->toRoman();
                 break;
             case 3:
-                return "III";
+                return $obj = (new RomanValuesThree())->toRoman();
                 break;
         }
     }
