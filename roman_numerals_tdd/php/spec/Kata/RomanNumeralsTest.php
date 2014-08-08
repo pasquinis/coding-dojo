@@ -19,4 +19,13 @@ class RomanNumeralsTest extends \PHPUnit_Framework_TestCase {
         $this->assertEquals("III", $obj->convert(3));
     }
 
+    public function testFiveNumberIsVRomanNumber() {
+        $obj = new RomanNumerals();
+        $this->assertEquals("V", $obj->convert(5));
+    }
+
+    public function testTenNumberIsXRomanNumber() {
+        $obj = new RomanNumerals();
+        $this->assertEquals("X", $obj->convert(10));
+    }
 }
