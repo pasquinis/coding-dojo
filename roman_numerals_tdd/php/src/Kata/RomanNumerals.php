@@ -22,6 +22,18 @@ class RomanNumerals {
             case 10:
                 return $obj = (new RomanValuesTen())->toRoman();
                 break;
+            case 50:
+                return $obj = (new RomanValuesFifty())->toRoman();
+                break;
+            case 100:
+                return $obj = (new RomanValuesHundred())->toRoman();
+                break;
+        }
+
+        if ($integerValue > 5) {
+            $one = (new RomanValuesOne())->toRoman();
+            $five = (new RomanValuesFive())->toRoman();
+            return "$five$one";
         }
     }
 }
