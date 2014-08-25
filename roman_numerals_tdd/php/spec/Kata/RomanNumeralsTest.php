@@ -43,4 +43,16 @@ class RomanNumeralsTest extends \PHPUnit_Framework_TestCase {
         $obj = new RomanNumerals();
         $this->assertEquals("C", $obj->convert(100));
     }
+
+    public function testCanIConvert1066ToMLXVI() {
+        $this->markTestIncomplete("not operative");
+        $obj = new RomanNumerals();
+        $this->assertEquals("MLXVI", $obj->convert(1066));
+    }
+
+    public function testCanISplitANumberWithTwoIntegerIntoTwoElement() {
+        $obj = new RomanNumerals();
+        $expect = [ 60, 7];
+        $this->assertEquals($expect, $obj->splitIntoElement(67));
+    }
 }

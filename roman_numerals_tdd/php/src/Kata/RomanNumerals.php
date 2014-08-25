@@ -4,7 +4,20 @@ namespace Kata;
 
 class RomanNumerals {
 
+    public function splitIntoElement($integerValue) {
+        $splitted = [];
+        if ($integerValue >= 10) {
+            $explodedInteger = explode(".", ($integerValue/10));
+            $splitted[] = (int) "${explodedInteger[0]}0";
+            $splitted[] = (int) $explodedInteger[1];
+        }
+
+        return $splitted;
+    }
+
+
     public function convert($integerValue) {
+
 
         switch($integerValue) {
             case 1:
