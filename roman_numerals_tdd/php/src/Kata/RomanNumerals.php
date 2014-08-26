@@ -6,17 +6,28 @@ class RomanNumerals {
 
     public function splitIntoElement($integerValue) {
         $splitted = [];
-        if ($integerValue >= 10) {
-            $explodedInteger = explode(".", ($integerValue/10));
-            $splitted[] = (int) "${explodedInteger[0]}0";
-            $splitted[] = (int) $explodedInteger[1];
+        $stringValue = (string) $integerValue;
+        for ($i=0; $i < strlen($stringValue); $i++) {
+            $splitted[] = "${stringValue[$i]}".$this->addingZero(strlen($stringValue), $i);
         }
 
         return $splitted;
     }
 
+    private function addingZero($totalOfCharacter, $position) {
+        switch($totalOfCharacter - $position) {
+            case 4:
+                return '000';
+            case 3:
+                return '00';
+            case 2:
+                return '0';
+        }
+    }
 
     public function convert($integerValue) {
+
+        //TODO adding cycle logic
 
 
         switch($integerValue) {

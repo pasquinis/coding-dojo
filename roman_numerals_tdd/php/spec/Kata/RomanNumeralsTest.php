@@ -55,4 +55,18 @@ class RomanNumeralsTest extends \PHPUnit_Framework_TestCase {
         $expect = [ 60, 7];
         $this->assertEquals($expect, $obj->splitIntoElement(67));
     }
+
+    public function testCanISplitANumberWithThreeIntegerIntoThreeElement() {
+        $obj = new RomanNumerals();
+        $expect = [ 100, 60, 7];
+        $this->assertEquals($expect, $obj->splitIntoElement(167));
+    }
+
+    public function testCanISplitANumberWithFourIntegerIntoFourElement() {
+        $obj = new RomanNumerals();
+        $expect = [ 1000, 0, 60, 6];
+        $this->assertEquals($expect, $obj->splitIntoElement(1066));
+    }
+
+
 }
