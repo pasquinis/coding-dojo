@@ -25,6 +25,24 @@ class RomanNumerals {
         }
     }
 
+    public function decomposeInteger($integerValue) {
+
+    //TODO ricordare il caso valore 200 
+        $decomposed = [];
+        $integerValueMod = $integerValue;
+
+        if ($integerValueMod >= 50) {
+            $decomposed[] = 50;
+            $integerValueMod = $integerValueMod - 50;
+        }
+
+        if ($integerValueMod >= 10){
+            $decomposed[] = 10;
+        }
+
+        return $decomposed;
+    }
+
     private function translateFromArabianToRoman($integerValue) {
 
          switch($integerValue) {

@@ -44,6 +44,18 @@ class RomanNumeralsTest extends \PHPUnit_Framework_TestCase {
         $this->assertEquals("C", $obj->convert(100));
     }
 
+    public function testSixtyNumberIsLXRomanNumber() {
+        $this->markTestIncomplete("not operative");
+        $obj = new RomanNumerals();
+        $this->assertEquals("LX", $obj->convert(60));
+    }
+
+    public function testCanIConvert66ToLXVI() {
+        $this->markTestIncomplete("not operative");
+        $obj = new RomanNumerals();
+        $this->assertEquals("LXVI", $obj->convert(66));
+    }
+
     public function testCanIConvert1066ToMLXVI() {
         $this->markTestIncomplete("not operative");
         $obj = new RomanNumerals();
@@ -67,11 +79,19 @@ class RomanNumeralsTest extends \PHPUnit_Framework_TestCase {
         $expect = [ 1000, 0, 60, 6];
         $this->assertEquals($expect, $obj->splitIntoElement(1066));
     }
-    
+
     public function testCanISplitANumberWithOneIntegerIntoOneElement() {
         $obj = new RomanNumerals();
         $expect = [10, 0];
         $this->assertEquals($expect, $obj->splitIntoElement(10));
     }
+
+    public function testCanIDecomposeInteger() {
+        $obj = new RomanNumerals();
+        $expect = [50, 10];
+        $this->assertEquals($expect, $obj->decomposeInteger(60));
+    }
+
+
 
 }
