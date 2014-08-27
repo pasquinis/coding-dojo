@@ -67,6 +67,11 @@ class RomanNumeralsTest extends \PHPUnit_Framework_TestCase {
         $expect = [ 1000, 0, 60, 6];
         $this->assertEquals($expect, $obj->splitIntoElement(1066));
     }
-
+    
+    public function testCanISplitANumberWithOneIntegerIntoOneElement() {
+        $obj = new RomanNumerals();
+        $expect = [10, 0];
+        $this->assertEquals($expect, $obj->splitIntoElement(10));
+    }
 
 }

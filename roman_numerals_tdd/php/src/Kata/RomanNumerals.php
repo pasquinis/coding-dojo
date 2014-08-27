@@ -8,7 +8,7 @@ class RomanNumerals {
         $splitted = [];
         $stringValue = (string) $integerValue;
         for ($i=0; $i < strlen($stringValue); $i++) {
-            $splitted[] = "${stringValue[$i]}".$this->addingZero(strlen($stringValue), $i);
+            $splitted[] = (int) ("${stringValue[$i]}".$this->addingZero(strlen($stringValue), $i));
         }
 
         return $splitted;
@@ -25,12 +25,9 @@ class RomanNumerals {
         }
     }
 
-    public function convert($integerValue) {
+    private function translateFromArabianToRoman($integerValue) {
 
-        //TODO adding cycle logic
-
-
-        switch($integerValue) {
+         switch($integerValue) {
             case 1:
                 return $obj = (new RomanValuesOne())->toRoman();
                 break;
@@ -54,10 +51,22 @@ class RomanNumerals {
                 break;
         }
 
+
         if ($integerValue > 5) {
             $one = (new RomanValuesOne())->toRoman();
             $five = (new RomanValuesFive())->toRoman();
             return "$five$one";
         }
+    }
+
+    public function convert($integerValue) {
+
+        $elements = $this->splitIntoElement($integerValue);
+        $romanPhrase = '';
+        foreach($elements as $element) {
+            $romanPhrase .= $this->translateFromArabianToRoman($element);
+        }
+
+        return $romanPhrase;
     }
 }
