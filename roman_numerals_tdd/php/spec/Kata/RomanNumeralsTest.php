@@ -102,6 +102,20 @@ class RomanNumeralsTest extends \PHPUnit_Framework_TestCase {
         $obj = new RomanNumerals();
         $expect = [100, 100, 100, 100];
         $this->assertEquals($expect, $obj->decomposeInteger(400));
-    } 
+    }
+
+    public function testCanIDecompose700AsInteger() {
+        $obj = new RomanNumerals();
+        $expect = [500, 100, 100];
+        $this->assertEquals($expect, $obj->decomposeInteger(700));
+    }
+
+    public function testCanIDecompose900AsInteger() {
+        $obj = new RomanNumerals();
+        $expect = [500, 100, 100, 100, 100];
+        $this->assertEquals($expect, $obj->decomposeInteger(900));
+    }
+
+
 
 }

@@ -29,8 +29,13 @@ class RomanNumerals {
 
         $decomposed = [];
         $integerValueMod = $integerValue;
-        if (( 500 > $integerValue) && ($integerValue >= 200)) {
-            $integerString = "".$integerValue;
+        if ((1000 > $integerValueMod) && ($integerValueMod >= 500)) {
+            $decomposed[] = 500;
+            $integerValueMod = $integerValueMod - 500;
+        }
+
+        if (( 500 > $integerValueMod) && ($integerValueMod >= 200)) {
+            $integerString = "".$integerValueMod;
             $firstNumber = $integerString[0];
             for($i=0; $i < $firstNumber; $i++) {
                 $decomposed[] = 100;
