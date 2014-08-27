@@ -27,9 +27,17 @@ class RomanNumerals {
 
     public function decomposeInteger($integerValue) {
 
-    //TODO ricordare il caso valore 200 
         $decomposed = [];
         $integerValueMod = $integerValue;
+        if (( 500 > $integerValue) && ($integerValue >= 200)) {
+            $integerString = "".$integerValue;
+            $firstNumber = $integerString[0];
+            for($i=0; $i < $firstNumber; $i++) {
+                $decomposed[] = 100;
+                $integerValueMod = $integerValueMod - 100;
+            }
+        }
+
 
         if ($integerValueMod >= 50) {
             $decomposed[] = 50;
