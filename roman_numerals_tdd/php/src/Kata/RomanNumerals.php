@@ -4,6 +4,9 @@ namespace Kata;
 
 class RomanNumerals {
 
+    protected $decomposed = [];
+    protected $integerValueMod;
+
     public function splitIntoElement($integerValue) {
         $splitted = [];
         $stringValue = (string) $integerValue;
@@ -25,35 +28,42 @@ class RomanNumerals {
         }
     }
 
+    private function populateDecomposedArray($limit) {
+        $integerString = "".$this->integerValueMod;
+        $firstNumber = $integerString[0];
+        for($i=0; $i < $firstNumber; $i++) {
+            $this->decomposed[] = $limit;
+            $this->integerValueMod = $this->integerValueMod - $limit;
+        }
+    }
+
     public function decomposeInteger($integerValue) {
 
-        $decomposed = [];
-        $integerValueMod = $integerValue;
-        if ((1000 > $integerValueMod) && ($integerValueMod >= 500)) {
-            $decomposed[] = 500;
-            $integerValueMod = $integerValueMod - 500;
+        $this->integerValueMod = $integerValue;
+
+        if ( $this->integerValueMod >= 1000 ) {
+            $this->populateDecomposedArray(1000);
         }
 
-        if (( 500 > $integerValueMod) && ($integerValueMod >= 200)) {
-            $integerString = "".$integerValueMod;
-            $firstNumber = $integerString[0];
-            for($i=0; $i < $firstNumber; $i++) {
-                $decomposed[] = 100;
-                $integerValueMod = $integerValueMod - 100;
-            }
+        if ((1000 > $this->integerValueMod) && ($this->integerValueMod >= 500)) {
+            $this->decomposed[] = 500;
+            $this->integerValueMod = $this->integerValueMod - 500;
         }
 
-
-        if ($integerValueMod >= 50) {
-            $decomposed[] = 50;
-            $integerValueMod = $integerValueMod - 50;
+        if (( 500 > $this->integerValueMod) && ($this->integerValueMod >= 200)) {
+            $this->populateDecomposedArray(100);
         }
 
-        if ($integerValueMod >= 10){
-            $decomposed[] = 10;
+        if ($this->integerValueMod >= 50) {
+            $this->decomposed[] = 50;
+            $this->integerValueMod = $this->integerValueMod - 50;
         }
 
-        return $decomposed;
+        if ($this->integerValueMod >= 10){
+            $this->decomposed[] = 10;
+        }
+
+        return $this->decomposed;
     }
 
     private function translateFromArabianToRoman($integerValue) {
