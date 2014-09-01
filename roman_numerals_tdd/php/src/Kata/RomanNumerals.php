@@ -50,7 +50,7 @@ class RomanNumerals {
             $this->integerValueMod = $this->integerValueMod - 500;
         }
 
-        if (( 500 > $this->integerValueMod) && ($this->integerValueMod >= 200)) {
+        if (( 500 > $this->integerValueMod) && ($this->integerValueMod >= 100)) {
             $this->populateDecomposedArray(100);
         }
 
@@ -60,7 +60,12 @@ class RomanNumerals {
         }
 
         if ($this->integerValueMod >= 10){
+            $this->integerValueMod = $this->integerValueMod - 10;
             $this->decomposed[] = 10;
+        }
+
+        if ($this->integerValueMod != 0) {
+            $this->decomposed[] = $this->integerValueMod;
         }
 
         return $this->decomposed;
@@ -102,7 +107,7 @@ class RomanNumerals {
 
     public function convert($integerValue) {
 
-        $elements = $this->splitIntoElement($integerValue);
+        $elements = $this->decomposeInteger($integerValue);
         $romanPhrase = '';
         foreach($elements as $element) {
             $romanPhrase .= $this->translateFromArabianToRoman($element);

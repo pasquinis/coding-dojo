@@ -45,7 +45,7 @@ class RomanNumeralsTest extends \PHPUnit_Framework_TestCase {
     }
 
     public function testSixtyNumberIsLXRomanNumber() {
-        $this->markTestIncomplete("not operative");
+        #$this->markTestIncomplete("not operative");
         $obj = new RomanNumerals();
         $this->assertEquals("LX", $obj->convert(60));
     }
