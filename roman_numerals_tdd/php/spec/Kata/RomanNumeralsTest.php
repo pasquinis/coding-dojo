@@ -45,21 +45,23 @@ class RomanNumeralsTest extends \PHPUnit_Framework_TestCase {
     }
 
     public function testSixtyNumberIsLXRomanNumber() {
-        #$this->markTestIncomplete("not operative");
         $obj = new RomanNumerals();
         $this->assertEquals("LX", $obj->convert(60));
     }
 
     public function testCanIConvert66ToLXVI() {
-        $this->markTestIncomplete("not operative");
         $obj = new RomanNumerals();
         $this->assertEquals("LXVI", $obj->convert(66));
     }
 
     public function testCanIConvert1066ToMLXVI() {
-        $this->markTestIncomplete("not operative");
         $obj = new RomanNumerals();
         $this->assertEquals("MLXVI", $obj->convert(1066));
+    }
+
+    public function testCanIConvert700ToMLXVI() {
+        $obj = new RomanNumerals();
+        $this->assertEquals("DCC", $obj->convert(700));
     }
 
     public function testCanISplitANumberWithTwoIntegerIntoTwoElement() {

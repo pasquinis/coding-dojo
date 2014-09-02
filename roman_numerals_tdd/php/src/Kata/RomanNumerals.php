@@ -95,6 +95,12 @@ class RomanNumerals {
             case 100:
                 return $obj = (new RomanValuesHundred())->toRoman();
                 break;
+            case 500:
+                return $obj = (new RomanValuesFiveHundred())->toRoman();
+                break;
+            case 1000:
+                return $obj = (new RomanValuesThousand())->toRoman();
+                break;
         }
 
 
