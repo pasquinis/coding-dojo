@@ -64,6 +64,11 @@ class RomanNumerals {
             $this->decomposed[] = 10;
         }
 
+        if ($this->integerValueMod >= 5){
+            $this->integerValueMod = $this->integerValueMod - 5;
+            $this->decomposed[] = 5;
+        }
+
         if ($this->integerValueMod != 0) {
             $this->decomposed[] = $this->integerValueMod;
         }
@@ -103,12 +108,6 @@ class RomanNumerals {
                 break;
         }
 
-
-        if ($integerValue > 5) {
-            $one = (new RomanValuesOne())->toRoman();
-            $five = (new RomanValuesFive())->toRoman();
-            return "$five$one";
-        }
     }
 
     public function convert($integerValue) {

@@ -64,6 +64,11 @@ class RomanNumeralsTest extends \PHPUnit_Framework_TestCase {
         $this->assertEquals("DCC", $obj->convert(700));
     }
 
+    public function testCanIConvert113ToCXIII() {
+        $obj = new RomanNumerals();
+        $this->assertEquals("CXIII", $obj->convert(113));
+    }
+
     public function testCanISplitANumberWithTwoIntegerIntoTwoElement() {
         $obj = new RomanNumerals();
         $expect = [ 60, 7];
