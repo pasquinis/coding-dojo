@@ -32,8 +32,14 @@ class RomanNumerals {
         $integerString = "".$this->integerValueMod;
         $firstNumber = $integerString[0];
         for($i=0; $i < $firstNumber; $i++) {
-            $this->decomposed[] = $limit;
-            $this->integerValueMod = $this->integerValueMod - $limit;
+            $this->middleDecomposite($limit);
+        }
+    }
+
+    private function middleDecomposite($value) {
+         if ($this->integerValueMod >= $value) {
+            $this->decomposed[] = $value;
+            $this->integerValueMod = $this->integerValueMod - $value;
         }
     }
 
@@ -45,29 +51,17 @@ class RomanNumerals {
             $this->populateDecomposedArray(1000);
         }
 
-        if ((1000 > $this->integerValueMod) && ($this->integerValueMod >= 500)) {
-            $this->decomposed[] = 500;
-            $this->integerValueMod = $this->integerValueMod - 500;
-        }
+        $this->middleDecomposite(500);
 
-        if (( 500 > $this->integerValueMod) && ($this->integerValueMod >= 100)) {
+        if (($this->integerValueMod >= 100)) {
             $this->populateDecomposedArray(100);
         }
 
-        if ($this->integerValueMod >= 50) {
-            $this->decomposed[] = 50;
-            $this->integerValueMod = $this->integerValueMod - 50;
-        }
+        $this->middleDecomposite(100);
+        $this->middleDecomposite(50);
+        $this->middleDecomposite(10);
+        $this->middleDecomposite(5);
 
-        if ($this->integerValueMod >= 10){
-            $this->integerValueMod = $this->integerValueMod - 10;
-            $this->decomposed[] = 10;
-        }
-
-        if ($this->integerValueMod >= 5){
-            $this->integerValueMod = $this->integerValueMod - 5;
-            $this->decomposed[] = 5;
-        }
 
         if ($this->integerValueMod != 0) {
             $this->decomposed[] = $this->integerValueMod;
