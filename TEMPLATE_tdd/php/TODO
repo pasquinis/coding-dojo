@@ -1,0 +1,4 @@
+1 creare directory progetto
+2 dalla directory lanciare curl -sS https://getcomposer.org/installer | php
+3 dalla cartella eseguire ./composer.phar install --dev
+
