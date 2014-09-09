@@ -18,4 +18,9 @@ class PrimeFactorsTest extends \PHPUnit_Framework_TestCase {
         $this->assertEquals($expected, $this->obj->primes(2));
     }
 
+    public function testPrimesForThreeisThree() {
+        $expected = [3];
+        $this->assertEquals($expected, $this->obj->primes(3));
+    }
+
 }
