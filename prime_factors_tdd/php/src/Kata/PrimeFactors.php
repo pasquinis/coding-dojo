@@ -24,6 +24,18 @@ class PrimeFactors {
         if ($number % 4 == 0) {
             $arr[] = 2;
         }
+        if ($number % 5 == 0) {
+            $arr[] = 5;
+        }
+        if ($number % 7 == 0) {
+            $arr[] = 7;
+        }
+        if ($number % 8 == 0) {
+            $arr[] = 2;
+        }
+        if ($number % 9 == 0) {
+            $arr[] = 3;
+        }
 
         return $arr;
     }
