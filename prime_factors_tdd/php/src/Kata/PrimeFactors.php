@@ -9,37 +9,23 @@ class PrimeFactors {
             return [];
         }
 
-        if ($this->aNumberIsPrime($number)) {
-            return [$number];
-        }
+        return $this->decomposeNumber($number);
     }
 
-    private function decomposeNumber($number) {
+
+    public function decomposeNumber($number) {
         $arr = [];
-         for($i = 1; $i <= $number; $i++) {
-            if ($number % $i == 0) {
-                $arr[] = $i;
-            }
+        if ($number % 2 == 0) {
+            $arr[] = 2;
         }
-       return $arr;
-    }
+        if ($number % 3 == 0) {
+            $arr[] = 3;
+        }
+        if ($number % 4 == 0) {
+            $arr[] = 2;
+        }
 
-    private function removeOneAndSelfNumber($arr, $number) {
-        for($i=0; $i <= count($number); $i++) {
-            if ($arr[$i] == 1 || $arr[$i] == $number) {
-                unset($arr[$i]);
-            }
-        }
         return $arr;
     }
 
-    private function aNumberIsPrime($number) {
-        $arr = $this->decomposeNumber($number);
-        $arr = $this->removeOneAndSelfNumber($arr, $number);
-
-        if (count($arr) == 0)
-            return true;
-        else
-            return false;
-    }
 }

@@ -24,7 +24,6 @@ class PrimeFactorsTest extends \PHPUnit_Framework_TestCase {
     }
 
     public function testPrimesForFourIsDecomposed() {
-        $this->markTestIncomplete();
         $expected = [2, 2];
         $this->assertEquals($expected, $this->obj->primes(4));
     }
