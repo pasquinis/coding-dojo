@@ -52,4 +52,9 @@ class PrimeFactorsTest extends \PHPUnit_Framework_TestCase {
         $expected = [3,3];
         $this->assertEquals($expected, $this->obj->primes(9));
     }
+
+    public function testPrimesForTenIsDecomposed() {
+        $expected = [2,5];
+        $this->assertEquals($expected, $this->obj->primes(10));
+    }
 }
