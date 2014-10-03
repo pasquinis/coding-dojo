@@ -34,5 +34,9 @@ class BerlinClockTest extends \PHPUnit_Framework_TestCase {
         $this->assertEquals($expected, $this->obj->firstRow(20));
     }
 
+    public function testICanConvertThirteenHour() {
+        $expected = "RRR0";
+        $this->assertEquals($expected, $this->obj->firstRow(15));
+    }
 
 }

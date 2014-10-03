@@ -16,9 +16,9 @@ class BerlinClock {
 
     public function firstRow($hour) {
         $numberOfBlockToBeRed = $hour/5;
-        $toReturn = '';
+        $toReturn = '0000';
         for($i=0; $i<$numberOfBlockToBeRed; $i++) {
-            $toReturn .= 'R';
+            $toReturn[$i] = 'R';
         }
         return $toReturn;
     }
