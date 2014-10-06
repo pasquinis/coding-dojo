@@ -10,10 +10,10 @@ class BerlinClockTest extends \PHPUnit_Framework_TestCase {
 
     public function testHappyPathWhenTimeIsmidnight() {
         $expected = [
-            "0000",
-            "0000",
-            "00000000000",
-            "0000",
+            "OOOO",
+            "OOOO",
+            "OOOOOOOOOOO",
+            "OOOO",
         ];
         $this->assertEquals($expected, $this->obj->time("00::00::00"));
     }
@@ -21,10 +21,10 @@ class BerlinClockTest extends \PHPUnit_Framework_TestCase {
     public function testDisplayATime13_17_01() {
         $this->markTestIncomplete("need real implementation");
          $expected = [
-            "RR00",
-            "RRR0",
-            "YYR00000000",
-            "YY00",
+            "RROO",
+            "RRRO",
+            "YYROOOOOOOO",
+            "YYOO",
         ];
         $this->assertEquals($expected, $this->obj->time("13::17::01"));
     }
@@ -34,15 +34,19 @@ class BerlinClockTest extends \PHPUnit_Framework_TestCase {
         $this->assertEquals($expected, $this->obj->firstRow(20));
     }
 
-    public function testICanConvertFiftyeenHour() {
-        $expected = "RRR0";
+    public function testICanConvertFifteenHourForTheFirtstRow() {
+        $expected = "RRRO";
         $this->assertEquals($expected, $this->obj->firstRow(15));
     }
 
-    public function testICanConvertThirteenHour() {
-        $expected = "RR00";
+    public function testICanConvertThirteenHourForTheFirtstRow() {
+        $expected = "RROO";
         $this->assertEquals($expected, $this->obj->firstRow(13));
     }
 
+    public function testICanConvertThreeHourForTheSecondRow() {
+        $expected = "RRRO";
+        $this->assertEquals($expected, $this->obj->secondRow(13));
+    }
 
 }
