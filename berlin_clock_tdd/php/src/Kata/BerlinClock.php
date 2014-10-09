@@ -16,15 +16,6 @@ class BerlinClock {
         ];
     }
 
-    private function fillTheRowMask($numberOfBlockToBeRed) {
-        $toReturn = "OOOO";
-        for ($i=0; $i<$numberOfBlockToBeRed; $i++) {
-            $toReturn[$i] = 'R';
-        }
-
-        return $toReturn;
-    }
-
     private function isNotTheFirstElement($position) {
         return $position != 0;
     }
@@ -45,11 +36,13 @@ class BerlinClock {
     }
 
     public function firstRow($hour) {
-        return $this->fillTheRowMask(floor($hour/5));
+        $row = new Row("OOOO", floor($hour/5));
+        return $row->fill();
     }
 
     public function secondRow($hour) {
-        return $this->fillTheRowMask(floor($hour%5));
+        $row = new Row("OOOO", floor($hour%5));
+        return $row->fill();
     }
 
     public function thirdRow($minute) {
