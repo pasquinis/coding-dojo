@@ -24,4 +24,9 @@ class FizzBuzzTest extends PHPUnit_Framework_TestCase
     {
         $this->assertEquals('Fizz', $this->fizzBuzz->say('3'));
     }
+
+    public function testICanSayFiveIsBuzz()
+    {
+        $this->assertEquals('Buzz', $this->fizzBuzz->say('5'));
+    }
 }
