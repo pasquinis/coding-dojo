@@ -23,7 +23,7 @@ class FizzBuzzTest extends PHPUnit_Framework_TestCase
         $obj = FizzBuzzFactory::create();
         $this->assertEquals('Buzz', $obj->say('5'));
         $this->assertEquals('Buzz', $obj->say('10'));
-        $this->assertEquals('Buzz', $obj->say('15'));
+        $this->assertEquals('Buzz', $obj->say('20'));
     }
 
     public function testICanSayFizzBuzzOfMultipleOfFiveAndThree()
