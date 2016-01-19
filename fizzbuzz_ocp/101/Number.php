@@ -1,5 +1,7 @@
 <?php
-class Number
+require_once('Rules.php');
+
+class Number implements Rules
 {
     public function canApply($number)
     {
