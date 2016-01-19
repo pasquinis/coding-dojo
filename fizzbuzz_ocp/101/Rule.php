@@ -1,5 +1,5 @@
 <?php
-interface Rules
+interface Rule
 {
     public function canApply($integer);
     public function say($integer);

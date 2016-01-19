@@ -1,7 +1,5 @@
 <?php
 
-require_once('Number.php');
-
 class FizzBuzz
 {
 

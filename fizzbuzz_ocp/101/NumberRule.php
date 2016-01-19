@@ -1,14 +1,16 @@
 <?php
 
-class Fizz implements Rules
+require_once('Rule.php');
+
+class NumberRule implements Rule
 {
     public function canApply($number)
     {
-        return ($number % 3) == 0;
+        return true;
     }
 
     public function say($number)
     {
-        return 'Fizz';
+        return $number;
     }
 }

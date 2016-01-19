@@ -1,6 +1,8 @@
 <?php
 
-class Buzz implements Rules
+require_once('Rule.php');
+
+class BuzzRule implements Rule
 {
     public function canApply($number)
     {
