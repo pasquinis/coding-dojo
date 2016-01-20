@@ -2,13 +2,16 @@
 
 class Game
 {
+
+    private  $actualScore = 0;
+
     public function roll($pins)
     {
-       return ''; 
+        $this->actualScore += $pins;
     }
 
     public function score()
     {
-        return 0;
+        return $this->actualScore;
     }
 }

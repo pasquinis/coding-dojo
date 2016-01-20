@@ -17,6 +17,8 @@ class BowlingGameTest extends PHPUnit_Framework_TestCase
 
     public function testTheGameIs20()
     {
+        $this->addSameNumberOfPins(20, 1);
+        $this->assertEquals(20, $this->game->score());
     }
 
     private function addSameNumberOfPins($iterarion, $numberOfPins)
