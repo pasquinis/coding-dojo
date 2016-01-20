@@ -1,0 +1,6 @@
+1 creare directory progetto
+2 dalla directory lanciare curl -sS https://getcomposer.org/installer | php
+2.1 copiare composer.xml
+2.2 mkdir src/ spec/
+3 dalla cartella eseguire ./composer.phar install --dev
+
