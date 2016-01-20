@@ -7,12 +7,14 @@ require_once('BuzzRule.php');
 require_once('FizzBuzzRule.php');
 require_once('BangRule.php');
 require_once('FizzBangRule.php');
+require_once('FizzBuzzBangRule.php');
 
 class FizzBuzzFactory
 {
     public static function create()
     {
         return new FizzBuzz([ 
+            new FizzBuzzBangRule(),
             new FizzBangRule(),
             new BangRule(),
             new FizzBuzzRule(),
