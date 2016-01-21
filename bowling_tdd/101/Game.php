@@ -23,8 +23,8 @@ class Game
         $score = 0;
         $rollIndex = 0;
         for($frame = 0; $frame < 10; $frame++) {
-            if ($this->roll_history[$rollIndex] == 10) {
-                $score += 10 + $this->roll_history[$rollIndex + 1] + $this->roll_history[$rollIndex + 2];
+            if ($this->isStrike($rollIndex)) {
+                $score += 10 + $this->strikeBonus($rollIndex);
                 $rollIndex++;
             } elseif ($this->isSpare($rollIndex)) {
                 $score += 10 + $this->spareBonus($rollIndex);
@@ -38,10 +38,20 @@ class Game
         return $score;
     }
 
+    private function isStrike($index)
+    {
+        return $this->roll_history[$index] == 10;
+    }
+
     private function isSpare($index)
     {
         #print "i: {$index} rhi: {$this->roll_history[$index]} rhi+1: {$this->roll_history[$index + 1]}" . PHP_EOL;
         return $this->roll_history[$index] + $this->roll_history[$index + 1] == 10;
+    }
+
+    private function strikeBonus($index)
+    {
+        return $this->roll_history[$index + 1] + $this->roll_history[$index + 2];
     }
 
     private function spareBonus($index)
