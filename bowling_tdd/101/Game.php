@@ -23,12 +23,16 @@ class Game
         $score = 0;
         $rollIndex = 0;
         for($frame = 0; $frame < 10; $frame++) {
-            if ($this->isSpare($rollIndex)) {
+            if ($this->roll_history[$rollIndex] == 10) {
+                $score += 10 + $this->roll_history[$rollIndex + 1] + $this->roll_history[$rollIndex + 2];
+                $rollIndex++;
+            } elseif ($this->isSpare($rollIndex)) {
                 $score += 10 + $this->spareBonus($rollIndex);
+                $rollIndex += 2;
             } else {
                 $score += $this->roll_history[$rollIndex] + $this->roll_history[$rollIndex + 1];
+                $rollIndex += 2;
             }
-            $rollIndex += 2;
         }
 
         return $score;
