@@ -21,12 +21,28 @@ class Game
     public function score()
     {
         $score = 0;
-        $i = 0;
-        for($frameIndex = 0; $frameIndex < 10; $frameIndex++) {
-            $score += $this->roll_history[$i] + $this->roll_history[$i + 1];
-            $i += 2;
+        $rollIndex = 0;
+        for($frame = 0; $frame < 10; $frame++) {
+            if ($this->isSpare($rollIndex)) {
+                $score += 10 + $this->spareBonus($rollIndex);
+            } else {
+                $score += $this->roll_history[$rollIndex] + $this->roll_history[$rollIndex + 1];
+            }
+            $rollIndex += 2;
         }
 
         return $score;
+    }
+
+    private function isSpare($index)
+    {
+        #print "i: {$index} rhi: {$this->roll_history[$index]} rhi+1: {$this->roll_history[$index + 1]}" . PHP_EOL;
+        return $this->roll_history[$index] + $this->roll_history[$index + 1] == 10;
+    }
+
+    private function spareBonus($index)
+    {
+        #print "bonus: {$this->roll_history[$index + 2]}" . PHP_EOL;
+        return $this->roll_history[$index + 2];
     }
 }
