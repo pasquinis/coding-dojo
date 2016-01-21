@@ -41,6 +41,15 @@ class BowlingGameTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(31, $this->game->score());
     }
 
+    public function testSpareInTheLastFrame()
+    {
+        $this->addSameNumberOfPins(18, 0);
+        $this->game->roll(2);
+        $this->game->roll(8);
+        $this->game->roll(3);
+        $this->assertEquals(13, $this->game->score());
+    }
+
     public function testWithOneStrike()
     {
         $this->game->roll(10);
