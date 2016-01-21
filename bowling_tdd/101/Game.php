@@ -13,23 +13,32 @@ class Game
     public function score()
     {
         $total = 0;
-        for($i = 0; $i < 20; $i++) {
+        for($i = 0; $i < 20; $i = $i + 2) {
             $bonus = 0;
-            if ($this->isSpare($i)) {
+            $actual = $this->actualRoll($i);
+            $next = $this->nextRoll($i);
+            #echo "identifier: $i actual: $actual, next: $next" . PHP_EOL;
+            if ($this->isSpare($actual, $next)) {
                 $bonus = $this->spareBonus($i);
             }
-            $total += $this->actualRoll($i) + $bonus;
+            $total += $actual + $next + $bonus;
+            #echo "total: $total" . PHP_EOL;
         }
         return $total;
     }
 
-    private function isSpare($rollIdentifier)
+    private function isSpare($actual, $next)
     {
-        $next = $this->isNextRollPresent($rollIdentifier) ? $this->nextRoll($rollIdentifier) : 0;
-        return ($this->actualRoll($rollIdentifier) + $next) == 10;
+        return ($actual + $next) == 10;
     }
 
     private function spareBonus($rollIdentifier)
+    {
+        #echo "the bonus is " . $this->firstRollOfNextFrame($rollIdentifier) . " for roll:" . $rollIdentifier . PHP_EOL;
+        return $this->firstRollOfNextFrame($rollIdentifier);
+    }
+
+    private function firstRollOfNextFrame($rollIdentifier)
     {
         return $this->array_of_rolls[$rollIdentifier + 2];
     }
@@ -41,7 +50,7 @@ class Game
 
     private function nextRoll($rollIdentifier)
     {
-        return $this->array_of_rolls[$rollIdentifier + 1];
+        return $this->isNextRollPresent($rollIdentifier) ? $this->array_of_rolls[$rollIdentifier + 1] : 0;
     }
 
     private function isNextRollPresent($rollIdentifier)
