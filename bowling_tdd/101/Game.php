@@ -20,7 +20,7 @@ class Game
             #echo "identifier: $i actual: $actual, next: $next" . PHP_EOL;
             if ($this->isStrike($actual)) {
                 $bonus = $this->strikeBonus($i);
-                $next = 0;
+                #echo "bonus $bonus" .PHP_EOL;
             } elseif ($this->isSpare($actual, $next)) {
                 $bonus = $this->spareBonus($i);
             }
@@ -53,12 +53,12 @@ class Game
 
     private function firstRollOfNextFrame($rollIdentifier)
     {
-        return $this->array_of_rolls[$rollIdentifier + 2];
+        return isSet($this->array_of_rolls[$rollIdentifier + 2]) ? $this->array_of_rolls[$rollIdentifier + 2] : 0;
     }
 
     private function secondRollOfNextFrame($rollIdentifier)
     {
-        return $this->array_of_rolls[$rollIdentifier + 3];
+        return isSet($this->array_of_rolls[$rollIdentifier + 3]) ? $this->array_of_rolls[$rollIdentifier + 3]: 0;
     }
 
     private function actualRoll($rollIdentifier)
@@ -68,7 +68,7 @@ class Game
 
     private function nextRoll($rollIdentifier)
     {
-        return $this->isNextRollPresent($rollIdentifier) ? $this->array_of_rolls[$rollIdentifier + 1] : 0;
+        return $this->array_of_rolls[$rollIdentifier + 1];
     }
 
     private function isNextRollPresent($rollIdentifier)
