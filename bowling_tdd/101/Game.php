@@ -51,6 +51,7 @@ class Game
 
     private function strikeBonus($index)
     {
+        #print "bonus: {$this->roll_history[$index + 1]} + {$this->roll_history[$index + 2]} " . PHP_EOL;
         return $this->roll_history[$index + 1] + $this->roll_history[$index + 2];
     }
 

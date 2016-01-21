@@ -50,18 +50,11 @@ class BowlingGameTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(24, $this->game->score());
     }
 
-    #public function testPerfectGame()
-    #{
-    #    $this->addFullSequenceOfStrike();
-    #    $this->assertEquals(300, $this->game->score());
-    #}
-
-    #private function addFullSequenceOfStrike()
-    #{
-    #    for($i = 1; $i <= 12; $i++) {
-    #        $this->game->roll(10);
-    #    }
-    #}
+    public function testPerfectGame()
+    {
+        $this->addSameNumberOfPins(12, 10);
+        $this->assertEquals(300, $this->game->score());
+    }
 
     private function addSameNumberOfPins($iterarion, $numberOfPins)
     {
