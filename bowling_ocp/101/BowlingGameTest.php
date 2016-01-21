@@ -22,6 +22,31 @@ class BowlingGameTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(40, $this->game->score());
     }
 
+    public function testThePinsIsUpAndDown()
+    {
+        $this->game->roll(0);
+        $this->game->roll(1);
+        $this->game->roll(2);
+        $this->game->roll(3);
+        $this->game->roll(4);
+        $this->game->roll(5);
+        $this->game->roll(4);
+        $this->game->roll(3);
+        $this->game->roll(2);
+        $this->game->roll(1);
+        $this->game->roll(0);
+        $this->game->roll(1);
+        $this->game->roll(2);
+        $this->game->roll(3);
+        $this->game->roll(4);
+        $this->game->roll(5);
+        $this->game->roll(4);
+        $this->game->roll(3);
+        $this->game->roll(2);
+        $this->game->roll(1);
+        $this->assertEquals(50, $this->game->score());
+    }
+
     private function multipleRollWith($iteration, $pins)
     {
         for($i=0; $i < $iteration; $i++) {
