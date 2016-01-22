@@ -1,6 +1,7 @@
 <?php
 
 require_once('Roll.php');
+require_once('Frame.php');
 
 class Bowling
 {
@@ -15,11 +16,23 @@ class Bowling
     public function score()
     {
         $score = 0;
-        $counter = 0;
-        for($frame = 0; $frame < 10; $frame++) {
-            $score += $this->roll_history[$counter]->score() + $this->roll_history[$counter+1]->score();
-            $counter += 2;
+        $this->composeTheFrameHistory();
+        foreach($this->frame_history as $currentFrame) {
+            $score += $currentFrame->score();
         }
         return $score;
+    }
+
+    private function composeTheFrameHistory()
+    {
+        $counter = 0;
+        for($i = 0;$i < 10; $i++) {
+            $this->frame_history[] = new Frame(
+                $this->roll_history[$counter],
+                $this->roll_history[$counter+1]
+            );
+
+            $counter +=2;
+        }
     }
 }
