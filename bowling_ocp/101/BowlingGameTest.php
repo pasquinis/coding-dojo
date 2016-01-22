@@ -12,7 +12,7 @@ class BowlingGameTest extends PHPUnit_Framework_TestCase
 
     public function testAllPinsIsZero()
     {
-        $this->multipleRollWith(21, 0);
+        $this->multipleRollWith(20, 0);
         $this->assertEquals(0, $this->game->score());
     }
 
@@ -27,6 +27,15 @@ class BowlingGameTest extends PHPUnit_Framework_TestCase
         $this->generatePinsUpAndDown();
         $this->assertEquals(50, $this->game->score());
     }
+
+    #public function testOneSpare()
+    #{
+    #    $this->game->roll(3);
+    #    $this->game->roll(7);
+    #    $this->game->roll(4);
+    #    $this->multipleRollWith(17, 0);
+    #    $this->assertEquals(18, $this->game->score());
+    #}
 
     private function generatePinsUpAndDown()
     {
@@ -43,6 +52,7 @@ class BowlingGameTest extends PHPUnit_Framework_TestCase
             $this->game->roll($i);
         }
     }
+
     private function multipleRollWith($iteration, $pins)
     {
         for($i=0; $i < $iteration; $i++) {
