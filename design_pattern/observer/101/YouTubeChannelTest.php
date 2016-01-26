@@ -21,5 +21,8 @@ class YouTubeChannelTest extends PHPUnit_Framework_TestCase
         $channel->registerObserver($mark);
         $channel->registerObserver($john);
         $channel->notifyObservers();
+
+        $channel->unregisterObserver($luis);
+        $channel->notifyObservers();
     }
 }
