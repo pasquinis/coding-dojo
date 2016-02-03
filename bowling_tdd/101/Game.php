@@ -7,14 +7,18 @@ class Game
     private $roll_history;
     private $rollIndex;
     private $ordinaryFrame;
+    private $spare;
 
-    public function __construct($ordinaryFrame)
-    {
+    public function __construct(
+	$ordinaryFrame,
+	$spare
+    ) {
         $this->rollIndex = 0;
         for($i = 0; $i < 21; $i++) {
             $this->roll_history[$i] = 0;
         }
         $this->ordinaryFrame = $ordinaryFrame;
+	$this->spare = $spare;
     }
 
     public function roll($pins)
@@ -33,13 +37,21 @@ class Game
                 continue;
             } 
             
-            if ($this->isSpare($rollIndex)) {
+            if ($this->spare->check(
+			$this->roll_history[$rollIndex],
+			$this->roll_history[$rollIndex + 1]
+	       )
+	     ) {
                 $score += 10 + $this->spareBonus($rollIndex);
                 $rollIndex += 2;
                 continue;
             } 
 
-            if ($this->ordinaryFrame->isOrdinaryFrame($rollIndex)) {
+            if ($this->ordinaryFrame->check(
+			$this->roll_history[$rollIndex],
+			$this->roll_history[$rollIndex + 1]
+	       )
+	    ) {
                 $score += $this->ordinaryFrame->score(
                             $this->roll_history[$rollIndex],
                             $this->roll_history[$rollIndex + 1]
@@ -54,11 +66,6 @@ class Game
     private function isStrike($index)
     {
         return $this->roll_history[$index] == 10;
-    }
-
-    private function isSpare($index)
-    {
-        return $this->roll_history[$index] + $this->roll_history[$index + 1] == 10;
     }
 
     private function strikeBonus($index)

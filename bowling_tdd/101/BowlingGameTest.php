@@ -2,13 +2,17 @@
 
 require_once('Game.php');
 require_once('OrdinaryFrame.php');
+require_once('Spare.php');
 
 class BowlingGameTest extends PHPUnit_Framework_TestCase
 {
     public function setUp()
     {
         
-        $this->game = new Game(new OrdinaryFrame());
+        $this->game = new Game(
+		new OrdinaryFrame(),
+		new Spare()
+	);
     }
 
     public function testTheGameIsAllZero()

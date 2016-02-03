@@ -2,7 +2,7 @@
 
 class OrdinaryFrame
 {
-    public function isOrdinaryFrame()
+    public function check($firstRoll, $secondRoll)
     {
         return true;
     }
