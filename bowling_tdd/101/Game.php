@@ -8,10 +8,12 @@ class Game
     private $rollIndex;
     private $ordinaryFrame;
     private $spare;
+    private $stike;
 
     public function __construct(
 	$ordinaryFrame,
-	$spare
+	$spare,
+        $strike
     ) {
         $this->rollIndex = 0;
         for($i = 0; $i < 21; $i++) {
@@ -19,6 +21,7 @@ class Game
         }
         $this->ordinaryFrame = $ordinaryFrame;
 	$this->spare = $spare;
+        $this->strike = $strike;
     }
 
     public function roll($pins)
@@ -31,8 +34,15 @@ class Game
         $score = 0;
         $rollIndex = 0;
         for($frame = 0; $frame < 10; $frame++) {
-            if ($this->isStrike($rollIndex)) {
-                $score += 10 + $this->strikeBonus($rollIndex);
+            if ($this->strike->check(
+			$this->roll_history[$rollIndex],
+			$this->roll_history[$rollIndex + 1]
+	       )
+             ) {
+                $score += $this->strike->score(
+				$rollIndex,
+				$this->roll_history
+		);
                 $rollIndex++;
                 continue;
             } 
@@ -42,7 +52,10 @@ class Game
 			$this->roll_history[$rollIndex + 1]
 	       )
 	     ) {
-                $score += 10 + $this->spareBonus($rollIndex);
+                $score += $this->spare->score(
+				$rollIndex,
+				$this->roll_history
+		);
                 $rollIndex += 2;
                 continue;
             } 
@@ -53,8 +66,8 @@ class Game
 	       )
 	    ) {
                 $score += $this->ordinaryFrame->score(
-                            $this->roll_history[$rollIndex],
-                            $this->roll_history[$rollIndex + 1]
+				$rollIndex,
+				$this->roll_history
                 );
                 $rollIndex += 2;
             }
@@ -63,18 +76,9 @@ class Game
         return $score;
     }
 
-    private function isStrike($index)
-    {
-        return $this->roll_history[$index] == 10;
-    }
-
     private function strikeBonus($index)
     {
         return $this->roll_history[$index + 1] + $this->roll_history[$index + 2];
     }
 
-    private function spareBonus($index)
-    {
-        return $this->roll_history[$index + 2];
-    }
 }

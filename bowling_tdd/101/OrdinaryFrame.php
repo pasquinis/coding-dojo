@@ -7,8 +7,8 @@ class OrdinaryFrame
         return true;
     }
 
-    public function score($firstRoll, $secondRoll)
+    public function score($rollIndex, $roll_history)
     {
-        return $firstRoll + $secondRoll;
+	return $roll_history[$rollIndex] + $roll_history[$rollIndex + 1];
     }
 }
