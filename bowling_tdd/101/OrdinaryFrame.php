@@ -7,5 +7,8 @@ class OrdinaryFrame
         return true;
     }
 
-
+    public function score($firstRoll, $secondRoll)
+    {
+        return $firstRoll + $secondRoll;
+    }
 }

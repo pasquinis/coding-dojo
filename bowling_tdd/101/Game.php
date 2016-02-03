@@ -40,7 +40,10 @@ class Game
             } 
 
             if ($this->ordinaryFrame->isOrdinaryFrame($rollIndex)) {
-                $score += $this->roll_history[$rollIndex] + $this->roll_history[$rollIndex + 1];
+                $score += $this->ordinaryFrame->score(
+                            $this->roll_history[$rollIndex],
+                            $this->roll_history[$rollIndex + 1]
+                );
                 $rollIndex += 2;
             }
         }
