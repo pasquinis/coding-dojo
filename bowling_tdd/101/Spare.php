@@ -3,9 +3,9 @@
 class Spare
 {
 
-    public function check($firstRoll, $secondRoll)
+    public function check($rollIndex, $roll_history)
     {
-        return $firstRoll + $secondRoll == 10;
+	return $roll_history[$rollIndex] + $roll_history[$rollIndex +1] == 10;
     }
 
     public function score($rollIndex, $roll_history)

@@ -2,9 +2,9 @@
 
 class Strike
 {
-    public function check($firstRoll, $secondRoll)
+    public function check($rollIndex, $roll_history)
     {
-	return $firstRoll == 10;
+	return $roll_history[$rollIndex] == 10;
     }
 
     public function score($rollIndex, $roll_history)

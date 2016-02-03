@@ -35,8 +35,8 @@ class Game
         $rollIndex = 0;
         for($frame = 0; $frame < 10; $frame++) {
             if ($this->strike->check(
-			$this->roll_history[$rollIndex],
-			$this->roll_history[$rollIndex + 1]
+				$rollIndex,
+				$this->roll_history
 	       )
              ) {
                 $score += $this->strike->score(
@@ -48,8 +48,8 @@ class Game
             } 
             
             if ($this->spare->check(
-			$this->roll_history[$rollIndex],
-			$this->roll_history[$rollIndex + 1]
+				$rollIndex,
+				$this->roll_history
 	       )
 	     ) {
                 $score += $this->spare->score(
@@ -61,8 +61,8 @@ class Game
             } 
 
             if ($this->ordinaryFrame->check(
-			$this->roll_history[$rollIndex],
-			$this->roll_history[$rollIndex + 1]
+				$rollIndex,
+				$this->roll_history
 	       )
 	    ) {
                 $score += $this->ordinaryFrame->score(

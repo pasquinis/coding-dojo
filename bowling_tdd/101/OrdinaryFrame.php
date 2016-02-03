@@ -2,7 +2,7 @@
 
 class OrdinaryFrame
 {
-    public function check($firstRoll, $secondRoll)
+    public function check($rollIndex, $roll_history)
     {
         return true;
     }
