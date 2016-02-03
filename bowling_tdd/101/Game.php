@@ -1,16 +1,20 @@
 <?php
 
+require_once('OrdinaryFrame.php');
+
 class Game
 {
     private $roll_history;
     private $rollIndex;
+    private $ordinaryFrame;
 
-    public function __construct()
+    public function __construct($ordinaryFrame)
     {
         $this->rollIndex = 0;
         for($i = 0; $i < 21; $i++) {
             $this->roll_history[$i] = 0;
         }
+        $this->ordinaryFrame = $ordinaryFrame;
     }
 
     public function roll($pins)
@@ -35,7 +39,7 @@ class Game
                 continue;
             } 
 
-            if ($this->isOrdinaryFrame($rollIndex)) {
+            if ($this->ordinaryFrame->isOrdinaryFrame($rollIndex)) {
                 $score += $this->roll_history[$rollIndex] + $this->roll_history[$rollIndex + 1];
                 $rollIndex += 2;
             }
@@ -52,11 +56,6 @@ class Game
     private function isSpare($index)
     {
         return $this->roll_history[$index] + $this->roll_history[$index + 1] == 10;
-    }
-
-    private function isOrdinaryFrame($index)
-    {
-        return true;
     }
 
     private function strikeBonus($index)
