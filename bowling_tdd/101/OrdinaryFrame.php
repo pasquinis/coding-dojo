@@ -11,4 +11,9 @@ class OrdinaryFrame
     {
 	return $roll_history[$rollIndex] + $roll_history[$rollIndex + 1];
     }
+
+    public function goAhead()
+    {
+	return 2;
+    }
 }

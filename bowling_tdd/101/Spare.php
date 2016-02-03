@@ -12,4 +12,9 @@ class Spare
     {
 	return 10 + $roll_history[$rollIndex + 2];
     }
+
+    public function goAhead()
+    {
+	return 2;
+    }
 }

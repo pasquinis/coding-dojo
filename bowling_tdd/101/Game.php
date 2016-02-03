@@ -6,9 +6,7 @@ class Game
 {
     private $roll_history;
     private $rollIndex;
-    private $ordinaryFrame;
-    private $spare;
-    private $stike;
+    private $bowling_rules;
 
     public function __construct(
 	$ordinaryFrame,
@@ -16,12 +14,10 @@ class Game
         $strike
     ) {
         $this->rollIndex = 0;
-        for($i = 0; $i < 21; $i++) {
-            $this->roll_history[$i] = 0;
-        }
-        $this->ordinaryFrame = $ordinaryFrame;
-	$this->spare = $spare;
-        $this->strike = $strike;
+        $this->bowling_rules[] = $strike;
+	$this->bowling_rules[] = $spare;
+        $this->bowling_rules[] = $ordinaryFrame;
+	$this->resetTheHistory();
     }
 
     public function roll($pins)
@@ -34,51 +30,29 @@ class Game
         $score = 0;
         $rollIndex = 0;
         for($frame = 0; $frame < 10; $frame++) {
-            if ($this->strike->check(
+	    foreach($this->bowling_rules as $rule) {
+		if ($rule->check(
 				$rollIndex,
 				$this->roll_history
-	       )
-             ) {
-                $score += $this->strike->score(
+		   )
+		) {
+                    $score += $rule->score(
 				$rollIndex,
 				$this->roll_history
-		);
-                $rollIndex++;
-                continue;
-            } 
-            
-            if ($this->spare->check(
-				$rollIndex,
-				$this->roll_history
-	       )
-	     ) {
-                $score += $this->spare->score(
-				$rollIndex,
-				$this->roll_history
-		);
-                $rollIndex += 2;
-                continue;
-            } 
-
-            if ($this->ordinaryFrame->check(
-				$rollIndex,
-				$this->roll_history
-	       )
-	    ) {
-                $score += $this->ordinaryFrame->score(
-				$rollIndex,
-				$this->roll_history
-                );
-                $rollIndex += 2;
-            }
+		    );
+                    $rollIndex += $rule->goAhead();
+		    break;
+		}
+	    }
         }
 
         return $score;
     }
 
-    private function strikeBonus($index)
+    private function resetTheHistory()
     {
-        return $this->roll_history[$index + 1] + $this->roll_history[$index + 2];
+        for($i = 0; $i < 21; $i++) {
+            $this->roll_history[$i] = 0;
+        }
     }
-
 }
