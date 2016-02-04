@@ -6,18 +6,12 @@ class Game
 {
     private $roll_history;
     private $rollIndex;
-    private $bowling_rules;
+    private $bowlingRules;
 
-    public function __construct(
-	$ordinaryFrame,
-	$spare,
-        $strike
-    ) {
+    public function __construct($bowlingRules) {
         $this->rollIndex = 0;
-        $this->bowling_rules[] = $strike;
-	$this->bowling_rules[] = $spare;
-        $this->bowling_rules[] = $ordinaryFrame;
-	$this->resetTheHistory();
+        $this->bowlingRules = $bowlingRules;
+        $this->resetTheHistory();
     }
 
     public function roll($pins)
@@ -30,20 +24,20 @@ class Game
         $score = 0;
         $rollIndex = 0;
         for($frame = 0; $frame < 10; $frame++) {
-	    foreach($this->bowling_rules as $rule) {
-		if ($rule->check(
-				$rollIndex,
-				$this->roll_history
-		   )
-		) {
+        foreach($this->bowlingRules as $rule) {
+        if ($rule->check(
+                $rollIndex,
+                $this->roll_history
+           )
+        ) {
                     $score += $rule->score(
-				$rollIndex,
-				$this->roll_history
-		    );
+                $rollIndex,
+                $this->roll_history
+            );
                     $rollIndex += $rule->goAhead();
-		    break;
-		}
-	    }
+            break;
+        }
+        }
         }
 
         return $score;
