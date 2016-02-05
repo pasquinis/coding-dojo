@@ -4,22 +4,30 @@ require_once('Game.php');
 
 class BowlingKataTest extends PHPUnit_Framework_TestCase
 {
-    public function testAllFrameAreZeroAndTheScoreIsZero()
+
+    private $game;
+
+    protected function setUp()
     {
-        $game = new Game();
-        for($i = 0; $i < 21; $i++) {
-            $game->roll(0);
-        }
-        $this->assertEquals(0, $game->score());
+        $this->game = new Game();
     }
 
-
-    public function testAllFrameAreOneAndTheScoreIs21()
+    public function testAllFrameAreZeroAndTheScoreIsZero()
     {
-        $game = new Game();
-        for($i = 0; $i < 21; $i++) {
-            $game->roll(1);
+        $this->rollMany(0, 20);
+        $this->assertEquals(0, $this->game->score());
+    }
+
+    public function testAllFrameAreOneAndTheScoreIs20()
+    {
+        $this->rollMany(1, 20);
+        $this->assertEquals(20, $this->game->score());
+    }
+
+    private function rollMany($pinsDown, $times)
+    {
+        for($i = 0; $i < $times; $i++) {
+            $this->game->roll($pinsDown);
         }
-        $this->assertEquals(21, $game->score());
     }
 }
