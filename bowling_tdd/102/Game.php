@@ -5,16 +5,16 @@ require_once('Frame.php');
 class Game
 {
     private $ball;
-    public function __construct()
+    public function __construct($frame)
     {
-        $this->framesHistory[] = $this->previousFrame = new Frame();
+        $this->framesHistory[] = $this->previousFrame = $frame;
         $this->frameIndex = 0;
     }
 
     public function roll($pinsDown)
     {
         if ($this->previousFrame->terminated()) {
-            $this->previousFrame = new Frame();
+            $this->previousFrame = $this->istantiate($this->previousFrame);
             $this->frameIndex++;
         }
         $this->previousFrame->roll($pinsDown);
@@ -29,5 +29,11 @@ class Game
         }
 
         return $partialScore;
+    }
+
+    private function istantiate($class)
+    {
+        $typeOfclass = get_class($class);
+        return new $typeOfclass;
     }
 }
