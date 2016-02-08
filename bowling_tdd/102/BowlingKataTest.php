@@ -27,13 +27,23 @@ class BowlingKataTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(20, $this->game->score());
     }
 
-    public function testOneSpareAntTheScoreIs18()
+    public function testOneSpareAndTheScoreIs18()
     {
         $this->game->roll(4);
         $this->game->roll(6);
         $this->game->roll(4);
         $this->rollMany(0, 17);
         $this->assertEquals(18, $this->game->score());
+    }
+
+
+    public function testOneStrikeAndTheScoreIs30()
+    {
+        $this->game->roll(10);
+        $this->game->roll(6);
+        $this->game->roll(4);
+        $this->rollMany(0, 17);
+        $this->assertEquals(30, $this->game->score());
     }
 
     private function rollMany($pinsDown, $times)

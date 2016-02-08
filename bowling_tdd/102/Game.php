@@ -18,10 +18,6 @@ class Game
     public function roll($pinsDown)
     {
         if ($this->previousFrame->terminated()) {
-            if ($this->previousFrame->isSpare()) {
-                $this->previousFrame->spareBonus($pinsDown);
-                $this->framesHistory[$this->frameIndex] = $this->previousFrame;
-            }
             $this->previousFrame = $this->istantiate($this->previousFrame);
             $this->frameIndex++;
         }
@@ -31,9 +27,24 @@ class Game
 
     public function score()
     {
+        var_dump($this->framesHistory);
         $partialScore = 0;
-        foreach($this->framesHistory as $frame) {
-            $partialScore += $frame->score() + $frame->getBonus();
+        for($i = 0; $i < count($this->framesHistory); $i++) {
+            $bonus = 0;
+            if ($this->framesHistory[$i]->isStrike()) {
+                $bonus = $this->framesHistory[$i]->strikeBonus(
+                    $this->framesHistory[$i + 1]->firstFrame(),
+                    $this->framesHistory[$i + 1]->secondFrame()
+                );
+            }
+            else if ($this->framesHistory[$i]->isSpare()) {
+                $bonus = $this->framesHistory[$i]->spareBonus(
+                    $this->framesHistory[$i + 1]->firstFrame()
+                );
+            }
+
+            var_dump($bonus);
+            $partialScore += $this->framesHistory[$i]->score() + $bonus;
         }
 
         return $partialScore;
