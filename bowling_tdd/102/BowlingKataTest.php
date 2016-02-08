@@ -2,7 +2,6 @@
 
 require_once('Game.php');
 require_once('Frame.php');
-require_once('Spare.php');
 
 class BowlingKataTest extends PHPUnit_Framework_TestCase
 {
@@ -12,10 +11,7 @@ class BowlingKataTest extends PHPUnit_Framework_TestCase
     protected function setUp()
     {
         $this->game = new Game(
-            new Frame(
-                new Spare()
-            ),
-            new Spare()
+            new Frame()
         );
     }
 

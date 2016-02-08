@@ -6,16 +6,13 @@ class Game
 {
     private $ball;
     private $frameIndex;
-    private $spare;
 
     public function __construct(
-        $frame,
-        $spare
+        $frame
     )
     {
         $this->framesHistory[] = $this->previousFrame = $frame;
         $this->frameIndex = 0;
-        $this->spare = $spare;
     }
 
     public function roll($pinsDown)
@@ -45,6 +42,6 @@ class Game
     private function istantiate($class)
     {
         $typeOfclass = get_class($class);
-        return new $typeOfclass($this->spare);
+        return new $typeOfclass();
     }
 }

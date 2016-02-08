@@ -4,12 +4,10 @@ class Frame
 {
     private $rollsHistory;
     private $bonus;
-    private $spare;
 
-    public function __construct($spare)
+    public function __construct()
     {
         $this->bonus = 0;
-        $this->spare = $spare;
     }
 
     public function roll($pinsDown)
@@ -34,7 +32,7 @@ class Frame
 
     public function isSpare()
     {
-        return $this->spare->isSpare($this->score());
+        return $this->score() == 10;
     }
 
     public function spareBonus($pinsDown)
