@@ -26,7 +26,7 @@ abstract class Frame
 
     public function isSpare()
     {
-        return $this->score() == 10;
+        return ($this->score() == 10) && !$this->isStrike();
     }
 
     public function strikeBonus($firstRoll, $secondRoll)

@@ -1,5 +1,6 @@
 <?php
 
+require_once('Frame.php');
 require_once('OrdinaryFrame.php');
 
 class Game
@@ -8,8 +9,8 @@ class Game
     private $frameIndex;
 
     public function __construct(
-        $ordinaryFrame,
-        $finalFrame
+        Frame $ordinaryFrame,
+        Frame $finalFrame
     )
     {
         $this->framesHistory[] = $this->previousFrame = $ordinaryFrame;
@@ -20,12 +21,12 @@ class Game
     public function roll($pinsDown)
     {
         if ($this->previousFrame->terminated()) {
-            if ($this->frameIndex == 8) {
-                $this->previousFrame = $this->istantiate($this->finalFrame);
-            } else {
-                $this->previousFrame = $this->istantiate($this->previousFrame);
-            }
             $this->frameIndex++;
+            if ($this->isFinalFrame()) {
+                $this->previousFrame = $this->finalFrame();
+            } else {
+                $this->previousFrame = $this->ordinaryFrame();
+            }
         }
         $this->previousFrame->roll($pinsDown);
         $this->framesHistory[$this->frameIndex] = $this->previousFrame;
@@ -37,19 +38,17 @@ class Game
         for($i = 0; $i < count($this->framesHistory); $i++) {
             $bonus = 0;
             if ($this->framesHistory[$i]->isStrike()) {
-                if ($i == 9) {
-                    if ($this->framesHistory[$i]->isStrike()) {
-                    }
-                } elseif ($i == 8) {
+                if ($this->exsistsNextFrame($i)) {
                     $bonus = $this->framesHistory[$i + 1]->computeBonus();
-                } else {
-                    $bonus = $this->framesHistory[$i + 1]->computeBonus() + $this->framesHistory[$i + 2]->firstFrame();
+                    if ($this->exsistsNextFrame($i + 1)) {
+                        if ($this->framesHistory[$i + 2]->isStrike()) {
+                            $bonus += $this->framesHistory[$i + 2]->firstFrame();
+                        }
+                    }
                 }
             }
-            elseif ($this->framesHistory[$i]->isSpare()) {
-                $bonus = $this->framesHistory[$i]->spareBonus(
-                    $this->framesHistory[$i + 1]->firstFrame()
-                );
+            if ($this->framesHistory[$i]->isSpare()) {
+                $bonus =  $this->framesHistory[$i + 1]->firstFrame();
             }
             $partialScore += $this->framesHistory[$i]->score() + $bonus;
         }
@@ -61,5 +60,25 @@ class Game
     {
         $typeOfclass = get_class($class);
         return new $typeOfclass();
+    }
+
+    private function isFinalFrame()
+    {
+        return $this->frameIndex == 9;
+    }
+
+    private function ordinaryFrame()
+    {
+        return $this->istantiate($this->previousFrame);
+    }
+
+    private function finalFrame()
+    {
+        return $this->istantiate($this->finalFrame);
+    }
+
+    private function exsistsNextFrame($i)
+    {
+        return isset($this->framesHistory[$i + 1]);
     }
 }
