@@ -11,7 +11,6 @@ abstract class Frame
             $score += $roll;
         }
 
-        echo "OF partialBonus {$score}" . PHP_EOL;
         return $score;
     }
 

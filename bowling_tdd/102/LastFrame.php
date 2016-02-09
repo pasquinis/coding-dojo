@@ -13,7 +13,6 @@ class LastFrame extends Frame
         for($i = 0; $i < 2;$i++) {
             $partialBonus += $this->rollsHistory[$i];
         }
-        echo "LF partialBonus {$partialBonus}" . PHP_EOL;
         return $partialBonus;
     }
 }
