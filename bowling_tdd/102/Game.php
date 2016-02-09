@@ -1,6 +1,6 @@
 <?php
 
-require_once('Frame.php');
+require_once('OrdinaryFrame.php');
 
 class Game
 {
