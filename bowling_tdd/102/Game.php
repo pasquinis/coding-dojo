@@ -27,7 +27,6 @@ class Game
 
     public function score()
     {
-        var_dump($this->framesHistory);
         $partialScore = 0;
         for($i = 0; $i < count($this->framesHistory); $i++) {
             $bonus = 0;
@@ -43,7 +42,6 @@ class Game
                 );
             }
 
-            var_dump($bonus);
             $partialScore += $this->framesHistory[$i]->score() + $bonus;
         }
 

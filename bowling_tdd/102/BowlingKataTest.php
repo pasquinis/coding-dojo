@@ -42,7 +42,7 @@ class BowlingKataTest extends PHPUnit_Framework_TestCase
         $this->game->roll(10);
         $this->game->roll(6);
         $this->game->roll(4);
-        $this->rollMany(0, 17);
+        $this->rollMany(0, 16);
         $this->assertEquals(30, $this->game->score());
     }
 
