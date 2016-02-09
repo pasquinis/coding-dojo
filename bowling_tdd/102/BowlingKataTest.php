@@ -2,6 +2,7 @@
 
 require_once('Game.php');
 require_once('OrdinaryFrame.php');
+require_once('LastFrame.php');
 
 class BowlingKataTest extends PHPUnit_Framework_TestCase
 {
@@ -11,7 +12,8 @@ class BowlingKataTest extends PHPUnit_Framework_TestCase
     protected function setUp()
     {
         $this->game = new Game(
-            new OrdinaryFrame()
+            new OrdinaryFrame(),
+            new LastFrame()
         );
     }
 
@@ -46,11 +48,11 @@ class BowlingKataTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(30, $this->game->score());
     }
 
-    #public function testThePerfectGame()
-    #{
-    #    $this->rollMany(10, 11);
-    #    $this->assertEquals(300, $this->game->score());
-    #}
+    public function testThePerfectGame()
+    {
+        $this->rollMany(10, 12);
+        $this->assertEquals(300, $this->game->score());
+    }
 
     private function rollMany($pinsDown, $times)
     {
