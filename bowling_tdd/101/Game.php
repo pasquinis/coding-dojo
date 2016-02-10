@@ -25,19 +25,19 @@ class Game
         $rollIndex = 0;
         for($frame = 0; $frame < 10; $frame++) {
         foreach($this->bowlingRules as $rule) {
-        if ($rule->check(
-                $rollIndex,
-                $this->roll_history
-           )
-        ) {
-                    $score += $rule->score(
-                $rollIndex,
-                $this->roll_history
-            );
-                    $rollIndex += $rule->goAhead();
-            break;
-        }
-        }
+            if ($rule->check(
+                    $rollIndex,
+                    $this->roll_history
+               )
+            ) {
+                $score += $rule->score(
+                    $rollIndex,
+                    $this->roll_history
+                );
+                $rollIndex += $rule->goAhead();
+                break;
+            }
+          }
         }
 
         return $score;

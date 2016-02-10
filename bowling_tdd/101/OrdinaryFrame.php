@@ -11,11 +11,11 @@ class OrdinaryFrame implements Rule
 
     public function score($rollIndex, $roll_history)
     {
-    return $roll_history[$rollIndex] + $roll_history[$rollIndex + 1];
+        return $roll_history[$rollIndex] + $roll_history[$rollIndex + 1];
     }
 
     public function goAhead()
     {
-    return 2;
+        return 2;
     }
 }

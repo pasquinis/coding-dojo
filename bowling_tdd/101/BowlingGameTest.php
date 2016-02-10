@@ -9,12 +9,11 @@ class BowlingGameTest extends PHPUnit_Framework_TestCase
 {
     public function setUp()
     {
-        
         $this->game = new Game([
-        new Strike(),
-        new Spare(),
-        new OrdinaryFrame()
-    ]);
+            new Strike(),
+            new Spare(),
+            new OrdinaryFrame()
+        ]);
     }
 
     public function testTheGameIsAllZero()

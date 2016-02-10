@@ -6,7 +6,7 @@ class Strike implements Rule
 {
     public function check($rollIndex, $roll_history)
     {
-    return $roll_history[$rollIndex] == 10;
+        return $roll_history[$rollIndex] == 10;
     }
 
     public function score($rollIndex, $roll_history)
@@ -16,6 +16,6 @@ class Strike implements Rule
 
     public function goAhead()
     {
-    return 1;
+        return 1;
     }
 }
