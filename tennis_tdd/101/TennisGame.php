@@ -20,10 +20,10 @@ class TennisGame
         if (($this->pointsPlayerA + $this->pointsPlayerB) == 6) {
             return 'deuce';
         }
-        
+
         if (($this->pointsPlayerA + $this->pointsPlayerB) > 6) {
             if (($this->pointsPlayerA - $this->pointsPlayerB) == 1) {
-                return 'forty-A';
+                return 'A-forty';
             }
         }
 
