@@ -79,4 +79,18 @@ class TennisGameTest extends PHPUnit_Framework_TestCase
         $this->game->playerA(1);
         $this->assertEquals('A-forty', $this->game->score());
     }
+
+    public function testTheScoreFromAdvantageToDeuce()
+    {
+        $this->game->playerA(1);
+        $this->game->playerA(1);
+        $this->game->playerA(1);
+        $this->game->playerA(1);
+        $this->game->playerB(1);
+        $this->game->playerB(1);
+        $this->game->playerB(1);
+        $this->assertEquals('A-forty', $this->game->score());
+        $this->game->playerB(1);
+        $this->assertEquals('deuce', $this->game->score());
+    }
 }
