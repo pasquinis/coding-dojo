@@ -93,4 +93,16 @@ class TennisGameTest extends PHPUnit_Framework_TestCase
         $this->game->playerB(1);
         $this->assertEquals('deuce', $this->game->score());
     }
+
+    public function testPlayerAWinGameWhenWinsLastPoint()
+    {
+        $this->game->playerA(1);
+        $this->game->playerA(1);
+        $this->game->playerA(1);
+        $this->game->playerB(1);
+        $this->game->playerB(1);
+        $this->assertEquals('forty-thirty', $this->game->score());
+        $this->game->playerA(1);
+        $this->assertEquals('playerA wins', $this->game->score());
+    }
 }

@@ -18,6 +18,13 @@ class TennisGame
     public function score()
     {
         if (
+            $this->pointsPlayerA >= 4 &&
+            ($this->pointsPlayerA - $this->pointsPlayerB) == 2
+        ) {
+            return 'playerA wins';
+        }
+
+        if (
             ($this->pointsPlayerA == $this->pointsPlayerB) &&
             ($this->pointsPlayerA + $this->pointsPlayerB) >= 6
         ) {
