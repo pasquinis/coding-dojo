@@ -22,6 +22,13 @@ class TennisGame
             ($this->pointsPlayerA - $this->pointsPlayerB) == 2
         ) {
             return 'playerA wins';
+        } 
+
+        if (
+            $this->pointsPlayerB >= 4 &&
+            ($this->pointsPlayerB - $this->pointsPlayerA) == 2
+        ) {
+            return 'playerB wins';
         }
 
         if (
@@ -34,6 +41,8 @@ class TennisGame
         if (($this->pointsPlayerA + $this->pointsPlayerB) > 6) {
             if (($this->pointsPlayerA - $this->pointsPlayerB) == 1) {
                 return 'A-forty';
+            } else {
+                return 'forty-A';
             }
         }
 
