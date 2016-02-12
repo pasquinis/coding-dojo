@@ -23,44 +23,26 @@ class TennisGame
 
     public function score()
     {
-        if (
-            $this->playerA->score() >= 4 &&
-            ($this->playerA->score() - $this->playerB->score()) == 2
-        ) {
-            return 'playerA wins';
-        } 
-
-        if (
-            $this->playerB->score() >= 4 &&
-            ($this->playerB->score() - $this->playerA->score()) == 2
-        ) {
-            return 'playerB wins';
+        $messageA = $this->playerA->score($this->playerB->points());
+        if ($messageA != '') {
+            return $messageA;
         }
 
-        if (
-            ($this->playerA->score() == $this->playerB->score()) &&
-            ($this->playerA->score() + $this->playerB->score()) >= 6
-        ) {
-            return 'deuce';
+        $messageB = $this->playerB->score($this->playerA->points());
+        if ($messageB != '') {
+            return $messageB;
         }
 
-        if (($this->playerA->score() + $this->playerB->score()) > 6) {
-            if (($this->playerA->score() - $this->playerB->score()) == 1) {
-                return 'A-forty';
-            } else {
-                return 'forty-A';
-            }
-        }
-
-        $message = $this->computeScore($this->playerA->score());
+        $message = $this->computeScore($this->playerA->points());
         $message .= '-';
-        $message .= $this->computeScore($this->playerB->score());
+        $message .= $this->computeScore($this->playerB->points());
 
         return $message;
     }
 
     private function computeScore($player)
     {
+
         $message = '';
         switch($player) {
             case 0:
