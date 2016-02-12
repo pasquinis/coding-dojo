@@ -3,52 +3,58 @@
 class TennisGame
 {
 
-    private $pointsPlayerA = 0;
-    private $pointsPlayerB = 0;
+    private $playerA;
+    private $playerB;
+
+    public function __construct($playerA, $playerB)
+    {
+        $this->playerA = $playerA;
+        $this->playerB = $playerB;
+    }
 
     public function playerA($point) 
     {
-        $this->pointsPlayerA += $point;
+        $this->playerA->point($point);
     }
     public function playerB($point)
     {
-        $this->pointsPlayerB += $point;
+        $this->playerB->point($point);
     }
 
     public function score()
     {
         if (
-            $this->pointsPlayerA >= 4 &&
-            ($this->pointsPlayerA - $this->pointsPlayerB) == 2
+            $this->playerA->score() >= 4 &&
+            ($this->playerA->score() - $this->playerB->score()) == 2
         ) {
             return 'playerA wins';
         } 
 
         if (
-            $this->pointsPlayerB >= 4 &&
-            ($this->pointsPlayerB - $this->pointsPlayerA) == 2
+            $this->playerB->score() >= 4 &&
+            ($this->playerB->score() - $this->playerA->score()) == 2
         ) {
             return 'playerB wins';
         }
 
         if (
-            ($this->pointsPlayerA == $this->pointsPlayerB) &&
-            ($this->pointsPlayerA + $this->pointsPlayerB) >= 6
+            ($this->playerA->score() == $this->playerB->score()) &&
+            ($this->playerA->score() + $this->playerB->score()) >= 6
         ) {
             return 'deuce';
         }
 
-        if (($this->pointsPlayerA + $this->pointsPlayerB) > 6) {
-            if (($this->pointsPlayerA - $this->pointsPlayerB) == 1) {
+        if (($this->playerA->score() + $this->playerB->score()) > 6) {
+            if (($this->playerA->score() - $this->playerB->score()) == 1) {
                 return 'A-forty';
             } else {
                 return 'forty-A';
             }
         }
 
-        $message = $this->computeScore($this->pointsPlayerA);
+        $message = $this->computeScore($this->playerA->score());
         $message .= '-';
-        $message .= $this->computeScore($this->pointsPlayerB);
+        $message .= $this->computeScore($this->playerB->score());
 
         return $message;
     }

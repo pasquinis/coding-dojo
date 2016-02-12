@@ -1,13 +1,18 @@
 <?php
 
 require_once('TennisGame.php');
+require_once('PlayerA.php');
+require_once('PlayerB.php');
 
 class TennisGameTest extends PHPUnit_Framework_TestCase
 {
 
     public function setUp()
     {
-        $this->game = new TennisGame();
+        $this->game = new TennisGame(
+            new PlayerA(),
+            new PlayerB()
+        );
     }
 
     public function testTheScoreIsLoveLove()
