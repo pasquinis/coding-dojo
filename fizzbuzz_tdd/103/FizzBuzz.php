@@ -4,6 +4,9 @@ class FizzBuzz
 {
     public function say($number)
     {
-        return 1;
+        if ($number == 3) {
+            return 'Fizz';
+        }
+        return $number;
     }
 }
