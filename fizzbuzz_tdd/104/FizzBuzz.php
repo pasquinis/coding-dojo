@@ -8,10 +8,16 @@ class FizzBuzz
             return 'Fizz';
         }
 
-        if ($number % 5 == 0) {
+        if ($this->isMultipleOf($number, 5)) {
             return 'Buzz';
         }
 
         return $number;
+    }
+
+
+    private function isMultipleOf($number, $multiplier)
+    {
+        return $number % $multiplier == 0;
     }
 }
