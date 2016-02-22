@@ -2,18 +2,22 @@
 
 class FizzBuzz
 {
+    private $rules = [
+        3 => 'Fizz',
+        5 => 'Buzz'
+    ];
+    
     public function say($number)
     {
         $message = '';
-        if ($this->isMultipleOf($number, 3)) {
-            $message .= 'Fizz';
+
+        foreach($this->rules as $multiplier => $response) {
+            if ($this->isMultipleOf($number, $multiplier)) {
+                $message .= $response;
+            }
         }
 
-        if ($this->isMultipleOf($number, 5)) {
-            $message .= 'Buzz';
-        }
-
-        if ($message == '') {
+        if ($this->isEmpty($message)) {
             $message .= $number;
         }
 
@@ -24,5 +28,10 @@ class FizzBuzz
     private function isMultipleOf($number, $multiplier)
     {
         return $number % $multiplier == 0;
+    }
+
+    private function isEmpty($message)
+    {
+        return empty($message);
     }
 }
