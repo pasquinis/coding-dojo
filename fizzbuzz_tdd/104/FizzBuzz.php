@@ -4,15 +4,20 @@ class FizzBuzz
 {
     public function say($number)
     {
-        if ($number % 3 == 0) {
-            return 'Fizz';
+        $message = '';
+        if ($this->isMultipleOf($number, 3)) {
+            $message .= 'Fizz';
         }
 
         if ($this->isMultipleOf($number, 5)) {
-            return 'Buzz';
+            $message .= 'Buzz';
         }
 
-        return $number;
+        if ($message == '') {
+            $message .= $number;
+        }
+
+        return $message;
     }
 
 
