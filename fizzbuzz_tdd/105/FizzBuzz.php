@@ -15,13 +15,17 @@ class FizzBuzz
 
     public function say()
     {
+        $message = '';
         if ($this->fizz->isMultipleOf($this->number)) {
-            return $this->fizz->say();
+            $message .= $this->fizz->say();
         }
 
         if ($this->buzz->isMultipleOf($this->number)) {
-            return $this->buzz->say();
+            $message .= $this->buzz->say();
         }
+
+        if (!empty($message))
+            return $message;
 
         return $this->number;
     }
