@@ -13,6 +13,12 @@ class FizzBuzz
         if ($this->isMultipleOfThree()) {
             return 'Fizz';
         }
+
+        if ($this->number % 5 == 0)
+        {
+            return 'Buzz';
+        }
+
         return $this->number;
     }
 
