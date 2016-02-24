@@ -2,15 +2,21 @@
 
 class FizzBuzz
 {
+    public function __construct()
+    {
+        $this->rules = [
+            3 => 'Fizz',
+            5 => 'Buzz',
+        ];
+    }
+
     public function say($number)
     {
         $message = '';
-        if ($number % 3 == 0) {
-            $message .= 'Fizz';
-        }
-
-        if ($number % 5 == 0) {
-            $message .= 'Buzz';
+        foreach($this->rules as $key => $value) {
+          if ($number % $key == 0) {
+              $message .= $value;
+          }
         }
 
         if ($message != '') {
