@@ -7,7 +7,8 @@ class FizzBuzz
     {
         $this->rules = [
             3 => 'Fizz',
-            5 => 'Buzz'
+            5 => 'Buzz',
+            7 => 'Bang'
         ];
     }
 
