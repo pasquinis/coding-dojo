@@ -4,14 +4,20 @@ class FizzBuzz
 {
     public function say($aNumber)
     {
+
+        $message = '';
+
         if ($aNumber % 3 == 0) {
-            return 'Fizz';
+            $message .= 'Fizz';
         }
 
         if ($aNumber % 5 == 0) {
-            return 'Buzz';
+            $message .= 'Buzz';
         }
 
+        if ($message != '') {
+            return $message;
+        }
         return $aNumber;
     }
 }
