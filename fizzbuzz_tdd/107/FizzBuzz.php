@@ -7,6 +7,11 @@ class FizzBuzz
         if ($aNumber % 3 === 0) {
             return 'Fizz';
         }
+
+        if ($aNumber == 5) {
+            return 'Buzz';
+        }
+
         return $aNumber;
     }
 }
