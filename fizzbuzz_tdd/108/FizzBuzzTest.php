@@ -39,4 +39,16 @@ class FizzBuzzTest extends \PHPUnit_Framework_TestCase
         $fizz = new FizzBuzz();
         $this->assertEquals('Buzz', $fizz->say(5*2));
     }
+
+    public function testGivenANumber7ThenTheResponseIsBang()
+    {
+        $fizz = new FizzBuzz();
+        $this->assertEquals('Bang', $fizz->say(7));
+    }
+
+    public function testGivenANumberIsMultipleOf7ThenTheResponseIsBang()
+    {
+        $fizz = new FizzBuzz();
+        $this->assertEquals('Bang', $fizz->say(7*2));
+    }
 }
