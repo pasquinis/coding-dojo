@@ -17,10 +17,6 @@ class FizzBuzz
             return 'Bang';
         }
 
-        if ($message != '') {
-            return $message;
-        }
-
-        return $aNumber;
+        return ($message != '') ? $message : $aNumber;
     }
 }
