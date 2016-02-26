@@ -14,7 +14,7 @@ class FizzBuzz
         }
 
         if ($aNumber % 7 == 0) {
-            return 'Bang';
+            $message .= 'Bang';
         }
 
         return ($message != '') ? $message : $aNumber;
