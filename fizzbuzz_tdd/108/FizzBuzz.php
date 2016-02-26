@@ -3,13 +3,9 @@
 class FizzBuzz
 {
 
-    public function __construct()
+    public function __construct($rules)
     {
-        $this->rules = [
-            3 => 'Fizz',
-            5 => 'Buzz',
-            7 => 'Bang'
-        ];
+        $this->rules = $rules;
     }
 
     public function say($aNumber)
