@@ -4,6 +4,10 @@ class FizzBuzz
 {
     public function say($aNumber)
     {
-        return 1;
+        if ($aNumber % 3 == 0) {
+            return 'Fizz';
+        }
+
+        return $aNumber;
     }
 }
