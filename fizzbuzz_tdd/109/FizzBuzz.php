@@ -13,6 +13,9 @@ class FizzBuzz
             $message .= 'Buzz';
         }
 
+        if ($aNumber % 7 == 0) {
+            $message .= 'Bang';
+        }
 
         return ($message != '') ? $message : $aNumber;
     }
