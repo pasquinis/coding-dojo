@@ -12,6 +12,10 @@ class FizzBuzz
             return 'Buzz';
         }
 
+        if (($aNumber % 7) == 0) {
+            return 'Bang';
+        }
+
         return $aNumber;
     }
 }
