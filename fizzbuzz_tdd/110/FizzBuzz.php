@@ -14,14 +14,9 @@ class FizzBuzz
 
     public function say($aNumber)
     {
-
         $message = $this->multiplierAlgorithm($aNumber);
 
-        if ($message != '') {
-            return $message;
-        }
-
-        return $aNumber;
+        return ($message != '') ? $message : $aNumber;
     }
 
     private function multiplierAlgorithm($aNumber)
