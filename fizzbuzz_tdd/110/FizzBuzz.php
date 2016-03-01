@@ -8,6 +8,10 @@ class FizzBuzz
             return 'Fizz';
         }
 
+        if (($aNumber % 5) == 0) {
+            return 'Buzz';
+        }
+
         return $aNumber;
     }
 }
