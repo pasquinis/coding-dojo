@@ -21,4 +21,10 @@ class FizzBuzzTest extends \PHPUnit_Framework_TestCase
         $fizz = new FizzBuzz();
         $this->assertEquals('Fizz', $fizz->say(3));
     }
+
+    public function testWhenISayANumberMultipleOfThreeThenIReceiveWordFizz()
+    {
+        $fizz = new FizzBuzz();
+        $this->assertEquals('Fizz', $fizz->say(3*2));
+    }
 }
