@@ -13,9 +13,6 @@ class FizzBuzz
             $word .= 'Buzz';
         }
 
-        if ($word != '') {
-            return $word;
-        }
-        return $aNumber;
+        return ($word != '') ? $word : $aNumber;
     }
 }
