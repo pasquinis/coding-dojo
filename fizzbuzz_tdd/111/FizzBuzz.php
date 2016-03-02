@@ -2,30 +2,35 @@
 
 class FizzBuzz
 {
+    public function __construct()
+    {
+        $this->rules = [
+            3 => 'Fizz',
+            5 => 'Buzz'
+        ];
+    }
+
     public function say($aNumber)
     {
-        $word = $this->responseForMultipleOfThree($aNumber);
-        $word .= $this->responseForMultipleOfFive($aNumber);
+        $word = '';
+        foreach($this->rules as $multiplier => $response) {
+            $word .= $this->responseForMultipleOf(
+                $aNumber,
+                $multiplier,
+                $response
+            );
+        }
 
         return ($word != '') ? $word : $aNumber;
     }
 
-    private function responseForMultipleOfThree($aNumber)
+    private function responseForMultipleOf($aNumber, $multiplier, $word)
     {
-        $word = '';
-        if ($aNumber % 3 == 0) {
-            $word .= 'Fizz';
-        }
-        return $word;
-    }
-
-    private function responseForMultipleOfFive($aNumber)
-    {
-        $word = '';
-        if ($aNumber % 5 == 0) {
-            $word .= 'Buzz';
+        $response = '';
+        if ($aNumber % $multiplier == 0) {
+            $response .= $word;
         }
 
-        return $word;
+        return $response;
     }
 }
