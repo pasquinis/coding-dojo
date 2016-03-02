@@ -4,15 +4,21 @@ class FizzBuzz
 {
     public function say($aNumber)
     {
-        $word = '';
-        if ($aNumber % 3 == 0) {
-            $word .= 'Fizz';
-        }
+        $word = $this->responseForMultipleOfThree($aNumber);
 
         if ($aNumber % 5 == 0) {
             $word .= 'Buzz';
         }
 
         return ($word != '') ? $word : $aNumber;
+    }
+
+    private function responseForMultipleOfThree($aNumber)
+    {
+        $word = '';
+        if ($aNumber % 3 == 0) {
+            $word .= 'Fizz';
+        }
+        return $word;
     }
 }
