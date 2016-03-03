@@ -20,4 +20,10 @@ class FibonacciTest extends \PHPUnit_Framework_TestCase
         $fibonacci = new Fibonacci();
         $this->assertEquals(2, $fibonacci->calculate(3));
     }
+
+    public function testGivenTheNumberFourThenIReceiveTheResponseThree()
+    {
+        $fibonacci = new Fibonacci();
+        $this->assertEquals(3, $fibonacci->calculate(4));
+    }
 }
