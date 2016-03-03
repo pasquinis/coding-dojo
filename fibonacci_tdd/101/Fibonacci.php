@@ -4,12 +4,8 @@ class Fibonacci
 {
     public function calculate($aNumber)
     {
-        if ($aNumber == 4) {
-            return 3;
-        }
-
-        if ($aNumber == 3) {
-            return 2;
+        if ($aNumber >= 2) {
+            return $aNumber - 1;
         }
 
         return 1;
