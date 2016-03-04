@@ -15,4 +15,10 @@ class FibonacciTest extends \PHPUnit_Framework_TestCase
         $fibonacci = new Fibonacci();
         $this->assertEquals(1, $fibonacci->compute(1));
     }
+
+    public function testTheFibonacciValueForTwoisOne()
+    {
+        $fibonacci = new Fibonacci();
+        $this->assertEquals(1, $fibonacci->compute(2));
+    }
 }
