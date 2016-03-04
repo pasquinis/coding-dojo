@@ -27,4 +27,10 @@ class FibonacciTest extends \PHPUnit_Framework_TestCase
         $fibonacci = new Fibonacci();
         $this->assertEquals(2, $fibonacci->compute(3));
     }
+
+    public function testTheFibonacciValueForSixIsEight()
+    {
+        $fibonacci = new Fibonacci();
+        $this->assertEquals(8, $fibonacci->compute(6));
+    }
 }
