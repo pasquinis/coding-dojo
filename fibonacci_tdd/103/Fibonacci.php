@@ -9,8 +9,7 @@ class Fibonacci
         }
         if ($aNumber == 1) {
             return 1;
-        } else {
-            return $this->compute($aNumber - 2) + $this->compute($aNumber - 1);
         }
+        return $this->compute($aNumber - 2) + $this->compute($aNumber - 1);
     }
 }
