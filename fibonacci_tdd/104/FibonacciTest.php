@@ -10,4 +10,11 @@ class FibonacciTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals(0, $fibonacci->calculate(0));
     }
+
+    public function testWhenIEnterTheOneNumberThenIReceiveOne()
+    {
+        $fibonacci = new Fibonacci();
+
+        $this->assertEquals(1, $fibonacci->calculate(1));
+    }
 }
