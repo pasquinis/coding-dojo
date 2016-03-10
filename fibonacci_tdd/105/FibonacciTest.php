@@ -33,4 +33,10 @@ class FibonacciTest extends \PHPUnit_Framework_TestCase
         $fibonacci = new Fibonacci();
         $this->assertEquals(3, $fibonacci->compute(4));
     }
+
+    public function testWhenIEnterNumberTenThenIExpectNumberFiftyFive()
+    {
+        $fibonacci = new Fibonacci();
+        $this->assertEquals(55, $fibonacci->compute(10));
+    }
 }
