@@ -4,7 +4,8 @@ class Fibonacci
 {
     public function compute($aNumber)
     {
+        if ($aNumber == 0) return 0;
         if ($aNumber == 1) return 1;
-        return 0;
+        return $this->compute($aNumber - 1) + $this->compute($aNumber - 2);
     }
 }
