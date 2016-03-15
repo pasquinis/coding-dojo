@@ -4,6 +4,9 @@ class Fibonacci
 {
     public function compute($aNumber)
     {
-        return 0;
+        if ($aNumber == 0) 
+            return 0;
+        else
+            return 1;
     }
 }
