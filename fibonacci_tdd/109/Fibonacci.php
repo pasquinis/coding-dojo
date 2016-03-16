@@ -6,6 +6,6 @@ class Fibonacci
     {
         if ($aNumber == 0) return 0;
         if ($aNumber == 1) return 1;
-        return 1;
+        return $this->compute($aNumber - 1) + $this->compute($aNumber -2);
     }
 }
