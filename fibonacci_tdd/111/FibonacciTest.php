@@ -29,4 +29,9 @@ class FibonacciTest extends \PHPUnit_Framework_TestCase
     {
         $this->assertEquals(2, $this->fibonacci->compute(3));
     }
+
+    public function testWhenIInputNumberFourThenIComputeThree()
+    {
+        $this->assertEquals(3, $this->fibonacci->compute(4));
+    }
 }
