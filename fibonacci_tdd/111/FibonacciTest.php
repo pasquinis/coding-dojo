@@ -5,15 +5,18 @@ require_once 'Fibonacci.php';
 class FibonacciTest extends \PHPUnit_Framework_TestCase
 {
 
+    protected function setUp()
+    {
+        $this->fibonacci = new Fibonacci();
+    }
+
     public function testWhenIInputNumberZeroThenIComputeZero()
     {
-        $fibonacci = new Fibonacci();
-        $this->assertEquals(0, $fibonacci->compute(0));
+        $this->assertEquals(0, $this->fibonacci->compute(0));
     }
 
     public function testWhenIInputNumberOneThenIComputeOne()
     {
-        $fibonacci = new Fibonacci();
-        $this->assertEquals(1, $fibonacci->compute(1));
+        $this->assertEquals(1, $this->fibonacci->compute(1));
     }
 }
