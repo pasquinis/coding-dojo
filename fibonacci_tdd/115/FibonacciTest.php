@@ -29,4 +29,9 @@ class FibonacciTest extends \PHPUnit_Framework_TestCase
     {
         $this->assertEquals(2, $this->fibonacci->compute(3));
     }
+
+    public function testShouldCalculateWhenIInputNumberThirteen()
+    {
+        $this->assertEquals(233, $this->fibonacci->compute(13));
+    }
 }
