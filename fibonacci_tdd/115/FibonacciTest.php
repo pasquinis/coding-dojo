@@ -15,8 +15,13 @@ class FibonacciTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(0, $this->fibonacci->compute(0));
     }
 
-    public function testShouldCalculateOneWhenIInputNumberOne()
+    public function testShouldCalculateWhenIInputNumberOne()
     {
         $this->assertEquals(1, $this->fibonacci->compute(1));
+    }
+
+    public function testShouldCalculateWhenIInputNumberTwo()
+    {
+        $this->assertEquals(1, $this->fibonacci->compute(2));
     }
 }
