@@ -4,19 +4,23 @@ require_once 'BankOcr.php';
 
 class BankOcrTest extends \PHPUnit_Framework_TestCase
 {
+
+    protected function setUp()
+    {
+        $this->bankOcr = new BankOcr();
+        $this->one = <<<EOF
+  |
+  |
+EOF;
+    }
+
     public function testWhenIInputNothingTheResponseIsNothing()
     {
-        $bankOcr = new BankOcr();
-        $this->assertEquals("", $bankOcr->translate(""));
+        $this->assertEquals("", $this->bankOcr->translate(""));
     }
 
     public function testWhenIInputOneTheResponseIsAStringWithOne()
     {
-        $bankOcr = new BankOcr();
-        $one = <<<EOF
-  |
-  |
-EOF;
-        $this->assertEquals("1", $bankOcr->translate($one));
+        $this->assertEquals("1", $this->bankOcr->translate($this->one));
     }
 }
