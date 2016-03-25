@@ -19,6 +19,11 @@ EOF;
   _|
   _|
 EOF;
+        $this->four = <<<EOF
+
+ |_|
+   |
+EOF;
     }
 
     public function translate($aNumber)
@@ -32,5 +37,6 @@ EOF;
         if ($this->one == $aNumber) return "1";
         if ($this->two == $aNumber) return "2";
         if ($this->three == $aNumber) return "3";
+        if ($this->four == $aNumber) return "4";
     }
 }

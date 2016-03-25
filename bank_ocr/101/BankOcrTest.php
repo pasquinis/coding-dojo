@@ -22,6 +22,11 @@ EOF;
   _|
   _|
 EOF;
+        $this->four = <<<EOF
+
+ |_|
+   |
+EOF;
     }
 
     public function testWhenIInputNothingTheResponseIsNothing()
@@ -34,5 +39,6 @@ EOF;
         $this->assertEquals("1", $this->bankOcr->translate($this->one));
         $this->assertEquals("2", $this->bankOcr->translate($this->two));
         $this->assertEquals("3", $this->bankOcr->translate($this->three));
+        $this->assertEquals("4", $this->bankOcr->translate($this->four));
     }
 }
