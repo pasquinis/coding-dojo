@@ -2,8 +2,9 @@
 
 class BankOcr
 {
-    public function translate()
+    public function translate($aNumber)
     {
-        return "";
+        if ($aNumber == '') return "";
+        return "1";
     } 
 }
