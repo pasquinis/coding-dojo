@@ -2,6 +2,20 @@
 
 class BankOcr
 {
+    public function __construct()
+    {
+        $this->one = <<<EOF
+  |
+  |
+EOF;
+
+        $this->two = <<<EOF
+  _
+  _|
+ |_
+EOF;
+    }
+
     public function translate($aNumber)
     {
         if ($aNumber == '') return "";
@@ -10,10 +24,7 @@ class BankOcr
 
     private function mapping($aNumber)
     {
-        $one = <<<EOF
-  |
-  |
-EOF;
-        if ($one == $aNumber) return "1";
+        if ($this->one == $aNumber) return "1";
+        if ($this->two == $aNumber) return "2";
     }
 }

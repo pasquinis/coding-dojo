@@ -12,6 +12,11 @@ class BankOcrTest extends \PHPUnit_Framework_TestCase
   |
   |
 EOF;
+        $this->two = <<<EOF
+  _
+  _|
+ |_
+EOF;
     }
 
     public function testWhenIInputNothingTheResponseIsNothing()
@@ -22,5 +27,10 @@ EOF;
     public function testWhenIInputOneTheResponseIsAStringWithOne()
     {
         $this->assertEquals("1", $this->bankOcr->translate($this->one));
+    }
+
+    public function testWhenIInputTwoTheResponseIsAStringWithTwo()
+    {
+        $this->assertEquals("2", $this->bankOcr->translate($this->two));
     }
 }
