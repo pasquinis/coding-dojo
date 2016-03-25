@@ -24,13 +24,9 @@ EOF;
         $this->assertEquals("", $this->bankOcr->translate(""));
     }
 
-    public function testWhenIInputOneTheResponseIsAStringWithOne()
+    public function testWhenIInpuntASingleNumberTheResponseIAStringWithTheNumber()
     {
         $this->assertEquals("1", $this->bankOcr->translate($this->one));
-    }
-
-    public function testWhenIInputTwoTheResponseIsAStringWithTwo()
-    {
         $this->assertEquals("2", $this->bankOcr->translate($this->two));
     }
 }
