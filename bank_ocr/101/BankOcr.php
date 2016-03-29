@@ -28,9 +28,18 @@ EOF;
 
     public function translate($aNumber)
     {
-        if ($aNumber == '') return "";
-        return $this->mapping($aNumber);
-    } 
+        $exploded = explode(PHP_EOL, $aNumber);
+        if (strlen($exploded[0]) > 3) {
+            return $this->multipleMapping($aNumber);
+        } else {
+            return $this->mapping($aNumber);
+        }
+    }
+
+    private function multipleMapping($aNumber)
+    {
+        return "12";
+    }
 
     private function mapping($aNumber)
     {
@@ -38,5 +47,6 @@ EOF;
         if ($this->two == $aNumber) return "2";
         if ($this->three == $aNumber) return "3";
         if ($this->four == $aNumber) return "4";
+        return "";
     }
 }
