@@ -48,15 +48,23 @@ EOF;
         $ocrString = '';
         $startString = 0;
         while($counter < 2) {
-            $inlineNumber .= substr($lines[0], $startString, 3);
-            $inlineNumber .= substr($lines[1], $startString, 3);
-            $inlineNumber .= substr($lines[2], $startString, 3);
+            $inlineNumber = $this->decomposeNumberIntoOneSingleLine(
+                $lines,
+                $startString
+            );
             $ocrString .= $this->mapping($inlineNumber);
             $inlineNumber = '';
             $startString += 3;
             $counter++;
         }
         return $ocrString;
+    }
+
+    private function decomposeNumberIntoOneSingleLine($lines, $startPosition)
+    {
+        return substr($lines[0], $startPosition, 3)
+            . substr($lines[1], $startPosition, 3)
+            . substr($lines[2], $startPosition, 3);
     }
 
     private function mapping($aNumber)
