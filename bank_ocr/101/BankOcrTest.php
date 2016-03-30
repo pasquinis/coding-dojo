@@ -45,9 +45,9 @@ EOF;
     public function testShouldIReadTwoConsecutiveNumber()
     {
         $oneAndTwo = <<<EOF
-     _
-  |  _|
-  | |_
+    _ 
+  | _|
+  ||_ 
 EOF;
         $this->assertEquals("12", $this->bankOcr->translate($oneAndTwo));
     }

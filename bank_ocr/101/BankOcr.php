@@ -4,10 +4,14 @@ class BankOcr
 {
     public function __construct()
     {
+        $this->one_inline = "   " . "  |" . "  |";
+
         $this->one = <<<EOF
   |
   |
 EOF;
+
+        $this->two_inline = " _ " . " _|" . "|_ ";
 
         $this->two = <<<EOF
   _
@@ -38,11 +42,27 @@ EOF;
 
     private function multipleMapping($aNumber)
     {
-        return "12";
+        $lines = explode(PHP_EOL, $aNumber);
+        $inlineNumber = '';
+        $counter = 0;
+        $ocrString = '';
+        $startString = 0;
+        while($counter < 2) {
+            $inlineNumber .= substr($lines[0], $startString, 3);
+            $inlineNumber .= substr($lines[1], $startString, 3);
+            $inlineNumber .= substr($lines[2], $startString, 3);
+            $ocrString .= $this->mapping($inlineNumber);
+            $inlineNumber = '';
+            $startString += 3;
+            $counter++;
+        }
+        return $ocrString;
     }
 
     private function mapping($aNumber)
     {
+        if ($this->one_inline == $aNumber) return "1";
+        if ($this->two_inline == $aNumber) return "2";
         if ($this->one == $aNumber) return "1";
         if ($this->two == $aNumber) return "2";
         if ($this->three == $aNumber) return "3";
