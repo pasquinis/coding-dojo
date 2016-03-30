@@ -43,17 +43,16 @@ EOF;
     private function multipleMapping($aNumber)
     {
         $lines = explode(PHP_EOL, $aNumber);
-        $inlineNumber = '';
         $counter = 0;
         $ocrString = '';
         $startString = 0;
         while($counter < 2) {
-            $inlineNumber = $this->decomposeNumberIntoOneSingleLine(
-                $lines,
-                $startString
+            $ocrString .= $this->mapping(
+                $this->decomposeNumberIntoOneSingleLine(
+                    $lines,
+                    $startString
+                )
             );
-            $ocrString .= $this->mapping($inlineNumber);
-            $inlineNumber = '';
             $startString += 3;
             $counter++;
         }
