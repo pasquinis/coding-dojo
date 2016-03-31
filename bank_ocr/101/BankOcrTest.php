@@ -42,7 +42,7 @@ EOF;
         $this->assertEquals("4", $this->bankOcr->translate($this->four));
     }
 
-    public function testShouldIReadTwoConsecutiveNumber()
+    public function testShouldIReadTwoNumber()
     {
         $oneAndTwo = <<<EOF
     _ 
@@ -50,5 +50,26 @@ EOF;
   ||_ 
 EOF;
         $this->assertEquals("12", $this->bankOcr->translate($oneAndTwo));
+    }
+
+    public function testShouldIReadThreeNumber()
+    {
+        $oneTwoThree = <<<EOF
+    _  _ 
+  | _| _|
+  ||_  _|
+EOF;
+
+        $this->assertEquals("123", $this->bankOcr->translate($oneTwoThree));
+    }
+
+    public function testShouldIReadAllNineDigits()
+    {
+        $allNineDigits = <<<EOF
+    _  _     _  _  _  _  _ 
+  | _| _||_||_ |_   ||_||_|
+  ||_  _|  | _||_|  ||_| _|
+EOF;
+        $this->assertEquals("123456789", $this->bankOcr->translate($allNineDigits));
     }
 }

@@ -18,16 +18,44 @@ EOF;
   _|
  |_
 EOF;
+        $this->three_inline = 
+            " _ " .
+            " _|" .
+            " _|";
         $this->three = <<<EOF
   _
   _|
   _|
 EOF;
+        $this->four_inline =
+            "   " .
+            "|_|" .
+            "  |";
         $this->four = <<<EOF
 
  |_|
    |
 EOF;
+        $this->five_inline =
+            " _ " .
+            "|_ " .
+            " _|";
+        $this->six_inline =
+            " _ " .
+            "|_ " .
+            "|_|";
+        $this->seven_inline =
+            " _ " .
+            "  |" .
+            "  |";
+        $this->eight_inline =
+            " _ " .
+            "|_|" .
+            "|_|";
+        $this->nine_inline =
+            " _ " .
+            "|_|" .
+            " _|";
     }
 
     public function translate($aNumber)
@@ -46,7 +74,7 @@ EOF;
         $counter = 0;
         $ocrString = '';
         $startString = 0;
-        while($counter < 2) {
+        while($counter < 9) {
             $ocrString .= $this->mapping(
                 $this->decomposeNumberIntoOneSingleLine(
                     $lines,
@@ -70,6 +98,13 @@ EOF;
     {
         if ($this->one_inline == $aNumber) return "1";
         if ($this->two_inline == $aNumber) return "2";
+        if ($this->three_inline == $aNumber) return "3";
+        if ($this->four_inline == $aNumber) return "4";
+        if ($this->five_inline == $aNumber) return "5";
+        if ($this->six_inline == $aNumber) return "6";
+        if ($this->seven_inline == $aNumber) return "7";
+        if ($this->eight_inline == $aNumber) return "8";
+        if ($this->nine_inline == $aNumber) return "9";
         if ($this->one == $aNumber) return "1";
         if ($this->two == $aNumber) return "2";
         if ($this->three == $aNumber) return "3";
