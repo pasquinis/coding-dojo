@@ -60,17 +60,13 @@ EOF;
 
     public function translate($aNumber)
     {
-        $exploded = explode(PHP_EOL, $aNumber);
-        if (strlen($exploded[0]) > 3) {
-            return $this->multipleMapping($aNumber);
-        } else {
-            return $this->mapping($aNumber);
-        }
+        return $this->multipleMapping($aNumber);
     }
 
     private function multipleMapping($aNumber)
     {
         $lines = explode(PHP_EOL, $aNumber);
+        if (count($lines) == 1) return "";
         $counter = 0;
         $ocrString = '';
         $startString = 0;
