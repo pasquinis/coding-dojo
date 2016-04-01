@@ -17,6 +17,11 @@ ACCOUNT;
   |  |  |  |  |  |  |  |  |
   |  |  |  |  |  |  |  |  |
 ONE;
+        $this->bankAccountWithOnlyNumberTwo = <<<TWO
+ _  _  _  _  _  _  _  _  _ 
+ _| _| _| _| _| _| _| _| _|
+|_ |_ |_ |_ |_ |_ |_ |_ |_ 
+TWO;
     }
 
     public function testShouldIReadABankAccount()
@@ -24,8 +29,23 @@ ONE;
         $this->assertEquals('123456789', $this->bank->read($this->bankAccount));
     }
 
-    public function testShouldIReadOnlyOneDigit()
+    public function testShouldIReadABankAccountComposedOnlyOneDigit()
     {
         $this->assertEquals('111111111', $this->bank->read($this->bankAccountWithOnlyNumberOne));
+    }
+
+    public function testShouldIReadABankAccountComposedOnlyTwoDigit()
+    {
+        $this->assertEquals('222222222', $this->bank->read($this->bankAccountWithOnlyNumberTwo));
+    }
+
+    public function testShouldIReadFirstDigitOfABankAccount()
+    {
+        $numberOne = <<<ONE
+   
+  |
+  |
+ONE;
+        $this->assertEquals($numberOne, $this->bank->readOneDigit($this->bankAccountWithOnlyNumberOne));
     }
 }
