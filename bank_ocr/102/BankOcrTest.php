@@ -39,13 +39,14 @@ TWO;
         $this->assertEquals('222222222', $this->bank->read($this->bankAccountWithOnlyNumberTwo));
     }
 
-    public function testShouldIReadFirstDigitOfABankAccount()
+    public function testShouldIReadDigitAtSpecificPosition()
     {
-        $numberOne = <<<ONE
-   
-  |
-  |
-ONE;
-        $this->assertEquals($numberOne, $this->bank->readOneDigit($this->bankAccountWithOnlyNumberOne));
+        $numberOne = 
+            "   " .
+            "  |" .
+            "  |";
+
+        $this->assertEquals($numberOne, $this->bank->readDigitAtPosition($this->bankAccountWithOnlyNumberOne, $position = 0));
+        $this->assertEquals($numberOne, $this->bank->readDigitAtPosition($this->bankAccountWithOnlyNumberOne, $position = 1));
     }
 }
