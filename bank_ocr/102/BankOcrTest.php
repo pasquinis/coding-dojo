@@ -56,4 +56,13 @@ TWO;
         $this->assertEquals($numberOne, $this->bank->readDigitAtPosition($this->bankAccountWithOnlyNumberOne, $position = 7));
         $this->assertEquals($numberOne, $this->bank->readDigitAtPosition($this->bankAccountWithOnlyNumberOne, $position = 8));
     }
+
+    public function testShouldTranslateADigitToNumber()
+    {
+        $one = 
+            "   " .
+            "  |" .
+            "  |";
+        $this->assertEquals(1, $this->bank->translateDigitToNumber($one));
+    }
 }

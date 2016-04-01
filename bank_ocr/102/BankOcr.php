@@ -16,11 +16,10 @@ ONE;
  _| _| _| _| _| _| _| _| _|
 |_ |_ |_ |_ |_ |_ |_ |_ |_ 
 TWO;
-        $this->numberOne = <<<ONE
-   
-  |
-  |
-ONE;
+        $this->one = 
+            "   " .
+            "  |" .
+            "  |";
     }
 
     public function read($bankAccount)
@@ -39,5 +38,10 @@ ONE;
             substr($lines[1], $position * self::DIGIT_WIDTH, self::DIGIT_WIDTH) .
             substr($lines[2], $position * self::DIGIT_WIDTH, self::DIGIT_WIDTH);
         return $oneDigit;
+    }
+
+    public function translateDigitToNumber($aDigit)
+    {
+        if ($aDigit == $this->one) return 1;
     }
 }
