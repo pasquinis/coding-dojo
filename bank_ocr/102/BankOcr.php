@@ -5,6 +5,6 @@ class BankOcr
 
     public function read($bankAccount)
     {
-        return "123456789";
+        return "111111111";
     }
 }
