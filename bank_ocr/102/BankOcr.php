@@ -16,10 +16,15 @@ ONE;
  _| _| _| _| _| _| _| _| _|
 |_ |_ |_ |_ |_ |_ |_ |_ |_ 
 TWO;
-        $this->one = 
+        $this->one =
             "   " .
             "  |" .
             "  |";
+
+        $this->two =
+            " _ " .
+            " _|" .
+            "|_ ";
     }
 
     public function read($bankAccount)
@@ -43,5 +48,6 @@ TWO;
     public function translateDigitToNumber($aDigit)
     {
         if ($aDigit == $this->one) return 1;
+        if ($aDigit == $this->two) return 2;
     }
 }

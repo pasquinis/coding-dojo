@@ -63,6 +63,12 @@ TWO;
             "   " .
             "  |" .
             "  |";
+        $two =
+            " _ " .
+            " _|" .
+            "|_ ";
+
         $this->assertEquals(1, $this->bank->translateDigitToNumber($one));
+        $this->assertEquals(2, $this->bank->translateDigitToNumber($two));
     }
 }
