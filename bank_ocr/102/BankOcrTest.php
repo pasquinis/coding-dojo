@@ -1,12 +1,15 @@
 <?php
 
 require_once 'BankOcr.php';
+require_once 'DigitTranslator.php';
 
 class BankOcrTest extends \PHPUnit_Framework_TestCase
 {
     public function setUp()
     {
         $this->bank = new BankOcr();
+        $this->digitTranslator = new DigitTranslator();
+
         $this->bankAccount = <<<ACCOUNT
     _  _     _  _  _  _  _ 
   | _| _||_||_ |_   ||_||_|
@@ -68,7 +71,7 @@ TWO;
             " _|" .
             "|_ ";
 
-        $this->assertEquals(1, $this->bank->translateDigitToNumber($one));
-        $this->assertEquals(2, $this->bank->translateDigitToNumber($two));
+        $this->assertEquals(1, $this->digitTranslator->translateDigitToNumber($one));
+        $this->assertEquals(2, $this->digitTranslator->translateDigitToNumber($two));
     }
 }

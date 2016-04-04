@@ -16,15 +16,6 @@ ONE;
  _| _| _| _| _| _| _| _| _|
 |_ |_ |_ |_ |_ |_ |_ |_ |_ 
 TWO;
-        $this->one =
-            "   " .
-            "  |" .
-            "  |";
-
-        $this->two =
-            " _ " .
-            " _|" .
-            "|_ ";
     }
 
     public function read($bankAccount)
@@ -43,11 +34,5 @@ TWO;
             substr($lines[1], $position * self::DIGIT_WIDTH, self::DIGIT_WIDTH) .
             substr($lines[2], $position * self::DIGIT_WIDTH, self::DIGIT_WIDTH);
         return $oneDigit;
-    }
-
-    public function translateDigitToNumber($aDigit)
-    {
-        if ($aDigit == $this->one) return 1;
-        if ($aDigit == $this->two) return 2;
     }
 }
