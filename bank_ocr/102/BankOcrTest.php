@@ -62,16 +62,13 @@ TWO;
 
     public function testShouldTranslateADigitToNumber()
     {
-        $one = 
-            "   " .
-            "  |" .
-            "  |";
-        $two =
-            " _ " .
-            " _|" .
-            "|_ ";
 
-        $this->assertEquals(1, $this->digitTranslator->translateDigitToNumber($one));
-        $this->assertEquals(2, $this->digitTranslator->translateDigitToNumber($two));
+        $this->assertEquals(1, $this->digitTranslator->translateDigitToNumber(
+            DigitTranslator::ONE
+        ));
+
+        $this->assertEquals(2, $this->digitTranslator->translateDigitToNumber(
+            DigitTranslator::TWO
+        ));
     }
 }
