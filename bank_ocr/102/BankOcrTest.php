@@ -70,5 +70,9 @@ TWO;
         $this->assertEquals(2, $this->digitTranslator->translateDigitToNumber(
             DigitTranslator::TWO
         ));
+
+        $this->assertEquals(3, $this->digitTranslator->translateDigitToNumber(
+            DigitTranslator::THREE
+        ));
     }
 }
