@@ -3,22 +3,19 @@
 class DigitTranslator
 {
 
-    public function __construct()
-    {
-        $this->one =
-            "   " .
-            "  |" .
-            "  |";
+    const ONE =
+        "   " .
+        "  |" .
+        "  |";
 
-        $this->two =
-            " _ " .
-            " _|" .
-            "|_ ";
-    }
+    const TWO =
+        " _ " .
+        " _|" .
+        "|_ ";
 
     public function translateDigitToNumber($aDigit)
     {
-        if ($aDigit == $this->one) return 1;
-        if ($aDigit == $this->two) return 2;
+        if ($aDigit == self::ONE) return 1;
+        if ($aDigit == self::TWO) return 2;
     }
 }
