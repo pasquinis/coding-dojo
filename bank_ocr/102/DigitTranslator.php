@@ -43,6 +43,11 @@ class DigitTranslator
         "|_|" .
         "|_|";
 
+    const NINE =
+        " _ " .
+        "|_|" .
+        "  |";
+
     public function translateDigitToNumber($aDigit)
     {
         if ($aDigit == self::ONE) return 1;
@@ -53,5 +58,6 @@ class DigitTranslator
         if ($aDigit == self::SIX) return 6;
         if ($aDigit == self::SEVEN) return 7;
         if ($aDigit == self::EIGHT) return 8;
+        if ($aDigit == self::NINE) return 9;
     }
 }
