@@ -33,6 +33,11 @@ class DigitTranslator
         "|_ " .
         "|_|";
 
+    const SEVEN =
+        " _ " .
+        "  |" .
+        "  |";
+
     public function translateDigitToNumber($aDigit)
     {
         if ($aDigit == self::ONE) return 1;
@@ -41,5 +46,6 @@ class DigitTranslator
         if ($aDigit == self::FOUR) return 4;
         if ($aDigit == self::FIVE) return 5;
         if ($aDigit == self::SIX) return 6;
+        if ($aDigit == self::SEVEN) return 7;
     }
 }

@@ -86,5 +86,9 @@ TWO;
         $this->assertEquals(6, $this->digitTranslator->translateDigitToNumber(
             DigitTranslator::SIX
         ));
+
+        $this->assertEquals(7, $this->digitTranslator->translateDigitToNumber(
+            DigitTranslator::SEVEN
+        ));
     }
 }
