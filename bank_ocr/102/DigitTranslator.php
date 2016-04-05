@@ -48,16 +48,26 @@ class DigitTranslator
         "|_|" .
         "  |";
 
+    public function __construct()
+    {
+        $this->arrayOfScouts = [
+            self::ONE => 1,
+            self::TWO => 2,
+            self::THREE => 3,
+            self::FOUR => 4,
+            self::FIVE => 5,
+            self::SIX => 6,
+            self::SEVEN => 7,
+            self::EIGHT => 8,
+            self::NINE => 9
+        ];
+    }
+
     public function translateDigitToNumber($aDigit)
     {
-        if ($aDigit == self::ONE) return 1;
-        if ($aDigit == self::TWO) return 2;
-        if ($aDigit == self::THREE) return 3;
-        if ($aDigit == self::FOUR) return 4;
-        if ($aDigit == self::FIVE) return 5;
-        if ($aDigit == self::SIX) return 6;
-        if ($aDigit == self::SEVEN) return 7;
-        if ($aDigit == self::EIGHT) return 8;
-        if ($aDigit == self::NINE) return 9;
+        foreach($this->arrayOfScouts as $digit => $number) {
+            if ($digit == $aDigit)
+                return $number;
+        }
     }
 }
