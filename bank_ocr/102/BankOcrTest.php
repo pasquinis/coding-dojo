@@ -2,6 +2,7 @@
 
 require_once 'BankOcr.php';
 require_once 'DigitTranslator.php';
+require_once 'DigitReader.php';
 
 class BankOcrTest extends \PHPUnit_Framework_TestCase
 {
@@ -9,6 +10,8 @@ class BankOcrTest extends \PHPUnit_Framework_TestCase
     {
         $this->bank = new BankOcr();
         $this->digitTranslator = new DigitTranslator();
+        $this->digitReader = new DigitReader();
+
 
         $this->bankAccount = <<<ACCOUNT
     _  _     _  _  _  _  _ 
@@ -49,15 +52,15 @@ TWO;
             "  |" .
             "  |";
 
-        $this->assertEquals($numberOne, $this->bank->readDigitAtPosition($this->bankAccountWithOnlyNumberOne, $position = 0));
-        $this->assertEquals($numberOne, $this->bank->readDigitAtPosition($this->bankAccountWithOnlyNumberOne, $position = 1));
-        $this->assertEquals($numberOne, $this->bank->readDigitAtPosition($this->bankAccountWithOnlyNumberOne, $position = 2));
-        $this->assertEquals($numberOne, $this->bank->readDigitAtPosition($this->bankAccountWithOnlyNumberOne, $position = 3));
-        $this->assertEquals($numberOne, $this->bank->readDigitAtPosition($this->bankAccountWithOnlyNumberOne, $position = 4));
-        $this->assertEquals($numberOne, $this->bank->readDigitAtPosition($this->bankAccountWithOnlyNumberOne, $position = 5));
-        $this->assertEquals($numberOne, $this->bank->readDigitAtPosition($this->bankAccountWithOnlyNumberOne, $position = 6));
-        $this->assertEquals($numberOne, $this->bank->readDigitAtPosition($this->bankAccountWithOnlyNumberOne, $position = 7));
-        $this->assertEquals($numberOne, $this->bank->readDigitAtPosition($this->bankAccountWithOnlyNumberOne, $position = 8));
+        $this->assertEquals($numberOne, $this->digitReader->readDigitAtPosition($this->bankAccountWithOnlyNumberOne, $position = 0));
+        $this->assertEquals($numberOne, $this->digitReader->readDigitAtPosition($this->bankAccountWithOnlyNumberOne, $position = 1));
+        $this->assertEquals($numberOne, $this->digitReader->readDigitAtPosition($this->bankAccountWithOnlyNumberOne, $position = 2));
+        $this->assertEquals($numberOne, $this->digitReader->readDigitAtPosition($this->bankAccountWithOnlyNumberOne, $position = 3));
+        $this->assertEquals($numberOne, $this->digitReader->readDigitAtPosition($this->bankAccountWithOnlyNumberOne, $position = 4));
+        $this->assertEquals($numberOne, $this->digitReader->readDigitAtPosition($this->bankAccountWithOnlyNumberOne, $position = 5));
+        $this->assertEquals($numberOne, $this->digitReader->readDigitAtPosition($this->bankAccountWithOnlyNumberOne, $position = 6));
+        $this->assertEquals($numberOne, $this->digitReader->readDigitAtPosition($this->bankAccountWithOnlyNumberOne, $position = 7));
+        $this->assertEquals($numberOne, $this->digitReader->readDigitAtPosition($this->bankAccountWithOnlyNumberOne, $position = 8));
     }
 
     public function testShouldTranslateADigitToNumber()
