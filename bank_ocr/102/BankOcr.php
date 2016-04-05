@@ -1,28 +1,31 @@
 <?php
 
+require_once 'DigitTranslator.php';
+require_once 'DigitReader.php';
+
 class BankOcr
 {
 
-    public function __construct()
+    public function __construct(
+        DigitReader $reader,
+        DigitTranslator $translator
+    )
     {
-        $this->bankAccountWithOnlyNumberOne = <<<ONE
-                           
-  |  |  |  |  |  |  |  |  |
-  |  |  |  |  |  |  |  |  |
-ONE;
-        $this->bankAccountWithOnlyNumberTwo = <<<TWO
- _  _  _  _  _  _  _  _  _ 
- _| _| _| _| _| _| _| _| _|
-|_ |_ |_ |_ |_ |_ |_ |_ |_ 
-TWO;
+        $this->reader = $reader;
+        $this->translator = $translator;
     }
 
     public function read($bankAccount)
     {
-        if ($bankAccount == $this->bankAccountWithOnlyNumberOne)
-            return '111111111';
-        if ($bankAccount == $this->bankAccountWithOnlyNumberTwo)
-            return '222222222';
+        $bankAccountToReturn = '';
+        for ($i = 0; $i < 9; $i++) {
+            $inlineNumber = $this->reader->readDigitAtPosition(
+                $bankAccount,
+                $i
+            );
+           $bankAccountToReturn .= $this->translator->translateDigitToNumber($inlineNumber);
+        }
+        return $bankAccountToReturn;
     }
 
 }

@@ -8,9 +8,12 @@ class BankOcrTest extends \PHPUnit_Framework_TestCase
 {
     public function setUp()
     {
-        $this->bank = new BankOcr();
         $this->digitTranslator = new DigitTranslator();
         $this->digitReader = new DigitReader();
+        $this->bank = new BankOcr(
+            $this->digitReader,
+            $this->digitTranslator
+        );
 
 
         $this->bankAccount = <<<ACCOUNT

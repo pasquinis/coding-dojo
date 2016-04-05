@@ -46,7 +46,7 @@ class DigitTranslator
     const NINE =
         " _ " .
         "|_|" .
-        "  |";
+        " _|";
 
     public function __construct()
     {
@@ -66,8 +66,10 @@ class DigitTranslator
     public function translateDigitToNumber($aDigit)
     {
         foreach($this->arrayOfScouts as $digit => $number) {
-            if ($digit == $aDigit)
+            if ($digit == $aDigit) {
                 return $number;
+            }
         }
+        throw new Exception("I can not translate $aDigit$");
     }
 }
