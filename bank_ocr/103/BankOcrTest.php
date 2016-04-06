@@ -54,6 +54,12 @@ TWO;
         $this->assertEquals(0, $this->bank->checksum($accountNumber));
     }
 
+    public function testShouldFindANotValidAccountNumber()
+    {
+        $accountNumber = '111111111';
+        $this->assertNotEquals(0, $this->bank->checksum($accountNumber));
+    }
+
     public function testShouldIReadDigitAtSpecificPosition()
     {
         $numberOne = 

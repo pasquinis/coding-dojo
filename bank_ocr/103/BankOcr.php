@@ -30,7 +30,12 @@ class BankOcr
 
     public function checksum($accountNumber)
     {
-        return 0;
+        $accountNumberSplitted = str_split($accountNumber);
+        $half_sum = 0;
+        foreach($accountNumberSplitted as $index => $value) {
+            $half_sum += (9 - $index) * (int) $value;
+        }
+        return $half_sum % 11;
     }
 
 }
