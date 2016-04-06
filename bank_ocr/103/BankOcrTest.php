@@ -3,6 +3,7 @@
 require_once 'BankOcr.php';
 require_once 'DigitTranslator.php';
 require_once 'DigitReader.php';
+require_once 'DigitChecksum.php';
 
 class BankOcrTest extends \PHPUnit_Framework_TestCase
 {
@@ -10,9 +11,11 @@ class BankOcrTest extends \PHPUnit_Framework_TestCase
     {
         $this->digitTranslator = new DigitTranslator();
         $this->digitReader = new DigitReader();
+        $this->digitChecksum = new DigitChecksum();
         $this->bank = new BankOcr(
             $this->digitReader,
-            $this->digitTranslator
+            $this->digitTranslator,
+            $this->digitChecksum
         );
 
 
@@ -48,16 +51,16 @@ TWO;
         $this->assertEquals('222222222', $this->bank->read($this->bankAccountWithOnlyNumberTwo));
     }
 
-    public function testShouldValidateTheAccountNumber()
+    public function testShouldCalculateAccountChecksumAndTheModulusIsZero()
     {
         $accountNumber = '345882865';
-        $this->assertEquals(0, $this->bank->checksum($accountNumber));
+        $this->assertEquals(0, $this->digitChecksum->checksum($accountNumber));
     }
 
     public function testShouldFindANotValidAccountNumber()
     {
         $accountNumber = '111111111';
-        $this->assertNotEquals(0, $this->bank->checksum($accountNumber));
+        $this->assertNotEquals(0, $this->digitChecksum->checksum($accountNumber));
     }
 
     public function testShouldIReadDigitAtSpecificPosition()

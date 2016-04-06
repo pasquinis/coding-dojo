@@ -2,17 +2,20 @@
 
 require_once 'DigitTranslator.php';
 require_once 'DigitReader.php';
+require_once 'DigitChecksum.php';
 
 class BankOcr
 {
 
     public function __construct(
         DigitReader $reader,
-        DigitTranslator $translator
+        DigitTranslator $translator,
+        DigitChecksum $checksum
     )
     {
         $this->reader = $reader;
         $this->translator = $translator;
+        $this->checksum = $checksum;
     }
 
     public function read($bankAccount)
@@ -30,12 +33,6 @@ class BankOcr
 
     public function checksum($accountNumber)
     {
-        $accountNumberSplitted = str_split($accountNumber);
-        $half_sum = 0;
-        foreach($accountNumberSplitted as $index => $value) {
-            $half_sum += (9 - $index) * (int) $value;
-        }
-        return $half_sum % 11;
+        return $this->checksum->checksum($accountNumber);
     }
-
 }
