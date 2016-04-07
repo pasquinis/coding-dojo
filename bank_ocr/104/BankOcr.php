@@ -40,6 +40,8 @@ class BankOcr
 
     public function accountStatus($accountNumber)
     {
-        return $this->read($accountNumber);
+        $digitAccountNumber = $this->read($accountNumber);
+        $status = $this->checksum->status($digitAccountNumber);
+        return $digitAccountNumber . $status;
     }
 }

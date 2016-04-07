@@ -13,4 +13,13 @@ class DigitChecksum
         }
         return $half_sum % 11;
     }
+
+    public function status($accountNumber)
+    {
+        if ($this->checksum($accountNumber) == 0) {
+            return '';
+        } else {
+            return ' ERR';
+        };
+    }
 }
