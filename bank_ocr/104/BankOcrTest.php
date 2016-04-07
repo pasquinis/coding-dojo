@@ -115,6 +115,9 @@ VALID;
 
     public function testShouldTranslateADigitToNumber()
     {
+        $this->assertEquals(0, $this->digitTranslator->translateDigitToNumber(
+            DigitTranslator::ZERO
+        ));
 
         $this->assertEquals(1, $this->digitTranslator->translateDigitToNumber(
             DigitTranslator::ONE

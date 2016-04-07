@@ -2,6 +2,10 @@
 
 class DigitTranslator
 {
+    const ZERO =
+        " _ " .
+        "| |" .
+        "|_|";
 
     const ONE =
         "   " .
@@ -51,6 +55,7 @@ class DigitTranslator
     public function __construct()
     {
         $this->arrayOfScouts = [
+            self::ZERO => 0,
             self::ONE => 1,
             self::TWO => 2,
             self::THREE => 3,
