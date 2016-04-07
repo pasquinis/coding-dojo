@@ -31,8 +31,10 @@ class BankOcr
         return $bankAccountToReturn;
     }
 
-    public function checksum($accountNumber)
+    public function validate($accountNumber)
     {
-        return $this->checksum->checksum($accountNumber);
+        return ($this->checksum->checksum(
+            $this->read($accountNumber)) == 0
+        ) ? true : false;
     }
 }

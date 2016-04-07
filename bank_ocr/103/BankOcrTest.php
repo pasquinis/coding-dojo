@@ -51,13 +51,24 @@ TWO;
         $this->assertEquals('222222222', $this->bank->read($this->bankAccountWithOnlyNumberTwo));
     }
 
+    public function testShouldValidateACorrectBankAccount()
+    {
+        #  '3  4  5  8  8  2  8  6  5';
+        $validAccountNumber = <<<VALID
+ _     _  _  _  _  _  _  _ 
+ _||_||_ |_||_| _||_||_ |_ 
+ _|  | _||_||_||_ |_||_| _|
+VALID;
+        $this->assertTrue($this->bank->validate($validAccountNumber));
+    }
+
     public function testShouldCalculateAccountChecksumAndTheModulusIsZero()
     {
         $accountNumber = '345882865';
         $this->assertEquals(0, $this->digitChecksum->checksum($accountNumber));
     }
 
-    public function testShouldFindANotValidAccountNumber()
+    public function testShouldCalculateNotValidAccountNumberAndTheModulusIsZero()
     {
         $accountNumber = '111111111';
         $this->assertNotEquals(0, $this->digitChecksum->checksum($accountNumber));
