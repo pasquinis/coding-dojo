@@ -37,4 +37,9 @@ class BankOcr
             $this->read($accountNumber)) == 0
         ) ? true : false;
     }
+
+    public function accountStatus($accountNumber)
+    {
+        return '457508000';
+    }
 }

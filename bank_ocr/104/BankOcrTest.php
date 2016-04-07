@@ -84,6 +84,17 @@ NOTVALID;
         $this->assertNotEquals(0, $this->digitChecksum->checksum($accountNumber));
     }
 
+    public function testShouldPrintAOnlyAccountNumberIfIsValid()
+    {
+        # 457508000
+        $validAccountNumber = <<<VALID
+    _  _  _  _  _  _  _  _ 
+|_||_   ||_ | ||_|| || || |
+  | _|  | _||_||_||_||_||_|
+VALID;
+        $this->assertEquals('457508000', $this->bank->accountStatus($validAccountNumber));
+    }
+
     public function testShouldIReadDigitAtSpecificPosition()
     {
         $numberOne = 
