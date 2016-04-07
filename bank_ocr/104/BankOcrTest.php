@@ -95,6 +95,17 @@ VALID;
         $this->assertEquals('457508000', $this->bank->accountStatus($validAccountNumber));
     }
 
+    public function testShouldPrintERRInformationForNotValidBankAccount()
+    {
+        # 664371495
+        $notValidAccountNumber = <<<NOTVALID
+ _  _     _  _        _  _ 
+|_ |_ |_| _|  |  ||_||_||_ 
+|_||_|  | _|  |  |  | _| _|
+NOTVALID;
+        $this->assertEquals('664371495 ERR', $this->bank->accountStatus($notValidAccountNumber));
+    }
+
     public function testShouldIReadDigitAtSpecificPosition()
     {
         $numberOne = 
