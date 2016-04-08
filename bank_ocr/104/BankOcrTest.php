@@ -72,6 +72,16 @@ NOTVALID;
         $this->assertFalse($this->bank->validate($notValidAccountNumber));
     }
 
+    public function testShouldFixWrongAccountNumber()
+    {
+        $notValidAccountNumber = <<<NOTVALID
+                           
+  |  |  |  |  |  |  |  |  |
+  |  |  |  |  |  |  |  |  |
+NOTVALID;
+        $this->assertEquals('711111111', $this->bank->fix($notValidAccountNumber));
+    }
+
     public function testShouldCalculateAccountChecksumAndTheModulusIsZero()
     {
         $accountNumber = '345882865';
