@@ -30,6 +30,12 @@ class DigitChecksum
         return self::OK_CHECKSUM;
     }
 
+    public function compatible($aNumber)
+    {
+        if ($aNumber == 0)
+            return [8];
+    }
+
     private function isIllegibleAccount($accountNumber)
     {
         return strpos($accountNumber, '?') !== false;

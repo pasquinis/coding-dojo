@@ -94,6 +94,12 @@ NOTVALID;
         $this->assertNotEquals(0, $this->digitChecksum->checksum($accountNumber));
     }
 
+    public function testShouldFindCompatibleNumber()
+    {
+        $zero = 0;
+        $this->assertEquals([8], $this->digitChecksum->compatible($zero));
+    }
+
     public function testShouldPrintAOnlyAccountNumberIfIsValid()
     {
         # 457508000
