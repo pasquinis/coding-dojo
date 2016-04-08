@@ -106,6 +106,18 @@ NOTVALID;
         $this->assertEquals('664371495 ERR', $this->bank->accountStatus($notValidAccountNumber));
     }
 
+    public function testShouldPrintILLInformatinIfBankAccountContainsIllegibleCharacter()
+    {
+        #86110??36 ILL
+        $illegibleAccountNumber = <<<ILLEGIBLE
+ _  _        _  _  _  _  _ 
+|_||_   |  || || || | _||_ 
+|_||_|  |  ||_||    | _||_|
+ILLEGIBLE;
+
+        $this->assertEquals('#86110??36 ILL', $this->bank->accountStatus($illegibleAccountNumber));
+    }
+
     public function testShouldIReadDigitAtSpecificPosition()
     {
         $numberOne = 
