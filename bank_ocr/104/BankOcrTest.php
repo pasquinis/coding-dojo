@@ -115,7 +115,7 @@ NOTVALID;
 |_||_|  |  ||_||    | _||_|
 ILLEGIBLE;
 
-        $this->assertEquals('#86110??36 ILL', $this->bank->accountStatus($illegibleAccountNumber));
+        $this->assertEquals('86110??36 ILL', $this->bank->accountStatus($illegibleAccountNumber));
     }
 
     public function testShouldIReadDigitAtSpecificPosition()
@@ -186,6 +186,7 @@ ILLEGIBLE;
 | |
   |
 ILLEGIBLE_NUMBER;
+
         $this->assertEquals('?', $this->digitTranslator->translateDigitToNumber($illegibleNumber));
     }
 }

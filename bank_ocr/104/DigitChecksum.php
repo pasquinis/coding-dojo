@@ -3,6 +3,8 @@
 class DigitChecksum
 {
     const ACCOUNT_LENGHT = 9;
+    const WRONG_CHECKSUM = ' ERR';
+    const OK_CHECKSUM = '';
 
     public function checksum($accountNumber)
     {
@@ -17,9 +19,9 @@ class DigitChecksum
     public function status($accountNumber)
     {
         if ($this->checksum($accountNumber) == 0) {
-            return '';
+            return self::OK_CHECKSUM;
         } else {
-            return ' ERR';
+            return self::WRONG_CHECKSUM;
         };
     }
 }
