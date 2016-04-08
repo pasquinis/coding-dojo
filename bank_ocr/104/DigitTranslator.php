@@ -2,6 +2,8 @@
 
 class DigitTranslator
 {
+    const ILLEGIBLE_NUMBER = '?';
+
     const ZERO =
         " _ " .
         "| |" .
@@ -75,6 +77,7 @@ class DigitTranslator
                 return $number;
             }
         }
-        throw new Exception("I can not translate $aDigit$");
+
+        return self::ILLEGIBLE_NUMBER;
     }
 }

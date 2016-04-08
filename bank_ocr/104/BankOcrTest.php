@@ -178,4 +178,14 @@ ILLEGIBLE;
             DigitTranslator::NINE
         ));
     }
+
+    public function testShouldObtainQuestionMarkForIllegibleNumber()
+    {
+        $illegibleNumber = <<<ILLEGIBLE_NUMBER
+ _ 
+| |
+  |
+ILLEGIBLE_NUMBER;
+        $this->assertEquals('?', $this->digitTranslator->translateDigitToNumber($illegibleNumber));
+    }
 }
