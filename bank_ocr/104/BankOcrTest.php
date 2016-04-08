@@ -98,9 +98,27 @@ NOTVALID;
     {
         $zero = 0;
         $this->assertEquals([8], $this->digitChecksum->compatible($zero));
-        
+
         $one = 1;
         $this->assertEquals([7], $this->digitChecksum->compatible($one));
+
+        $three = 3;
+        $this->assertEquals([9], $this->digitChecksum->compatible($three));
+
+        $five = 5;
+        $this->assertEquals([6, 9], $this->digitChecksum->compatible($five));
+
+        $six = 6;
+        $this->assertEquals([8], $this->digitChecksum->compatible($six));
+
+        $seven = 7;
+        $this->assertEquals([1], $this->digitChecksum->compatible($seven));
+
+        $eight = 8;
+        $this->assertEquals([0], $this->digitChecksum->compatible($eight));
+
+        $nine = 9;
+        $this->assertEquals([5, 8], $this->digitChecksum->compatible($nine));
     }
 
     public function testShouldPrintAOnlyAccountNumberIfIsValid()
