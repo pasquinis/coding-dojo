@@ -5,6 +5,7 @@ class DigitChecksum
     const ACCOUNT_LENGHT = 9;
     const WRONG_CHECKSUM = ' ERR';
     const OK_CHECKSUM = '';
+    const ILLEGIBLE_CHECKSUM = ' ILL';
 
     public function checksum($accountNumber)
     {
@@ -18,14 +19,24 @@ class DigitChecksum
 
     public function status($accountNumber)
     {
-        if (strpos($accountNumber, '?') !== false) {
-            return ' ILL';
+        if ($this->isIllegibleAccount($accountNumber)) {
+            return self::ILLEGIBLE_CHECKSUM;
         }
 
-        if ($this->checksum($accountNumber) != 0) {
+        if ($this->isWrongChecksum($accountNumber)) {
             return self::WRONG_CHECKSUM;
         };
 
         return self::OK_CHECKSUM;
+    }
+
+    private function isIllegibleAccount($accountNumber)
+    {
+        return strpos($accountNumber, '?') !== false;
+    }
+
+    private function isWrongChecksum($accountNumber)
+    {
+        return $this->checksum($accountNumber) != 0;
     }
 }
