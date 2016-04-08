@@ -34,6 +34,8 @@ class DigitChecksum
     {
         if ($aNumber == 0)
             return [8];
+        if ($aNumber == 1)
+            return [7];
     }
 
     private function isIllegibleAccount($accountNumber)
