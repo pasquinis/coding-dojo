@@ -18,10 +18,14 @@ class DigitChecksum
 
     public function status($accountNumber)
     {
-        if ($this->checksum($accountNumber) == 0) {
-            return self::OK_CHECKSUM;
-        } else {
+        if (strpos($accountNumber, '?') !== false) {
+            return ' ILL';
+        }
+
+        if ($this->checksum($accountNumber) != 0) {
             return self::WRONG_CHECKSUM;
         };
+
+        return self::OK_CHECKSUM;
     }
 }
