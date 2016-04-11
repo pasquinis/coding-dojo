@@ -7,6 +7,20 @@ class DigitChecksum
     const OK_CHECKSUM = '';
     const ILLEGIBLE_CHECKSUM = ' ILL';
 
+    public function __construct()
+    {
+        $this->compatibleNumbers = [
+            0 => [8],
+            1 => [7],
+            3 => [9],
+            5 => [6, 9],
+            6 => [8],
+            7 => [1],
+            8 => [0],
+            9 => [5, 8]
+        ];
+    }
+
     public function checksum($accountNumber)
     {
         $accountNumberSplitted = str_split($accountNumber);
@@ -32,22 +46,10 @@ class DigitChecksum
 
     public function compatible($aNumber)
     {
-        if ($aNumber == 0)
-            return [8];
-        if ($aNumber == 1)
-            return [7];
-        if ($aNumber == 3)
-            return [9];
-        if ($aNumber == 5)
-            return [6, 9];
-        if ($aNumber == 6)
-            return [8];
-        if ($aNumber == 7)
-            return [1];
-        if ($aNumber == 8)
-            return [0];
-        if ($aNumber == 9)
-            return [5, 8];
+        foreach($this->compatibleNumbers as $key => $value) {
+            if ($aNumber == $key)
+                return $value;
+        }
 
         return [ $aNumber ];
     }
