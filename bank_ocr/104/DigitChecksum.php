@@ -44,6 +44,29 @@ class DigitChecksum
         return self::OK_CHECKSUM;
     }
 
+    public function alternatives($aDigitNumber)
+    {
+        $arrayAccountNumber = null;
+        preg_match_all("/\w/", $aDigitNumber, $arrayAccountNumber);
+        $pos = 0;
+        $possibleAccountNumber = [];
+        foreach($arrayAccountNumber[0] as $character) {
+            $alternative = $this->compatible($character)[0];
+            $modifiedADigitNumber = $aDigitNumber;
+            $modifiedADigitNumber[$pos] = $alternative;
+            $possibleAccountNumber[] = $modifiedADigitNumber;
+            $pos++;
+        }
+
+        $definitivePossibleAccount = [];
+        foreach($possibleAccountNumber as $account) {
+            if ($this->status($account) == '') {
+                $definitivePossibleAccount[] = $account;
+            }
+        }
+        return $definitivePossibleAccount;
+    }
+
     public function compatible($aNumber)
     {
         foreach($this->compatibleNumbers as $key => $value) {
