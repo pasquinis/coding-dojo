@@ -80,6 +80,13 @@ NOTVALID;
   |  |  |  |  |  |  |  |  |
 NOTVALID;
         $this->assertEquals('711111111', $this->bank->fix($notValidAccountNumber));
+
+        $notValidAccountNumber = <<<NOTVALID
+ _  _  _  _  _  _  _  _  _ 
+ _|| || || || || || || || |
+|_ |_||_||_||_||_||_||_||_|
+NOTVALID;
+        $this->assertEquals('200800000', $this->bank->fix($notValidAccountNumber));
     }
 
     public function testShouldCalculateAccountChecksumAndTheModulusIsZero()
