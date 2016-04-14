@@ -46,6 +46,35 @@ class DigitChecksum
 
     public function alternatives($aDigitNumber)
     {
+        $possibleAccountNumber = $this->preparePossibleAccount($aDigitNumber);
+        $definitivePossibleAccount = $this->prepareDefinitiveAccount($possibleAccountNumber);
+        return $definitivePossibleAccount;
+    }
+
+    public function compatible($aNumber)
+    {
+        foreach($this->compatibleNumbers as $key => $value) {
+            if ($aNumber == $key)
+                return $value;
+        }
+
+        return [ $aNumber ];
+    }
+
+    private function prepareDefinitiveAccount($possibleAccountNumber)
+    {
+        $definitivePossibleAccount = [];
+        foreach($possibleAccountNumber as $account) {
+            if ($this->status($account) == '') {
+                $definitivePossibleAccount[] = $account;
+            }
+        }
+
+        return $definitivePossibleAccount;
+    }
+
+    private function preparePossibleAccount($aDigitNumber)
+    {
         $arrayAccountNumber = null;
         preg_match_all("/\w/", $aDigitNumber, $arrayAccountNumber);
         $pos = 0;
@@ -58,23 +87,7 @@ class DigitChecksum
             $pos++;
         }
 
-        $definitivePossibleAccount = [];
-        foreach($possibleAccountNumber as $account) {
-            if ($this->status($account) == '') {
-                $definitivePossibleAccount[] = $account;
-            }
-        }
-        return $definitivePossibleAccount;
-    }
-
-    public function compatible($aNumber)
-    {
-        foreach($this->compatibleNumbers as $key => $value) {
-            if ($aNumber == $key)
-                return $value;
-        }
-
-        return [ $aNumber ];
+        return $possibleAccountNumber;
     }
 
     private function isIllegibleAccount($accountNumber)
