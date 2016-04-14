@@ -72,7 +72,7 @@ NOTVALID;
         $this->assertFalse($this->bank->validate($notValidAccountNumber));
     }
 
-    public function testShouldFixWrongAccountNumber()
+    public function testShouldFixWrongAccountNumberIfThereIsOnlyOneAlternative()
     {
         $notValidAccountNumber = <<<NOTVALID
                            
@@ -97,7 +97,7 @@ NOTVALID;
     public function testShouldCalculateAlternativesBankAccount() 
     {
         $accountNumber = '111111111';
-        $this->assertEquals(['711111111'], $this->digitChecksum->alternatives($accountNumber));
+        $this->assertEquals('711111111', $this->digitChecksum->alternatives($accountNumber));
     }
 
     public function testShouldFindCompatibleNumber()

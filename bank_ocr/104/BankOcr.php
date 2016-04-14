@@ -48,10 +48,6 @@ class BankOcr
     public function fix($accountNumber)
     {
         $digitAccountNumber = $this->read($accountNumber);
-        // foreach character try to find the compatible number
-        // and check if the status is OK
-        // For several options return an array
-
-        return '711111111';
+        return $this->checksum->alternatives($digitAccountNumber);
     }
 }

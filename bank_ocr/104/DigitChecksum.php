@@ -48,7 +48,7 @@ class DigitChecksum
     {
         $possibleAccountNumber = $this->preparePossibleAccount($aDigitNumber);
         $definitivePossibleAccount = $this->prepareDefinitiveAccount($possibleAccountNumber);
-        return $definitivePossibleAccount;
+        return $definitivePossibleAccount[0];
     }
 
     public function compatible($aNumber)
