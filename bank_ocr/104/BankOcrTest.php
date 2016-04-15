@@ -89,6 +89,19 @@ NOTVALID;
         $this->assertEquals('200800000', $this->bank->fix($notValidAccountNumber));
     }
 
+    public function testShouldFindAmbiguousCorrectAccountNumber()
+    {
+        $ambiguousAccountNumber = <<<AMBIGUOUS
+ _  _  _  _  _  _  _  _  _ 
+|_ |_ |_ |_ |_ |_ |_ |_ |_ 
+ _| _| _| _| _| _| _| _| _|
+AMBIGUOUS;
+        $this->assertEquals(
+            "555555555 AMB ['559555555', '555655555']",
+            $this->bank->fix($ambiguousAccountNumber)
+        );
+    }
+
     public function testShouldCalculateAccountChecksumAndTheModulusIsZero()
     {
         $accountNumber = '345882865';
@@ -110,7 +123,7 @@ NOTVALID;
     public function testShouldObtainMultipleAlternativeForABankAccount()
     {
         $accountNumber = '555555555';
-        $this->assertEquals(['559555555', '555655555'], $this->digitChecksum->alternatives($accountNumber));
+        $this->assertEquals("555555555 AMB ['559555555', '555655555']", $this->digitChecksum->alternatives($accountNumber));
     }
 
     public function testShouldFindCompatibleNumber()

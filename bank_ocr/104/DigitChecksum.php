@@ -51,7 +51,7 @@ class DigitChecksum
         if (count($definitivePossibleAccount) == 1) {
             return $definitivePossibleAccount[0];
         }
-        return $definitivePossibleAccount;
+        return $aDigitNumber . $this->printMultipleAlternatives($definitivePossibleAccount);
     }
 
     public function compatible($aNumber)
@@ -62,6 +62,14 @@ class DigitChecksum
         }
 
         return [ $aNumber ];
+    }
+
+    private function printMultipleAlternatives($alternatives)
+    {
+       return sprintf(
+           " AMB ['%s']",
+           implode("', '", $alternatives)
+       );
     }
 
     private function prepareDefinitiveAccount($possibleAccountNumber)
