@@ -48,7 +48,10 @@ class DigitChecksum
     {
         $possibleAccountNumber = $this->preparePossibleAccount($aDigitNumber);
         $definitivePossibleAccount = $this->prepareDefinitiveAccount($possibleAccountNumber);
-        return $definitivePossibleAccount[0];
+        if (count($definitivePossibleAccount) == 1) {
+            return $definitivePossibleAccount[0];
+        }
+        return $definitivePossibleAccount;
     }
 
     public function compatible($aNumber)
@@ -80,10 +83,11 @@ class DigitChecksum
         $pos = 0;
         $possibleAccountNumber = [];
         foreach($arrayAccountNumber[0] as $character) {
-            $alternative = $this->compatible($character)[0];
-            $modifiedADigitNumber = $aDigitNumber;
-            $modifiedADigitNumber[$pos] = $alternative;
-            $possibleAccountNumber[] = $modifiedADigitNumber;
+            foreach($this->compatible($character) as $choise) {
+                $modifiedADigitNumber = $aDigitNumber;
+                $modifiedADigitNumber[$pos] = $choise;
+                $possibleAccountNumber[] = $modifiedADigitNumber;
+            }
             $pos++;
         }
 

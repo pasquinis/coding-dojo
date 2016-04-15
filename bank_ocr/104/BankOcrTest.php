@@ -107,6 +107,12 @@ NOTVALID;
         $this->assertEquals('711111111', $this->digitChecksum->alternatives($accountNumber));
     }
 
+    public function testShouldObtainMultipleAlternativeForABankAccount()
+    {
+        $accountNumber = '555555555';
+        $this->assertEquals(['559555555', '555655555'], $this->digitChecksum->alternatives($accountNumber));
+    }
+
     public function testShouldFindCompatibleNumber()
     {
         $zero = 0;
