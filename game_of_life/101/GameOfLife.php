@@ -9,15 +9,22 @@ class GameOfLife
     {
         switch($cellStatus) {
             case self::ALIVE:
-                if((1 < $aliveNeighbours) && ($aliveNeighbours < 4))
-                    return self::ALIVE;
-                return self::DEAD;
+                return $this->neighboursAreBetweenTwoAndThree($aliveNeighbours);
                 break;
             case self::DEAD:
-                if($aliveNeighbours == 3)
-                    return self::ALIVE;
-                return self::DEAD;
+                return $this->neighboursAreExactlyThree($aliveNeighbours);
                 break;
         }
+        return self::DEAD;
+    }
+
+    private function neighboursAreBetweenTwoAndThree($aliveNeighbours)
+    {
+        return (1 < $aliveNeighbours) && ($aliveNeighbours < 4);
+    }
+
+    private function neighboursAreExactlyThree($aliveNeighbours)
+    {
+        return $aliveNeighbours == 3;
     }
 }
