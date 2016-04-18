@@ -30,4 +30,9 @@ class GameOfLifeTest extends \PHPUnit_Framework_TestCase
         $this->assertFalse($this->gol->nextGeneration(GameOfLife::ALIVE, $aliveNeighbours = 7));
         $this->assertFalse($this->gol->nextGeneration(GameOfLife::ALIVE, $aliveNeighbours = 8));
     }
+
+    public function testShouldBecomeLiveCellWhenTherAreThreeAliveNeighbours()
+    {
+        $this->assertTrue($this->gol->nextGeneration(GameOfLife::DEAD, $aliveNeighbours = 3));
+    }
 }
