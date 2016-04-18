@@ -4,10 +4,21 @@ require_once 'GameOfLife.php';
 
 class GameOfLifeTest extends \PHPUnit_Framework_TestCase
 {
-    public function testShouldDieCellWithFewerThenTwoNeighbours()
+
+    protected function setUp()
     {
-        $gol = new GameOfLife();
-        $this->assertFalse($gol->nextGeneration($alive = false, $neighboursLive = 1));
-        $this->assertFalse($gol->nextGeneration($alive = false, $neighboursLive = 2));
+        $this->gol = new GameOfLife();
+    }
+
+    public function testShouldDieCellWithFewerThenTwoAliveNeighbours()
+    {
+        $this->assertFalse($this->gol->nextGeneration(GameOfLife::ALIVE, $neighboursLive = 0));
+        $this->assertFalse($this->gol->nextGeneration(GameOfLife::ALIVE, $neighboursLive = 1));
+    }
+
+    public function testShouldLiveCellWhenAliveNeighboursAreTwoOrThree()
+    {
+        $this->assertTrue($this->gol->nextGeneration(GameOfLife::ALIVE, $neighboursLive = 2));
+        $this->assertTrue($this->gol->nextGeneration(GameOfLife::ALIVE, $neighboursLive = 3));
     }
 }
