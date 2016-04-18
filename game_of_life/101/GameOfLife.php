@@ -5,10 +5,10 @@ class GameOfLife
     const ALIVE = true;
     const DEAD = false;
 
-    public function nextGeneration($alive, $neighbours)
+    public function nextGeneration($cellStatus, $aliveNeighbours)
     {
-        if($neighbours < 2)
-            return self::DEAD;
-        return self::ALIVE;
+        if((1 < $aliveNeighbours) && ($aliveNeighbours < 4))
+            return self::ALIVE;
+        return self::DEAD;
     }
 }
