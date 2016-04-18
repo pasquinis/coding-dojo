@@ -8,5 +8,6 @@ class GameOfLifeTest extends \PHPUnit_Framework_TestCase
     {
         $gol = new GameOfLife();
         $this->assertFalse($gol->nextGeneration($alive = false, $neighboursLive = 1));
+        $this->assertFalse($gol->nextGeneration($alive = false, $neighboursLive = 2));
     }
 }
