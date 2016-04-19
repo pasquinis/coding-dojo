@@ -53,4 +53,12 @@ EMPTY;
     {
         $this->assertEquals(0, $this->gol->neighbours($x = 0, $y = 0));
     }
+
+    public function testShouldCalculateTick()
+    {
+        $this->gol->add([[1, 1] , [1,2], [1,3]]);
+        $this->assertEquals(1, $this->gol->neighbours($x = 1, $y = 1));
+        $this->assertEquals(2, $this->gol->neighbours($x = 1, $y = 2));
+        $this->assertEquals(1, $this->gol->neighbours($x = 1, $y = 3));
+    }
 }

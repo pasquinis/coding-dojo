@@ -17,6 +17,13 @@ class GameOfLife
         return $this->heredocTheGrid($this->grid);
     }
 
+    public function add(array $coordinates)
+    {
+        foreach($coordinates as $coordinate) {
+            $this->grid[$coordinate[0]][$coordinate[1]] = self::ALIVE_CELL;
+        }
+    }
+
     public function nextGeneration($cellStatus, $aliveNeighbours)
     {
         switch($cellStatus) {
@@ -35,13 +42,21 @@ class GameOfLife
         $count = 0;
         for($i = $xCoordinate - 1; $i <= $xCoordinate + 1; $i++) {
             for($j = $yCoordinate - 1; $j <= $yCoordinate + 1; $j++) {
-                if ($this->isAnAliveCell($i, $j)) {
-                        $count++;
-             }
+                if (
+                    $this->isAnAliveCell($i, $j) &&
+                    $this->isNotTheCurrentCell($i, $j, $xCoordinate, $yCoordinate)
+                ) {
+                    $count++;
+                }
             }
         }
 
         return $count;
+    }
+
+    private function isNotTheCurrentCell($i, $j, $xCoordinate, $yCoordinate)
+    {
+        return !(($i == $xCoordinate) && ($j == $yCoordinate));
     }
 
     private function isAnAliveCell($i, $j)
