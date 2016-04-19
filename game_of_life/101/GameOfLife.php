@@ -18,6 +18,11 @@ class GameOfLife
         return self::DEAD;
     }
 
+    public function neighbours($xCoordinate, $yCoordinate)
+    {
+        return 0;
+    }
+
     private function neighboursAreBetweenTwoAndThree($aliveNeighbours)
     {
         return (1 < $aliveNeighbours) && ($aliveNeighbours < 4);

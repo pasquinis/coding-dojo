@@ -35,4 +35,9 @@ class GameOfLifeTest extends \PHPUnit_Framework_TestCase
     {
         $this->assertTrue($this->gol->nextGeneration(GameOfLife::DEAD, $aliveNeighbours = 3));
     }
+
+    public function testShouldCalculateCoordinatesForNeighbours()
+    {
+        $this->assertEquals(0, $this->gol->neighbours(0, 0));
+    }
 }
