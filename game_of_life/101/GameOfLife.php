@@ -35,15 +35,21 @@ class GameOfLife
         $count = 0;
         for($i = $xCoordinate - 1; $i <= $xCoordinate + 1; $i++) {
             for($j = $yCoordinate - 1; $j <= $yCoordinate + 1; $j++) {
-                if (isset($this->grid[$i][$j])) {
-                    if ($this->grid[$i][$j] == self::ALIVE_CELL) {
+                if ($this->isAnAliveCell($i, $j)) {
                         $count++;
-                    }
-                }
+             }
             }
         }
 
         return $count;
+    }
+
+    private function isAnAliveCell($i, $j)
+    {
+        return (
+            (isset($this->grid[$i][$j])) &&
+            ($this->grid[$i][$j] == self::ALIVE_CELL)
+        );
     }
 
     private function neighboursAreBetweenTwoAndThree($aliveNeighbours)
