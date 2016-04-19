@@ -40,4 +40,17 @@ class GameOfLifeTest extends \PHPUnit_Framework_TestCase
     {
         $this->assertEquals(0, $this->gol->neighbours(0, 0));
     }
+
+    public function testShouldCreateEmptyGrid()
+    {
+        $emptyGrid = <<<EMPTY
+
+........
+........
+........
+........
+EMPTY;
+
+        $this->assertEquals($emptyGrid, $this->gol->grid(4,8));
+    }
 }
