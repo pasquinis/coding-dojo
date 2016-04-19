@@ -5,13 +5,17 @@ class GameOfLife
     const ALIVE = true;
     const DEAD = false;
     const DEAD_CELL = '.';
+    const ALIVE_CELL = '*';
 
-    public function grid($width, $height)
+    public function __construct($width, $height)
     {
-        $emptyGrid = $this->prepareEmptyGrid($width, $height);
-        return $this->heredocTheGrid($emptyGrid);
+        $this->grid = $this->prepareEmptyGrid($width, $height);
     }
 
+    public function grid()
+    {
+        return $this->heredocTheGrid($this->grid);
+    }
 
     public function nextGeneration($cellStatus, $aliveNeighbours)
     {
@@ -28,7 +32,18 @@ class GameOfLife
 
     public function neighbours($xCoordinate, $yCoordinate)
     {
-        return 0;
+        $count = 0;
+        for($i = $xCoordinate - 1; $i <= $xCoordinate + 1; $i++) {
+            for($j = $yCoordinate - 1; $j <= $yCoordinate + 1; $j++) {
+                if (isset($this->grid[$i][$j])) {
+                    if ($this->grid[$i][$j] == self::ALIVE_CELL) {
+                        $count++;
+                    }
+                }
+            }
+        }
+
+        return $count;
     }
 
     private function neighboursAreBetweenTwoAndThree($aliveNeighbours)

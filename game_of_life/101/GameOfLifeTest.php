@@ -7,7 +7,7 @@ class GameOfLifeTest extends \PHPUnit_Framework_TestCase
 
     protected function setUp()
     {
-        $this->gol = new GameOfLife();
+        $this->gol = new GameOfLife(4, 8);
     }
 
     public function testShouldDieCellWithFewerThenTwoAliveNeighbours()
@@ -36,11 +36,6 @@ class GameOfLifeTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($this->gol->nextGeneration(GameOfLife::DEAD, $aliveNeighbours = 3));
     }
 
-    public function testShouldCalculateCoordinatesForNeighbours()
-    {
-        $this->assertEquals(0, $this->gol->neighbours(0, 0));
-    }
-
     public function testShouldCreateEmptyGrid()
     {
         $emptyGrid = <<<EMPTY
@@ -51,6 +46,11 @@ class GameOfLifeTest extends \PHPUnit_Framework_TestCase
 ........
 EMPTY;
 
-        $this->assertEquals($emptyGrid, $this->gol->grid(4,8));
+        $this->assertEquals($emptyGrid, $this->gol->grid());
+    }
+
+    public function testShouldCalculateCoordinatesForNeighbours()
+    {
+        $this->assertEquals(0, $this->gol->neighbours($x = 0, $y = 0));
     }
 }
