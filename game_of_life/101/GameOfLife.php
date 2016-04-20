@@ -10,6 +10,24 @@ class GameOfLife
     public function __construct($width, $height)
     {
         $this->grid = $this->prepareEmptyGrid($width, $height);
+        $this->nextGenerationGrid = $this->prepareEmptyGrid($width, $height);
+    }
+
+    public function tick()
+    {
+        $width = count($this->grid);
+        $height = count($this->grid[0]);
+        for($i = 0; $i < $width; $i++) {
+            for($j = 0; $j < $height; $j++) {
+                $todayStatus =  ($this->grid[$i][$j] == self::ALIVE_CELL) ? self::ALIVE : self::DEAD ;
+                $aliveNeighbours = $this->neighbours($i, $j);
+                $generation = $this->nextGeneration($todayStatus, $aliveNeighbours);
+                $status = $generation ? self::ALIVE_CELL : self::DEAD_CELL;
+                $this->nextGenerationGrid[$i][$j] = $status;
+            }
+        }
+
+        $this->grid = $this->nextGenerationGrid;
     }
 
     public function grid()
@@ -85,7 +103,7 @@ class GameOfLife
         for($i = 0; $i < $width; $i++) {
             $stringGrid .= PHP_EOL;
             for($j = 0; $j < $height; $j++) {
-                $stringGrid .= self::DEAD_CELL;
+                $stringGrid .= $grid[$i][$j];
             }
         }
 
@@ -97,7 +115,7 @@ class GameOfLife
         $grid[] = [];
         for($i = 0; $i < $width; $i++) {
             for($j = 0; $j < $height; $j++) {
-                $grid[$i][$j] = '.';
+                $grid[$i][$j] = self::DEAD_CELL;
             }
         }
         return $grid;
