@@ -8,8 +8,11 @@ class GameOfLife
 
     public function nextGeneration($currentStatus, $aliveNeighbours)
     {
-        if($aliveNeighbours < 2)
-            return self::DEAD;
-        return self::ALIVE;
+        if(
+            (2 <= $aliveNeighbours) &&
+            ($aliveNeighbours <= 3)
+        )
+            return self::ALIVE;
+        return self::DEAD;
     }
 }
