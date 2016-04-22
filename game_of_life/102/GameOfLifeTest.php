@@ -10,6 +10,19 @@ class GameOfLifeTest extends \PHPUnit_Framework_TestCase
         $this->gol = new GameOfLife();
     }
 
+    public function testGivenOneCoordinatesIReceiveTheNineCandidatesNeighbours()
+    {
+        $start = [1, 1];
+
+        $candidates = [
+            [0, 0], [0, 1], [0, 2],
+            [1, 0], [1, 1], [1, 2],
+            [2, 0], [2, 1], [2, 2]
+        ];
+
+        $this->assertEquals($candidates, $this->gol->candidates($start));
+    }
+
     public function testGivenALiveCellWithFewerThanTwoNeighboursTheCellDies()
     {
         $this->assertEquals(
