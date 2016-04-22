@@ -8,18 +8,20 @@ class GameOfLife
 
     public function nextGeneration($currentStatus, $aliveNeighbours)
     {
-        if($currentStatus == self::ALIVE) {
-            if(
-                (2 <= $aliveNeighbours) &&
-                ($aliveNeighbours <= 3)
-            )
-                return self::ALIVE;
-            return self::DEAD;
+        switch ($currentStatus) {
+            case self::ALIVE:
+                if ($this->isBetweenTo(2, 3, $aliveNeighbours))
+                    return self::ALIVE;
+                break;
+            case self::DEAD:
+                if($this->isBetweenTo(3, 3, $aliveNeighbours))
+                    return self::ALIVE;
+                break;
         }
-        if($currentStatus == self::DEAD) {
-            if($aliveNeighbours == 3)
-                return self::ALIVE;
-            return self::DEAD;
-        }
+        return self::DEAD;
+    }
+
+    private function isBetweenTo($left, $right, $value) {
+        return (($left <= $value) && ($value <= $right));
     }
 }
