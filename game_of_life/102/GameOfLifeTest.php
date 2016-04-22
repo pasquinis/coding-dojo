@@ -21,6 +21,20 @@ class GameOfLifeTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($expectedGeneration, $this->gol->generation());
     }
 
+
+    public function testAddingAPatternToArrayOfAliveCoordinates()
+    {
+        $blinker = [[1, 0], [1, 1], [1, 2]];
+        $square = [[0, 0], [0, 1], [1, 0], [1, 1]];
+
+        $this->gol->add($blinker);
+        $this->assertEquals($blinker, $this->gol->getAliveCoordinates());
+        $this->gol->add($blinker);
+        $this->assertEquals($blinker, $this->gol->getAliveCoordinates());
+        $this->gol->add($square);
+        $this->assertEquals($uniqueCoordinates = 5, count($this->gol->getAliveCoordinates()));
+    }
+
     public function testGivenOneCoordinatesIReceiveTheNineCandidatesNeighbours()
     {
         $start = [1, 1];

@@ -5,13 +5,26 @@ class GameOfLife
 
     const ALIVE = true;
     const DEAD = false;
+    private $aliveCoordinates = [];
 
-    public function add($patterns) {}
+    public function add($patterns)
+    {
+        $this->aliveCoordinates = array_unique(
+            array_merge($this->aliveCoordinates, $patterns),
+            SORT_REGULAR
+        );
+    }
 
     public function tick() {}
 
-    public function generation() {
+    public function generation()
+    {
         return $expectedGeneration = [[0, 1], [1, 1], [2, 1]];
+    }
+
+    public function getAliveCoordinates()
+    {
+        return $this->aliveCoordinates;
     }
 
     public function nextGeneration($currentStatus, $aliveNeighbours)
