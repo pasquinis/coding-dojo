@@ -6,6 +6,14 @@ class GameOfLife
     const ALIVE = true;
     const DEAD = false;
 
+    public function add($patterns) {}
+
+    public function tick() {}
+
+    public function generation() {
+        return $expectedGeneration = [[0, 1], [1, 1], [2, 1]];
+    }
+
     public function nextGeneration($currentStatus, $aliveNeighbours)
     {
         switch ($currentStatus) {

@@ -10,6 +10,17 @@ class GameOfLifeTest extends \PHPUnit_Framework_TestCase
         $this->gol = new GameOfLife();
     }
 
+    public function testGivenAPatternIFindTheNextGeneration()
+    {
+        $blinker = [[1, 0], [1, 1], [1, 2]];
+        $expectedGeneration = [[0, 1], [1, 1], [2, 1]];
+
+        $this->gol->add($blinker);
+        $this->gol->tick();
+
+        $this->assertEquals($expectedGeneration, $this->gol->generation());
+    }
+
     public function testGivenOneCoordinatesIReceiveTheNineCandidatesNeighbours()
     {
         $start = [1, 1];
