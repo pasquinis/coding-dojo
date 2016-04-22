@@ -40,5 +40,21 @@ class GameOfLifeTest extends \PHPUnit_Framework_TestCase
             GameOfLife::DEAD,
             $this->gol->nextGeneration(GameOfLife::ALIVE, $neighbours = 4)
         );
+        $this->assertEquals(
+            GameOfLife::DEAD,
+            $this->gol->nextGeneration(GameOfLife::ALIVE, $neighbours = 5)
+        );
+        $this->assertEquals(
+            GameOfLife::DEAD,
+            $this->gol->nextGeneration(GameOfLife::ALIVE, $neighbours = 6)
+        );
+        $this->assertEquals(
+            GameOfLife::DEAD,
+            $this->gol->nextGeneration(GameOfLife::ALIVE, $neighbours = 7)
+        );
+        $this->assertEquals(
+            GameOfLife::DEAD,
+            $this->gol->nextGeneration(GameOfLife::ALIVE, $neighbours = 8)
+        );
     }
 }
