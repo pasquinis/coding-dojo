@@ -47,7 +47,7 @@ class GameOfLifeTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($aliveNeighbours = 2, $this->gol->neighbours($start));
     }
 
-    public function testGivenOneCoordinatesIReceiveTheNineCandidatesNeighbours()
+    public function testGivenOneCoordinatesIReceiveTheEightCandidatesNeighbours()
     {
         $start = [1, 1];
 
