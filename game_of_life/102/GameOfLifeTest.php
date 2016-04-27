@@ -35,13 +35,25 @@ class GameOfLifeTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($uniqueCoordinates = 5, count($this->gol->getAliveCoordinates()));
     }
 
+    public function testGivenOneCoordinateICanCalculateTheAliveNeighbours()
+    {
+        $start = [1, 1];
+        $blinker = [[1, 0], [1, 1], [1, 2]];
+        $square = [ [3, 1], [3, 2], [4, 1], [4, 2]];
+
+        $this->gol->add($blinker);
+        $this->gol->add($square);
+
+        $this->assertEquals($aliveNeighbours = 2, $this->gol->neighbours($start));
+    }
+
     public function testGivenOneCoordinatesIReceiveTheNineCandidatesNeighbours()
     {
         $start = [1, 1];
 
         $candidates = [
             [0, 0], [0, 1], [0, 2],
-            [1, 0], [1, 1], [1, 2],
+            [1, 0], [1, 2],
             [2, 0], [2, 1], [2, 2]
         ];
 

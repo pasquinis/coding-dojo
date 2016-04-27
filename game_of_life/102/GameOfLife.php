@@ -42,6 +42,17 @@ class GameOfLife
         return self::DEAD;
     }
 
+    public function neighbours($start)
+    {
+        $alive = 0;
+        foreach ($this->getAliveCoordinates() as $aliveCoordinate) {
+            foreach ($this->candidates($start) as $candidateCoordinate) {
+                ($aliveCoordinate === $candidateCoordinate) ? $alive++ : $alive;
+            }
+        }
+        return $alive;
+    }
+
     public function candidates($start)
     {
         $x = $start[0];
@@ -49,7 +60,7 @@ class GameOfLife
 
         $candidates = [
             [$x - 1, $y - 1], [$x - 1, $y], [$x - 1, $y + 1],
-            [$x, $y - 1], [$x, $y], [$x, $y + 1],
+            [$x, $y - 1], [$x, $y + 1],
             [$x + 1, $y - 1], [$x + 1, $y], [$x + 1, $y + 1],
         ];
 
