@@ -6,6 +6,7 @@ class GameOfLife
     const ALIVE = true;
     const DEAD = false;
     private $aliveCoordinates = [];
+    private $futureGeneration = [];
 
     public function add($patterns)
     {
@@ -15,11 +16,36 @@ class GameOfLife
         );
     }
 
-    public function tick() {}
+    public function tick()
+    {
+        $this->futureGeneration = [];
+        // scorrere gli aliveCoordinate e calcolare per ognuo se inserirli nella
+        // future generation
+        foreach ($this->getAliveCoordinates() as $coordinate) {
+            $neighbours = $this->neighbours($coordinate);
+            if ($this->nextGeneration(
+                $this->isAlive($coordinate),
+                $neighbours)
+            ) {
+                $this->addFuture($coordinate);
+            }
+            // per ogni candidato calcolare se inserirli nella futura generazione
+            foreach ($this->candidates($coordinate) as $candidate) {
+                $candidateNeighbours = $this->neighbours($candidate);
+                if ($this->nextGeneration(
+                    $this->isAlive($candidate),
+                    $candidateNeighbours)
+                ) {
+                    $this->addFuture($candidate);
+                }
+            }
+        }
+        $this->aliveCoordinates = $this->futureGeneration;
+    }
 
     public function generation()
     {
-        return $expectedGeneration = [[0, 1], [1, 1], [2, 1]];
+        return $this->getAliveCoordinates();
     }
 
     public function getAliveCoordinates()
@@ -40,6 +66,11 @@ class GameOfLife
                 break;
         }
         return self::DEAD;
+    }
+
+    public function isAlive($coordinate)
+    {
+       return in_array($coordinate, $this->getAliveCoordinates());
     }
 
     public function neighbours($start)
@@ -67,6 +98,13 @@ class GameOfLife
         return $candidates;
     }
 
+    private function addFuture($patterns)
+    {
+        $this->futureGeneration = array_unique(
+            array_merge($this->futureGeneration, [ $patterns ]),
+            SORT_REGULAR
+        );
+    }
     private function isBetweenTo($left, $right, $value) {
         return (($left <= $value) && ($value <= $right));
     }

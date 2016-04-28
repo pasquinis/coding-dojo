@@ -35,7 +35,7 @@ class GameOfLifeTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($uniqueCoordinates = 5, count($this->gol->getAliveCoordinates()));
     }
 
-    public function testGivenOneCoordinateICanCalculateTheAliveNeighbours()
+    public function testGivenOneCoordinateAlreadyLiveICanCalculateTheAliveNeighbours()
     {
         $start = [1, 1];
         $blinker = [[1, 0], [1, 1], [1, 2]];
@@ -45,6 +45,15 @@ class GameOfLifeTest extends \PHPUnit_Framework_TestCase
         $this->gol->add($square);
 
         $this->assertEquals($aliveNeighbours = 2, $this->gol->neighbours($start));
+    }
+
+    public function testGivenOneCoordinateDeadICanCalculateTheAliveNeighbours()
+    {
+        $start = [0, 1];
+        $blinker = [[1, 0], [1, 1], [1, 2]];
+
+        $this->gol->add($blinker);
+        $this->assertEquals($aliveNeighbours = 3, $this->gol->neighbours($start));
     }
 
     public function testGivenOneCoordinatesIReceiveTheEightCandidatesNeighbours()
