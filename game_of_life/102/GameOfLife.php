@@ -22,19 +22,19 @@ class GameOfLife
         // scorrere gli aliveCoordinate e calcolare per ognuo se inserirli nella
         // future generation
         foreach ($this->getAliveCoordinates() as $coordinate) {
-            $neighbours = $this->neighbours($coordinate);
-            if ($this->nextGeneration(
-                $this->isAlive($coordinate),
-                $neighbours)
+            if ($this->isStillAliveInTheNextGeneration(
+                    $this->isAlive($coordinate),
+                    $this->neighbours($coordinate)
+                )
             ) {
                 $this->addFuture($coordinate);
             }
             // per ogni candidato calcolare se inserirli nella futura generazione
             foreach ($this->candidates($coordinate) as $candidate) {
-                $candidateNeighbours = $this->neighbours($candidate);
-                if ($this->nextGeneration(
-                    $this->isAlive($candidate),
-                    $candidateNeighbours)
+                if ($this->isStillAliveInTheNextGeneration(
+                        $this->isAlive($candidate),
+                        $this->neighbours($candidate)
+                    )
                 ) {
                     $this->addFuture($candidate);
                 }
@@ -96,6 +96,11 @@ class GameOfLife
         ];
 
         return $candidates;
+    }
+
+    private function isStillAliveInTheNextGeneration($coordinate, $aliveNeighbours)
+    {
+        return $this->nextGeneration($coordinate, $aliveNeighbours);
     }
 
     private function addFuture($patterns)
