@@ -7,7 +7,7 @@ class GameOfLifeTest extends \PHPUnit_Framework_TestCase
 
     protected function setUp()
     {
-        $this->gol = new GameOfLife();
+        $this->gol = new GameOfLife($width = 10, $height = 5);
     }
 
     public function testGivenAPatternIFindTheNextGeneration()
@@ -21,6 +21,19 @@ class GameOfLifeTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($expectedGeneration, $this->gol->generation());
     }
 
+    public function testGivenADimesionOfTheBoardICanPrintEmpty()
+    {
+        $exptected = <<<EMPTY_BOARD
+
+..........
+..........
+..........
+..........
+..........
+EMPTY_BOARD;
+
+        $this->assertEquals($exptected, $this->gol->display());
+    }
 
     public function testAddingAPatternToArrayOfAliveCoordinates()
     {

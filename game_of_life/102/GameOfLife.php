@@ -5,8 +5,16 @@ class GameOfLife
 
     const ALIVE = true;
     const DEAD = false;
+    const DEAD_SIGN = '.';
+
     private $aliveCoordinates = [];
     private $futureGeneration = [];
+
+    public function __construct($width, $height)
+    {
+        $this->width = $width;
+        $this->height = $height;
+    }
 
     public function add($patterns)
     {
@@ -51,6 +59,20 @@ class GameOfLife
     public function getAliveCoordinates()
     {
         return $this->aliveCoordinates;
+    }
+
+    public function display()
+    {
+        $display = '';
+
+        for ($i = 0; $i < $this->height; $i++) {
+            $display .= PHP_EOL;
+            for ($j = 0; $j < $this->width; $j++) {
+                $display .= self::DEAD_SIGN;
+            }
+        }
+
+        return $display;
     }
 
     public function nextGeneration($currentStatus, $aliveNeighbours)
