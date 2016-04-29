@@ -35,7 +35,7 @@ BLINKER;
 
         $this->gol->add($blinker);
         $this->gol->tick();
-        $this->assertEquals($expected, $this->gol->display());
+        $this->assertEquals($expected, $this->gol->displayAscii());
     }
 
     public function testGivenADimesionOfTheBoardICanPrintEmpty()
@@ -49,7 +49,7 @@ BLINKER;
 ..........
 EMPTY_BOARD;
 
-        $this->assertEquals($exptected, $this->gol->display());
+        $this->assertEquals($exptected, $this->gol->displayAscii());
     }
 
     public function testAddingAPatternToArrayOfAliveCoordinates()

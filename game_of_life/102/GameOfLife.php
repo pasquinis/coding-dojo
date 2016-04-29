@@ -7,6 +7,8 @@ class GameOfLife
     const DEAD = false;
     const DEAD_SIGN = '.';
     const ALIVE_SIGN = '*';
+    const DEAD_SIGN_UTF8 = ' ';
+    const ALIVE_SIGN_UTF8 = "\xE2\x96\xa3";
 
     private $aliveCoordinates = [];
     private $futureGeneration = [];
@@ -62,18 +64,15 @@ class GameOfLife
         return $this->aliveCoordinates;
     }
 
-    public function display()
+    public function displayAscii()
     {
-        $display = '';
+        return $this->display(self::ALIVE_SIGN, self::DEAD_SIGN);
+    }
 
-        for ($i = 0; $i < $this->height; $i++) {
-            $display .= PHP_EOL;
-            for ($j = 0; $j < $this->width; $j++) {
-                $display .= ($this->isAlive([$i, $j])) ? self::ALIVE_SIGN : self::DEAD_SIGN;
-            }
-        }
-
-        return $display;
+    public function displayUtf8()
+    {
+        // http://www.utf8-chartable.de/unicode-utf8-table.pl?start=9600&number=128&names=-&utf8=string-literal
+        return $this->display(self::ALIVE_SIGN_UTF8, self::DEAD_SIGN_UTF8);
     }
 
     public function nextGeneration($currentStatus, $aliveNeighbours)
@@ -121,6 +120,20 @@ class GameOfLife
         return $candidates;
     }
 
+    private function display($aliveSign, $deadSign)
+    {
+        $display = '';
+
+        for ($i = 0; $i < $this->height; $i++) {
+            $display .= PHP_EOL;
+            for ($j = 0; $j < $this->width; $j++) {
+                $display .= ($this->isAlive([$i, $j])) ? $aliveSign : $deadSign;
+            }
+        }
+
+        return $display;
+    }
+
     private function isStillAliveInTheNextGeneration($coordinate, $aliveNeighbours)
     {
         return $this->nextGeneration($coordinate, $aliveNeighbours);
@@ -133,6 +146,7 @@ class GameOfLife
             SORT_REGULAR
         );
     }
+
     private function isBetweenTo($left, $right, $value) {
         return (($left <= $value) && ($value <= $right));
     }
