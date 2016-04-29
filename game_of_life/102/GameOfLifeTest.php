@@ -21,6 +21,23 @@ class GameOfLifeTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($expectedGeneration, $this->gol->generation());
     }
 
+    public function testGivenAPatternIDisplayTheNextGeneration()
+    {
+        $blinker = [[1, 0], [1, 1], [1, 2]];
+        $expected = <<<BLINKER
+
+.*........
+.*........
+.*........
+..........
+..........
+BLINKER;
+
+        $this->gol->add($blinker);
+        $this->gol->tick();
+        $this->assertEquals($expected, $this->gol->display());
+    }
+
     public function testGivenADimesionOfTheBoardICanPrintEmpty()
     {
         $exptected = <<<EMPTY_BOARD

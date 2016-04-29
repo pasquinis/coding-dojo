@@ -6,6 +6,7 @@ class GameOfLife
     const ALIVE = true;
     const DEAD = false;
     const DEAD_SIGN = '.';
+    const ALIVE_SIGN = '*';
 
     private $aliveCoordinates = [];
     private $futureGeneration = [];
@@ -68,7 +69,7 @@ class GameOfLife
         for ($i = 0; $i < $this->height; $i++) {
             $display .= PHP_EOL;
             for ($j = 0; $j < $this->width; $j++) {
-                $display .= self::DEAD_SIGN;
+                $display .= ($this->isAlive([$i, $j])) ? self::ALIVE_SIGN : self::DEAD_SIGN;
             }
         }
 
