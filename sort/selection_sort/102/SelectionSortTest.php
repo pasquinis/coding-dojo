@@ -4,9 +4,19 @@ require_once 'SelectionSort.php';
 
 class SelectionSortTest extends \PHPUnit_Framework_TestCase
 {
+
+    protected function setUp()
+    {
+        $this->selection = new SelectionSort();
+    }
+
     public function testShouldIOrderAnArrayOfOneElement()
     {
-        $selection = new SelectionSort();
-        $this->assertEquals([1], $selection->sort([1]));
+        $this->assertEquals([1], $this->selection->sort([1]));
+    }
+
+    public function testShouldIOrderAnArrayOfTwoElements()
+    {
+        $this->assertEquals([1, 2], $this->selection->sort([2, 1]));
     }
 }
