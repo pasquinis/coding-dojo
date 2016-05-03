@@ -4,11 +4,13 @@ class SelectionSort
 {
     public function sort(array $unsorted)
     {
-        for ($i = 1; $i < count($unsorted); $i++) {
-            if ($unsorted[$i] < $unsorted[0]) {
-                $temp = $unsorted[0];
-                $unsorted[0] = $unsorted[$i];
-                $unsorted[$i] = $temp;
+       for ($j = 0; $j < count($unsorted); $j++) {
+            for ($i = 1 + $j; $i < count($unsorted); $i++) {
+                if ($unsorted[$i] < $unsorted[$j]) {
+                    $temp = $unsorted[$j];
+                    $unsorted[$j] = $unsorted[$i];
+                    $unsorted[$i] = $temp;
+                }
             }
         }
 
