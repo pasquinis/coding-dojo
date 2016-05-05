@@ -8,10 +8,11 @@ class SelectionSort
             $iMin = $j;
             for ($i = $j + 1; $i < count($unsorted); $i++) {
                 if ($unsorted[$i] < $unsorted[$iMin]) {
-                    $temp = $unsorted[$iMin];
-                    $unsorted[$iMin] = $unsorted[$i];
-                    $unsorted[$i] = $temp;
+                    $iMin = $i;
                 }
+                $temp = $unsorted[$j];
+                $unsorted[$j] = $unsorted[$iMin];
+                $unsorted[$iMin] = $temp;
             }
         }
         return $unsorted;
