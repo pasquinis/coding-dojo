@@ -10,10 +10,11 @@ class SelectionSort
                 if ($unsorted[$i] < $unsorted[$iMin]) {
                     $iMin = $i;
                 }
-                $temp = $unsorted[$j];
-                $unsorted[$j] = $unsorted[$iMin];
-                $unsorted[$iMin] = $temp;
             }
+
+            $temp = $unsorted[$j];
+            $unsorted[$j] = $unsorted[$iMin];
+            $unsorted[$iMin] = $temp;
         }
         return $unsorted;
     }
