@@ -4,24 +4,43 @@ class Display
 {
     const EIGHT =<<<EIGHT
 +-----+
-|  _  |
+|M _  |
 | |_| |
 | |_| |
 +-----+
 EIGHT;
+
+    public function __construct()
+    {
+        $this->min = -1;
+    }
 
     public function add($elements)
     {
         $this->elements = $elements;
     }
 
+    public function min($index)
+    {
+        $this->min = $index;
+    }
+
     public function output()
     {
         $output = '';
-        foreach ($this->elements as $element) {
-            if ($element == 8) {
-                $output .= self::EIGHT;
+        for ($i = 0; $i < count($this->elements); $i++) {
+            $element = '';
+            if ($this->elements[$i] == 8) {
+                $element= self::EIGHT;
             }
+
+            if ($this->min == $i) {
+                $element = str_replace('M', '*', $element);
+            }
+
+            $element = str_replace('M', ' ', $element);
+            $output .= $element;
+
         }
         return $output;
     }
