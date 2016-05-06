@@ -2,6 +2,34 @@
 
 class Display
 {
+    const ONE =<<<ONE
++-----+
+|M   S|
+|   | |
+|   | |
++-----+
+ONE;
+    const TWO =<<<TWO
++-----+
+|M _ S|
+|  _| |
+| |_  |
++-----+
+TWO;
+    const THREE =<<<THREE
++-----+
+|M _ S|
+|  _| |
+|  _| |
++-----+
+THREE;
+    const FOUR =<<<FOUR
++-----+
+|M   S|
+| |_| |
+|   | |
++-----+
+FOUR;
     const EIGHT =<<<EIGHT
 +-----+
 |M _ S|
@@ -41,6 +69,9 @@ EIGHT;
         $output = '';
         for ($i = 0; $i < count($this->elements); $i++) {
             $element = '';
+            if ($this->elements[$i] == 1) {
+                $element= self::ONE;
+            }
             if ($this->elements[$i] == 8) {
                 $element= self::EIGHT;
             }

@@ -71,4 +71,22 @@ EIGHT;
 
         $this->assertEquals($expected, $display->output());
     }
+
+    public function testShouldDisplayAnArrayWithAMinAndSelectedElements()
+    {
+        $display = new Display();
+        $expected = <<<EIGHT
++-----+ +-----+ +-----+ +-----+
+|*    | |  _ ?| |  _  | |     |
+|   | | |  _| | |  _| | | |_| |
+|   | | | |_  | |  _| | |   | |
++-----+ +-----+ +-----+ +-----+
+EIGHT;
+
+        $display->add([1, 2, 3, 4]);
+        $display->min($i = 0);
+        $display->select($i = 1);
+
+        $this->assertEquals($expected, $display->output());
+    }
 }
