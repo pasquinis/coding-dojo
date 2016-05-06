@@ -11,7 +11,9 @@ class Display
 EIGHT;
 
     const MIN_PLACEHOLDER = 'M';
+    const MIN_ACTUAL_VALUE = '*';
     const SELECT_PLACEHOLDER = 'S';
+    const SELECT_ACTUAL_VALUE = '?';
 
     public function __construct()
     {
@@ -43,17 +45,40 @@ EIGHT;
                 $element= self::EIGHT;
             }
 
-            if ($this->min == $i) {
-                $element = str_replace(self::MIN_PLACEHOLDER, '*', $element);
+            if ($this->thisKeyIsTheMin($i)) {
+                $element = $this->substitutePlaceHolder(
+                    self::MIN_PLACEHOLDER,
+                    self::MIN_ACTUAL_VALUE,
+                    $element
+                );
             }
 
-            if ($this->select == $i) {
-                $element = str_replace(self::SELECT_PLACEHOLDER, '?', $element);
+            if ($this->thisKeyIsSelected($i)) {
+                $element = $this->substitutePlaceHolder(
+                    self::SELECT_PLACEHOLDER,
+                    self::SELECT_ACTUAL_VALUE,
+                    $element
+                );
             }
 
             $output .= $this->removePlaceholders($element);
         }
         return $output;
+    }
+
+    private function thisKeyIsTheMin($index)
+    {
+        return $this->min == $index;
+    }
+
+    private function thisKeyIsSelected($index)
+    {
+        return $this->select == $index;
+    }
+
+    private function substitutePlaceHolder($placeholder, $actualValue, $element)
+    {
+        return str_replace($placeholder, $actualValue, $element);
     }
 
     private function removePlaceholders($element)
