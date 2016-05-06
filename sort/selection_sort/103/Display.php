@@ -10,6 +10,9 @@ class Display
 +-----+
 EIGHT;
 
+    const MIN_PLACEHOLDER = 'M';
+    const SELECT_PLACEHOLDER = 'S';
+
     public function __construct()
     {
         $this->min = -1;
@@ -41,18 +44,22 @@ EIGHT;
             }
 
             if ($this->min == $i) {
-                $element = str_replace('M', '*', $element);
+                $element = str_replace(self::MIN_PLACEHOLDER, '*', $element);
             }
 
             if ($this->select == $i) {
-                $element = str_replace('S', '?', $element);
+                $element = str_replace(self::SELECT_PLACEHOLDER, '?', $element);
             }
 
-            $element = str_replace('M', ' ', $element);
-            $element = str_replace('S', ' ', $element);
-            $output .= $element;
-
+            $output .= $this->removePlaceholders($element);
         }
         return $output;
+    }
+
+    private function removePlaceholders($element)
+    {
+        $cleaned = str_replace(self::SELECT_PLACEHOLDER, ' ', $element);
+        $cleaned = str_replace(self::MIN_PLACEHOLDER, ' ', $cleaned);
+        return $cleaned;
     }
 }
