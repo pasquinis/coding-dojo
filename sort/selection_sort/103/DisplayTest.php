@@ -36,4 +36,21 @@ EIGHT;
 
         $this->assertEquals($expected, $display->output());
     }
+
+    public function testShouldDisplayAnArrayWithSelectedElement()
+    {
+        $display = new Display();
+        $expected = <<<EIGHT
++-----+
+|  _ ?|
+| |_| |
+| |_| |
++-----+
+EIGHT;
+
+        $display->add([8]);
+        $display->select($i = 0);
+
+        $this->assertEquals($expected, $display->output());
+    }
 }
