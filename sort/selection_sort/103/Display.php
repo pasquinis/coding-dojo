@@ -10,9 +10,19 @@ class Display
 +-----+
 EIGHT;
 
-    public function add($elements) {}
+    public function add($elements)
+    {
+        $this->elements = $elements;
+    }
 
-    public function output() {
-        return self::EIGHT;
+    public function output()
+    {
+        $output = '';
+        foreach ($this->elements as $element) {
+            if ($element == 8) {
+                $output .= self::EIGHT;
+            }
+        }
+        return $output;
     }
 }
