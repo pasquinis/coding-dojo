@@ -8,6 +8,7 @@ class DisplayTest extends \PHPUnit_Framework_TestCase
     {
         $display = new Display();
         $expected = <<<EIGHT
+
 +-----+
 |  _  |
 | |_| |
@@ -24,6 +25,7 @@ EIGHT;
     {
         $display = new Display();
         $expected = <<<EIGHT
+
 +-----+
 |* _  |
 | |_| |
@@ -41,6 +43,7 @@ EIGHT;
     {
         $display = new Display();
         $expected = <<<EIGHT
+
 +-----+
 |  _ ?|
 | |_| |
@@ -58,6 +61,7 @@ EIGHT;
     {
         $display = new Display();
         $expected = <<<EIGHT
+
 +-----+
 |* _ ?|
 | |_| |
@@ -76,11 +80,27 @@ EIGHT;
     {
         $display = new Display();
         $expected = <<<EIGHT
-+-----+ +-----+ +-----+ +-----+
-|*    | |  _ ?| |  _  | |     |
-|   | | |  _| | |  _| | | |_| |
-|   | | | |_  | |  _| | |   | |
-+-----+ +-----+ +-----+ +-----+
+
++-----+
+|*    |
+|   | |
+|   | |
++-----+
++-----+
+|  _ ?|
+|  _| |
+| |_  |
++-----+
++-----+
+|  _  |
+|  _| |
+|  _| |
++-----+
++-----+
+|     |
+| |_| |
+|   | |
++-----+
 EIGHT;
 
         $display->add([1, 2, 3, 4]);

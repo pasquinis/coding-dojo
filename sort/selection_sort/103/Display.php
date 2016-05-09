@@ -47,6 +47,13 @@ EIGHT;
     {
         $this->min = -1;
         $this->select = -1;
+        $this->digitsConverter = [
+            1 => self::ONE,
+            2 => self::TWO,
+            3 => self::THREE,
+            4 => self::FOUR,
+            8 => self::EIGHT
+        ];
     }
 
     public function add($elements)
@@ -68,12 +75,12 @@ EIGHT;
     {
         $output = '';
         for ($i = 0; $i < count($this->elements); $i++) {
+
             $element = '';
-            if ($this->elements[$i] == 1) {
-                $element= self::ONE;
-            }
-            if ($this->elements[$i] == 8) {
-                $element= self::EIGHT;
+            foreach($this->digitsConverter as $key => $digit) {
+                if ($this->elements[$i] == $key) {
+                   $element = $digit;
+               }
             }
 
             if ($this->thisKeyIsTheMin($i)) {
@@ -116,6 +123,6 @@ EIGHT;
     {
         $cleaned = str_replace(self::SELECT_PLACEHOLDER, ' ', $element);
         $cleaned = str_replace(self::MIN_PLACEHOLDER, ' ', $cleaned);
-        return $cleaned;
+        return PHP_EOL . $cleaned;
     }
 }
