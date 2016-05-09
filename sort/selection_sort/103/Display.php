@@ -30,6 +30,27 @@ THREE;
 |   | |
 +-----+
 FOUR;
+    const FIVE =<<<FIVE
++-----+
+|M _ S|
+| |_  |
+|  _| |
++-----+
+FIVE;
+    const SIX =<<<SIX
++-----+
+|M _ S|
+| |_  |
+| |_| |
++-----+
+SIX;
+    const SEVEN =<<<SEVEN
++-----+
+|M _ S|
+|   | |
+|   | |
++-----+
+SEVEN;
     const EIGHT =<<<EIGHT
 +-----+
 |M _ S|
@@ -37,6 +58,13 @@ FOUR;
 | |_| |
 +-----+
 EIGHT;
+    const NINE =<<<NINE
++-----+
+|M _ S|
+| |_| |
+|  _| |
++-----+
+NINE;
 
     const MIN_PLACEHOLDER = 'M';
     const MIN_ACTUAL_VALUE = '*';
@@ -52,7 +80,11 @@ EIGHT;
             2 => self::TWO,
             3 => self::THREE,
             4 => self::FOUR,
-            8 => self::EIGHT
+            5 => self::FIVE,
+            6 => self::SIX,
+            7 => self::SEVEN,
+            8 => self::EIGHT,
+            9 => self::NINE
         ];
     }
 
