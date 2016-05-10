@@ -1,12 +1,17 @@
 <?php
 
-require_once 'Display.php';
+require_once 'DigitsSegmentDisplay.php';
 
 class DisplayTest extends \PHPUnit_Framework_TestCase
 {
+
+    protected function setUp()
+    {
+        $this->display = new DigitsSegmentDisplay();
+    }
+
     public function testShouldDisplayAnArrayOfOneElement()
     {
-        $display = new Display();
         $expected = <<<EIGHT
 
 +-----+
@@ -16,14 +21,13 @@ class DisplayTest extends \PHPUnit_Framework_TestCase
 +-----+
 EIGHT;
 
-        $display->add([8]);
+        $this->display->add([8]);
 
-        $this->assertEquals($expected, $display->output());
+        $this->assertEquals($expected, $this->display->output());
     }
 
     public function testShouldDisplayAnArrayWithMinElement()
     {
-        $display = new Display();
         $expected = <<<EIGHT
 
 +-----+
@@ -33,15 +37,14 @@ EIGHT;
 +-----+
 EIGHT;
 
-        $display->add([8]);
-        $display->min($i = 0);
+        $this->display->add([8]);
+        $this->display->min($i = 0);
 
-        $this->assertEquals($expected, $display->output());
+        $this->assertEquals($expected, $this->display->output());
     }
 
     public function testShouldDisplayAnArrayWithSelectedElement()
     {
-        $display = new Display();
         $expected = <<<EIGHT
 
 +-----+
@@ -51,15 +54,14 @@ EIGHT;
 +-----+
 EIGHT;
 
-        $display->add([8]);
-        $display->select($i = 0);
+        $this->display->add([8]);
+        $this->display->select($i = 0);
 
-        $this->assertEquals($expected, $display->output());
+        $this->assertEquals($expected, $this->display->output());
     }
 
     public function testShouldDisplayAnArrayWithMinAndSelectedElement()
     {
-        $display = new Display();
         $expected = <<<EIGHT
 
 +-----+
@@ -69,16 +71,15 @@ EIGHT;
 +-----+
 EIGHT;
 
-        $display->add([8]);
-        $display->min($i = 0);
-        $display->select($i = 0);
+        $this->display->add([8]);
+        $this->display->min($i = 0);
+        $this->display->select($i = 0);
 
-        $this->assertEquals($expected, $display->output());
+        $this->assertEquals($expected, $this->display->output());
     }
 
     public function testShouldDisplayAnArrayWithAMinAndSelectedElements()
     {
-        $display = new Display();
         $expected = <<<EIGHT
 
 +-----+
@@ -103,10 +104,10 @@ EIGHT;
 +-----+
 EIGHT;
 
-        $display->add([1, 2, 3, 4]);
-        $display->min($i = 0);
-        $display->select($i = 1);
+        $this->display->add([1, 2, 3, 4]);
+        $this->display->min($i = 0);
+        $this->display->select($i = 1);
 
-        $this->assertEquals($expected, $display->output());
+        $this->assertEquals($expected, $this->display->output());
     }
 }
