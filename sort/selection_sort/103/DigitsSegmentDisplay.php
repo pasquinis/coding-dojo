@@ -138,8 +138,9 @@ NINE;
         return $output;
     }
 
-    public function clear()
+    public function clear($output)
     {
+        echo $output;
         usleep(500000);
         system('clear');
     }
