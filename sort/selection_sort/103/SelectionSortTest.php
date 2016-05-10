@@ -8,8 +8,8 @@ class SelectionSortTest extends \PHPUnit_Framework_TestCase
 
     protected function setUp()
     {
-        $this->display = new FakeDisplay();
-        $this->selection = new SelectionSort();
+        $display = new FakeDisplay();
+        $this->selection = new SelectionSort($display);
     }
 
     public function testShouldOrderAnArrayOfOneElement()

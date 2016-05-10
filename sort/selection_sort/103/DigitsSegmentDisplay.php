@@ -138,6 +138,12 @@ NINE;
         return $output;
     }
 
+    public function clear()
+    {
+        usleep(500000);
+        system('clear');
+    }
+
     private function thisKeyIsTheMin($index)
     {
         return $this->min == $index;
