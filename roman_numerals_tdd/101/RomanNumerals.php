@@ -10,11 +10,11 @@ class RomanNumerals
 
     public function toRomanNumerals()
     {
-        if ($this->value == '1') {
+        if ($this->value == 1) {
             return 'I';
         }
 
-        if ($this->value == '5')  {
+        if ($this->value == 5)  {
             return 'V';
         }
         return 'X';
