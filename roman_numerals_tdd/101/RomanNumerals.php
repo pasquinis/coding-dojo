@@ -13,6 +13,11 @@ class RomanNumerals
         if ($this->value == '1') {
             return 'I';
         }
-        return 'V';
+
+        if ($this->value == '5')  {
+            return 'V';
+        }
+        return 'X';
+
     }
 }
