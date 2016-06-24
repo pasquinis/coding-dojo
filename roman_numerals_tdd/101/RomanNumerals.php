@@ -7,9 +7,10 @@ class RomanNumerals
     {
         $this->value = $value;
         $this->translators = [
-            1   => 'I',
-            5   => 'V',
-            10  => 'X'
+            1  => 'I',
+            5  => 'V',
+            10 => 'X',
+            50 => 'L'
         ];
     }
 

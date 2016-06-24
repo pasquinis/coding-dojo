@@ -21,5 +21,10 @@ class RomanNumeralsTest extends \PHPUnit_Framework_TestCase
         $converter = new RomanNumerals($given);
 
         $this->assertEquals('X', $converter->toRomanNumerals());
+
+        $given = 50;
+        $converter = new RomanNumerals($given);
+
+        $this->assertEquals('L', $converter->toRomanNumerals());
     }
 }
