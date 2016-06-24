@@ -6,18 +6,19 @@ class RomanNumerals
     public function __construct($value)
     {
         $this->value = $value;
+        $this->translators = [
+            1   => 'I',
+            5   => 'V',
+            10  => 'X'
+        ];
     }
 
     public function toRomanNumerals()
     {
-        if ($this->value == 1) {
-            return 'I';
+        foreach($this->translators as $number => $letter) {
+            if ($this->value == $number) {
+                return $letter;
+            }
         }
-
-        if ($this->value == 5)  {
-            return 'V';
-        }
-        return 'X';
-
     }
 }
