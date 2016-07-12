@@ -22,11 +22,11 @@ class RomanNumerals
         foreach($this->translators as $number => $letter) {
             if ($this->isPrimeRomanNumeral($number)) {
                 $response .= $letter;
-                $this->modifiedValue -= $number;
+                $this->subtractPrimeRomanNumeralTo($number);
             }
-            if (($this->modifiedValue / $number) > 1) {
+            if ($this->isDivisibleFor($number)) {
                 $response .= $letter;
-                $this->modifiedValue = $this->modifiedValue - $number;
+                $this->subtractPrimeRomanNumeralTo($number);
             }
         }
 
@@ -36,5 +36,15 @@ class RomanNumerals
     private function isPrimeRomanNumeral($number)
     {
         return $this->modifiedValue == $number;
+    }
+
+    private function isDivisibleFor($number)
+    {
+        return ($this->modifiedValue / $number) > 1;
+    }
+
+    private function subtractPrimeRomanNumeralTo($number)
+    {
+        $this->modifiedValue -= $number;
     }
 }
