@@ -27,4 +27,12 @@ class RomanNumeralsTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals('L', $converter->toRomanNumerals());
     }
+
+    public function testIAbleToConvertTheNumber7()
+    {
+        $given = 7;
+        $converter = new RomanNumerals($given);
+
+        $this->assertEquals('VII', $converter->toRomanNumerals());
+    }
 }
