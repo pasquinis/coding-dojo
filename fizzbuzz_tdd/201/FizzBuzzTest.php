@@ -27,8 +27,9 @@ class FizzBuzzTest extends TestCase
         $this->assertEquals(4, $fizzBuzz->say(4));
     }
 
-    public function testWhenISayFive() {
+    public function testWhenISayFiveOrMultiple() {
         $fizzBuzz = new FizzBuzz();
         $this->assertEquals('Buzz', $fizzBuzz->say(5));
+        $this->assertEquals('Buzz', $fizzBuzz->say(10));
     }
 }
