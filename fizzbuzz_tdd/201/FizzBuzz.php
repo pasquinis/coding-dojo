@@ -2,14 +2,20 @@
 
 class FizzBuzz
 {
+    public function __construct() {
+        $this->rules = [
+            3 => 'Fizz',
+            5 => 'Buzz',
+        ];
+    }
+
     public function say($number) {
         $answer = '';
-        if ($number % 3 == 0) {
-            $answer .= 'Fizz';
-        }
 
-        if ($number % 5 == 0) {
-            $answer .= 'Buzz';
+        foreach ($this->rules as $divisor => $say) {
+            if ($number % $divisor == 0) {
+                $answer .= $say;
+            }
         }
 
         if (!empty($answer)) {
