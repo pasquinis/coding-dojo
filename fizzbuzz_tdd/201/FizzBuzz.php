@@ -3,12 +3,17 @@
 class FizzBuzz
 {
     public function say($number) {
+        $answer = '';
         if ($number % 3 == 0) {
-            return 'Fizz';
+            $answer .= 'Fizz';
         }
 
         if ($number % 5 == 0) {
-            return 'Buzz';
+            $answer .= 'Buzz';
+        }
+
+        if (!empty($answer)) {
+            return $answer;
         }
         return $number;
     }

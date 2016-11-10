@@ -32,4 +32,9 @@ class FizzBuzzTest extends TestCase
         $this->assertEquals('Buzz', $fizzBuzz->say(5));
         $this->assertEquals('Buzz', $fizzBuzz->say(10));
     }
+
+    public function testWhenISayAMultipleOfThreeAndFive() {
+        $fizzBuzz = new FizzBuzz();
+        $this->assertEquals('FizzBuzz', $fizzBuzz->say(3*5));
+    }
 }
