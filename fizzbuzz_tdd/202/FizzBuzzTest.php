@@ -21,4 +21,10 @@ class FizzBuzzTest extends TestCase
     {
         $this->assertEquals(2, $this->game->say(2));
     }
+
+    public function testWhenISayThreeOrOwnMultiple()
+    {
+        $this->assertEquals('Fizz', $this->game->say(3));
+        $this->assertEquals('Fizz', $this->game->say(3*2));
+    }
 }
