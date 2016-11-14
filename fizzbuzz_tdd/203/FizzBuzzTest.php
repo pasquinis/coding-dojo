@@ -27,4 +27,10 @@ class FizzBuzzTest extends TestCase
         $this->assertEquals('Fizz', $this->game->say(3));
         $this->assertEquals('Fizz', $this->game->say(3*2));
     }
+
+    public function testWhenISayFiveOrMultipleOfFive()
+    {
+        $this->assertEquals('Buzz', $this->game->say(5));
+        $this->assertEquals('Buzz', $this->game->say(5*2));
+    }
 }
