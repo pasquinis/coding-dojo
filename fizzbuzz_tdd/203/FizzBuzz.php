@@ -13,8 +13,18 @@ class FizzBuzz
 
     public function say($number)
     {
-        $response = '';
+        $response = $this->getWord($number);
 
+        if (!empty($response)) {
+            return $response;
+        }
+
+        return $number;
+    }
+
+    private function getWord($number)
+    {
+        $response = '';
 
         foreach($this->rules as $divisor => $word) {
             if ($number % $divisor == 0) {
@@ -22,10 +32,6 @@ class FizzBuzz
             }
         }
 
-        if (!empty($response)) {
-            return $response;
-        }
-
-        return $number;
+        return $response;
     }
 }
