@@ -1,13 +1,16 @@
 <?php
 
+require 'Fizz.php';
+require 'Buzz.php';
+
 class FizzBuzz
 {
 
     public function __construct()
     {
         $this->rules = [
-            3 => 'Fizz',
-            5 => 'Buzz'
+            new Fizz(),
+            new Buzz()
         ];
     }
 
@@ -26,9 +29,9 @@ class FizzBuzz
     {
         $response = '';
 
-        foreach($this->rules as $divisor => $word) {
-            if ($number % $divisor == 0) {
-                $response .= $word;
+        foreach($this->rules as $rule) {
+            if ($rule->isModule($number)) {
+                $response .= $rule->getWord();
             }
         }
 
